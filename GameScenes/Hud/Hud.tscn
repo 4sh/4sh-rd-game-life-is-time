@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=12 format=3 uid="uid://df8axxfjajflr"]
 
 [ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
@@ -16,6 +16,10 @@ colors = PackedColorArray(0, 0, 0, 0.392157, 0.208843, 0.208843, 0.208843, 0.310
 gradient = SubResource("Gradient_xjtbo")
 fill_from = Vector2(0.484848, 0.645022)
 fill_to = Vector2(0.484848, 0.00865801)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rdxbv"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w124r"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_5xg12")
@@ -163,6 +167,33 @@ text = "Test"
 autowrap_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ingame_ui/dialogbox"]
+
+[node name="controls_helper" type="Node2D" parent="ingame_ui"]
+position = Vector2(973, 83)
+
+[node name="toggle_world_control" type="Node2D" parent="ingame_ui/controls_helper"]
+texture_filter = 1
+position = Vector2(45, 1)
+
+[node name="ToggleWorldLabel" type="Label" parent="ingame_ui/controls_helper/toggle_world_control"]
+offset_left = 20.0
+offset_top = -12.0
+offset_right = 60.0
+offset_bottom = 11.0
+text = "toggle world"
+
+[node name="CanToggleWorldSprite" type="Sprite2D" parent="ingame_ui/controls_helper/toggle_world_control"]
+visible = false
+modulate = Color(1, 0.0588235, 1, 1)
+position = Vector2(4.00003, -3.5353e-05)
+scale = Vector2(15.9999, 15.9999)
+texture = SubResource("PlaceholderTexture2D_rdxbv")
+
+[node name="CannotToggleWorldSprite" type="Sprite2D" parent="ingame_ui/controls_helper/toggle_world_control"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(4, 0)
+scale = Vector2(15.875, 15.75)
+texture = SubResource("PlaceholderTexture2D_w124r")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="game_over/TextureButton" to="." method="_on_game_over_retry_pressed"]

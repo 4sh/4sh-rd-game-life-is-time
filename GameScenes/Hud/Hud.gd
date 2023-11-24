@@ -39,3 +39,9 @@ func write(narrationObject):
 
 func _on_ready():
 	$ingame_ui/mentalhealthbar.visible = show_mental_health
+
+
+func _on_worlds_can_toggle_world(can_toggle_world):
+	$ingame_ui/controls_helper/toggle_world_control/CannotToggleWorldSprite.visible = !can_toggle_world
+	$ingame_ui/controls_helper/toggle_world_control/CanToggleWorldSprite.visible = can_toggle_world
+	$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.visible = can_toggle_world

@@ -57,5 +57,6 @@ layer_1/tile_data = PackedInt32Array(262145, 917504, 7, 262146, 917504, 7, 32768
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
 position = Vector2(324, 155)
 
+[connection signal="can_toggle_world" from="Worlds" to="Hud" method="_on_worlds_can_toggle_world"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
 [connection signal="mental_health_changed" from="Player" to="Hud" method="_on_player_mental_health_changed"]
