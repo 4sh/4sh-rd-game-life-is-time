@@ -217,7 +217,7 @@ texture_filter = 1
 position = Vector2(1.00001, -5)
 scale = Vector2(1.25, 0.640625)
 sprite_frames = SubResource("SpriteFrames_4ey8i")
-frame_progress = 0.775225
+frame_progress = 0.562819
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Items/Portal/Area2D"]
 position = Vector2(0, 4)

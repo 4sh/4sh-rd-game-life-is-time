@@ -158,7 +158,7 @@ position = Vector2(196, -437)
 frequency = 1.0
 
 [node name="Player" parent="." instance=ExtResource("7_svgfn")]
-position = Vector2(938, -416)
+position = Vector2(939, -416)
 speed = 3500.0
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
