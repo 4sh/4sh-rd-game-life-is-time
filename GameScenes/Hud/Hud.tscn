@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://df8axxfjajflr"]
 
-[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_itfct"]
+[ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
 [ext_resource type="Texture2D" uid="uid://bip3wivpe0ioq" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barBack_horizontalMid.png" id="2_guypf"]
 [ext_resource type="Texture2D" uid="uid://cm7d38bgaujtj" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="2_uhi5p"]
@@ -18,7 +18,7 @@ fill_from = Vector2(0.484848, 0.645022)
 fill_to = Vector2(0.484848, 0.00865801)
 
 [node name="hud" type="CanvasLayer"]
-script = ExtResource("1_itfct")
+script = ExtResource("1_5xg12")
 
 [node name="game_over" type="Control" parent="."]
 process_mode = 2
@@ -164,4 +164,5 @@ autowrap_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ingame_ui/dialogbox"]
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="game_over/TextureButton" to="." method="_on_game_over_retry_pressed"]

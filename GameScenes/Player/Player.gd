@@ -3,17 +3,21 @@ extends CharacterBody2D
 
 @export var speed = 5000.0
 @export var life = 100.0
+@export var mental_health = 100.0
 
 signal life_changed(life)
+signal mental_health_changed(mental_health)
 signal dead
 
 
 @onready var sprite = $PlayerSprite
 
 var heal_animate = false
+var mental_heal_animate = false
 
 func _ready():
 	life_changed.emit(life)
+	mental_health_changed.emit(mental_health)
 
 
 func _physics_process(delta):
@@ -50,8 +54,21 @@ func hit(damage):
 	if (life <= 0):
 		dead.emit()
 
+func mental_hit(damage):
+	animate_damage()
+	mental_health = mental_health - damage
+	mental_health_changed.emit(mental_health)
+	if (mental_health <= 0):
+		dead.emit()
+
 func heal(heal):
 	animate_heal()
 	life = life + heal
 	clamp(life, 0, 100)
 	life_changed.emit(life)
+
+func mental_heal(heal):
+	animate_heal()
+	mental_health = mental_health + heal
+	clamp(mental_health, 0, 100)
+	mental_health_changed.emit(mental_health)

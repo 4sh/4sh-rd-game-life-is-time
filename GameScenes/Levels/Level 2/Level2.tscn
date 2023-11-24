@@ -100,3 +100,4 @@ speed = 3500.0
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
+[connection signal="mental_health_changed" from="Player" to="Hud" method="_on_player_mental_health_changed"]

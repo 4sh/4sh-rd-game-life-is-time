@@ -28,6 +28,7 @@ size = Vector2(14, 10)
 script = ExtResource("1_iheia")
 
 [node name="Hud" parent="." instance=ExtResource("1_kvb4w")]
+show_mental_health = false
 
 [node name="World" type="Node2D" parent="."]
 
@@ -165,3 +166,4 @@ autoplay = true
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
+[connection signal="mental_health_changed" from="Player" to="Hud" method="_on_player_mental_health_changed"]

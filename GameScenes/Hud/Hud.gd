@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal restart_game
 
+@export var show_mental_health: bool = true
+
 func _on_player_life_changed(life):
 	$ingame_ui/lifebar.value = life
 
@@ -33,3 +35,7 @@ func write(narrationObject):
 		await $ingame_ui/dialogbox/AudioStreamPlayer.finished
 	$ingame_ui/dialogbox/MarginContainer/Label.text = ""
 	$ingame_ui/dialogbox.hide()
+
+
+func _on_ready():
+	$ingame_ui/mentalhealthbar.visible = show_mental_health
