@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 1/Level1.gd" id="1_iheia"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="2_15667"]
-[ext_resource type="TileSet" uid="uid://bitaekr8oxiqe" path="res://Assets/Tilesets/game-main-tileset.tres" id="2_xlock"]
+[ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="2_xlock"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="3_j7slt"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="4_1tptq"]
 [ext_resource type="Texture2D" uid="uid://d2i73r1ld5w3r" path="res://Assets/Tilesets/Sample.png" id="5_dm1vh"]
@@ -37,6 +37,8 @@ script = ExtResource("1_iheia")
 [node name="World" type="Node2D" parent="."]
 
 [node name="DiseaseTimer" parent="World" instance=ExtResource("4_1tptq")]
+wait_time = 1.0
+damage = 7
 
 [node name="WorldMap" type="Node2D" parent="World"]
 
@@ -108,18 +110,46 @@ shape = SubResource("RectangleShape2D_kekd3")
 [node name="Items" type="Node2D" parent="World"]
 
 [node name="RegenStone1" parent="World/Items" instance=ExtResource("3_j7slt")]
-position = Vector2(768, 7)
+position = Vector2(873, 10)
+heal = 17
 
 [node name="RegenStone2" parent="World/Items" instance=ExtResource("3_j7slt")]
-position = Vector2(489, -224)
+position = Vector2(127, 151)
+heal = 15
+heal_max = 5
 
 [node name="RegenStone3" parent="World/Items" instance=ExtResource("3_j7slt")]
-position = Vector2(201, 240)
+position = Vector2(492, 235)
+heal = 12
+heal_max = 5
+
+[node name="RegenStone4" parent="World/Items" instance=ExtResource("3_j7slt")]
+position = Vector2(122, -108)
+heal = 20
+heal_max = 4
+
+[node name="RegenStone5" parent="World/Items" instance=ExtResource("3_j7slt")]
+position = Vector2(194, -432)
+heal = 17
+heal_max = 5
+
+[node name="RegenStone6" parent="World/Items" instance=ExtResource("3_j7slt")]
+position = Vector2(1150, -109)
+heal = 17
+heal_max = 5
+
+[node name="RegenStone7" parent="World/Items" instance=ExtResource("3_j7slt")]
+position = Vector2(570, -214)
+heal = 25
+
+[node name="RegenStone8" parent="World/Items" instance=ExtResource("3_j7slt")]
+position = Vector2(812, -389)
+heal = 20
+heal_max = 1
 
 [node name="Player" parent="." instance=ExtResource("2_15667")]
 position = Vector2(574, 286)
-speed = 4000.0
-life = 20.0
+speed = 3500.0
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

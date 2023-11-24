@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Worlds.gd" id="2_gxuur"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="2_l3mve"]
 [ext_resource type="Script" path="res://Scenes/Light.gd" id="3_5ytt1"]
-[ext_resource type="TileSet" uid="uid://bxy6eja2irtej" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_pcqlr"]
+[ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_pcqlr"]
 [ext_resource type="Script" path="res://Scenes/Dark.gd" id="5_enyfa"]
 
 [node name="Level3" type="Node2D"]
