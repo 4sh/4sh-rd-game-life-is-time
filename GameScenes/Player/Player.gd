@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 300.0
+@export var speed = 5000.0
 @export var life = 100.0
 
 signal life_changed(life)
@@ -16,7 +16,7 @@ func _ready():
 
 func _physics_process(delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * speed
+	velocity = direction * speed * delta
 	if direction.length() > 0:
 		sprite.animation = "walk"
 		sprite.flip_h = velocity.x < 0
