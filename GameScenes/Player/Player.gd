@@ -15,6 +15,7 @@ signal dead
 
 var heal_animate = false
 var mental_heal_animate = false
+var invulnerable = false
 
 func _ready():
 	life_changed.emit(life)
@@ -43,12 +44,13 @@ func animate_damage():
 
 func animate_heal():
 	$PlayerSprite.self_modulate.s = 0.01
-	$PlayerSprite.self_modulate.h = 0.15
-	await create_tween().tween_property($PlayerSprite, "self_modulate:s", 1, 0.2).finished
+	$PlayerSprite.self_modulate.h = 0.14
+	await create_tween().tween_property($PlayerSprite, "self_modulate:s", 1, 0.3).finished
 	create_tween().tween_property($PlayerSprite, "self_modulate:s", 0, 0.1)
 	$PlayerSprite.self_modulate.s = 0.0
 
 func hit(damage):
+	if (invulnerable): return
 	animate_damage()
 	life = life - damage
 	life_changed.emit(life)
@@ -63,10 +65,12 @@ func mental_hit(damage):
 		dead.emit()
 
 func heal(heal):
+	invulnerable = true
 	animate_heal()
 	life = life + heal
 	clamp(life, 0, 100)
 	life_changed.emit(life)
+	$InvulnerabilityTimer.start()
 
 func mental_heal(heal):
 	animate_heal()
@@ -81,3 +85,7 @@ func _on_worlds_toggled_world(moved_to_dark):
 	life = 100 - life
 	clamp(life, 5, 100)
 	life_changed.emit(life)
+
+
+func _on_invulnerability_timer_timeout():
+	invulnerable = false

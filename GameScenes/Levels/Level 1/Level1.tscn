@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgnb6sujiox20"]
+[gd_scene load_steps=25 format=3 uid="uid://dgnb6sujiox20"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 1/Level1.gd" id="1_iheia"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://d2i73r1ld5w3r" path="res://Assets/Tilesets/Sample.png" id="5_dm1vh"]
 [ext_resource type="Texture2D" uid="uid://b3tu20ebirkww" path="res://Assets/Tilesets/Purple Portal Sprite Sheet.png" id="7_dywqo"]
 [ext_resource type="AudioStream" uid="uid://uk1sdag66lxe" path="res://Assets/Sounds/8-bit-halloween-story-166454.mp3" id="8_4g7md"]
+[ext_resource type="Script" path="res://GameScenes/Levels/Level 1/PlayerSlower.gd" id="9_ca6xc"]
+[ext_resource type="PackedScene" uid="uid://cmei2u1d7f4fh" path="res://GameScenes/NarrativeLauncher/narrative_launcher.tscn" id="10_5whmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjrg2"]
 atlas = ExtResource("5_dm1vh")
@@ -93,6 +95,7 @@ size = Vector2(14, 10)
 script = ExtResource("1_iheia")
 
 [node name="Hud" parent="." instance=ExtResource("1_kvb4w")]
+show_mental_health = false
 
 [node name="World" type="Node2D" parent="."]
 
@@ -227,8 +230,53 @@ shape = SubResource("RectangleShape2D_xesav")
 position = Vector2(574, 286)
 speed = 3500.0
 
+[node name="PlayerSlower" type="Node2D" parent="Player"]
+script = ExtResource("9_ca6xc")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_4g7md")
+
+[node name="launch_narrative" parent="." instance=ExtResource("10_5whmt")]
+position = Vector2(572, 281)
+
+[node name="launch_narrative_portal" parent="." instance=ExtResource("10_5whmt")]
+position = Vector2(936, -420)
+narrationIndex = 2
+
+[node name="launchnarrative_2" type="Node2D" parent="."]
+position = Vector2(490, 231)
+
+[node name="launch_second_narrative" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(0, 0)
+narrationIndex = 1
+
+[node name="launch_second_narrative2" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(-359, -78)
+narrationIndex = 1
+
+[node name="launch_second_narrative3" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(-369, -339)
+narrationIndex = 1
+
+[node name="launch_second_narrative4" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(81, -445)
+narrationIndex = 1
+
+[node name="launch_second_narrative5" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(-297, -672)
+narrationIndex = 1
+
+[node name="launch_second_narrative6" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(318, -620)
+narrationIndex = 1
+
+[node name="launch_second_narrative7" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(660, -342)
+narrationIndex = 1
+
+[node name="launch_second_narrative8" parent="launchnarrative_2" instance=ExtResource("10_5whmt")]
+position = Vector2(383, -223)
+narrationIndex = 1
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
 [connection signal="body_entered" from="World/Items/Portal/Area2D" to="." method="_on_portal_body_entered"]

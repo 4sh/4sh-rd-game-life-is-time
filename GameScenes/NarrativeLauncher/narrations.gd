@@ -6,7 +6,7 @@ var narration1 = {
 		[
 			{
 				"text": "Au commencement, il y eu le jour de la grande malédiction. Teils, comme tous les autres, fut frappé par la maladie",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_1.wav")
 			}
 		]
 }
@@ -17,15 +17,15 @@ var narration2 = {
 		[
 			{
 				"text": "Lorsqu'il découvrit sa première orbe de soin, il crût bien être sauvé...",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_2.wav")
 			}, 
 			{
 				"text": "Mais son espoir fût de courte durée, les orbes elles même êtaient frappées par la malédiction et perdaient peu à peu de leur aura.",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_3.wav")
 			},
 			{
 				"text": "Le temps lui manquait. Il lui fallait maintenant trouver un moyen d'échapper à ce monde...",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_4.wav")
 			}
 		]
 }
@@ -36,11 +36,11 @@ var narration3 = {
 		[
 			{
 				"text": "Quand il aperçut le portail, il crût être sauvé...",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_5.wav")
 			}, 
 			{
 				"text": "Mais il allait bientôt découvrir ce qui l'attendait de l'autre côté",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_6.wav")
 			}
 		]
 }
@@ -51,11 +51,11 @@ var narration4 = {
 		[
 			{
 				"text": "Un monde lugubre et angoissant. Mais la cure était quelque part dans ce monde, il le savait.",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_7.wav")
 			}, 
 			{
 				"text": "Mais prends garde Teils, car les anciennes pierres sont totalement corrompues, dans ce bas monde ...",
-				"sound": preload("res://Assets/Sounds/bruit attaque 1.wav")
+				"sound": preload("res://Assets/Narration/teils_8.wav")
 			}
 		]
 }

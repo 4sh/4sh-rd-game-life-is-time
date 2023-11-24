@@ -1,25 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwjcwc45halix"]
+[gd_scene load_steps=4 format=3 uid="uid://dwjcwc45halix"]
 
 [ext_resource type="PackedScene" uid="uid://q4lunxfvuv3m" path="res://Scenes/hud.tscn" id="1_vyxw2"]
-[ext_resource type="Script" path="res://launch_narrative.gd" id="2_w558b"]
+[ext_resource type="PackedScene" uid="uid://cmei2u1d7f4fh" path="res://GameScenes/NarrativeLauncher/narrative_launcher.tscn" id="2_xsvx4"]
 [ext_resource type="PackedScene" uid="uid://u5nt71m12ffc" path="res://Scenes/draft_scenes/player_khi.tscn" id="3_mtl48"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7c4u6"]
-radius = 91.0494
 
 [node name="narrative_draft" type="Node2D"]
 
 [node name="hud" parent="." instance=ExtResource("1_vyxw2")]
 
-[node name="launch_narrative" type="Area2D" parent="."]
-position = Vector2(366, 274)
-script = ExtResource("2_w558b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="launch_narrative"]
-shape = SubResource("CircleShape2D_7c4u6")
+[node name="launch_narrative" parent="." instance=ExtResource("2_xsvx4")]
 
 [node name="Player" parent="." instance=ExtResource("3_mtl48")]
 position = Vector2(664, 262)
-
-[connection signal="body_entered" from="launch_narrative" to="launch_narrative" method="_on_body_entered"]
-[connection signal="launch_narration" from="launch_narrative" to="hud" method="on_narration_launched"]
