@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwipvn7dxhhmw"]
+
+[ext_resource type="Script" path="res://GameScenes/Screens/Menu/GameMenu.gd" id="1_ptkvc"]
+[ext_resource type="Texture2D" uid="uid://buykor0gabmqt" path="res://Assets/Screens/Splash.png" id="2_jol5t"]
+[ext_resource type="Texture2D" uid="uid://cm7d38bgaujtj" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="3_l6kmv"]
+[ext_resource type="Texture2D" uid="uid://crxml2f10nb5d" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="4_51x2t"]
+
+[node name="GameMenu" type="Node2D"]
+script = ExtResource("1_ptkvc")
+
+[node name="Splash" type="Sprite2D" parent="."]
+position = Vector2(579, 377)
+scale = Vector2(0.977586, 0.977586)
+texture = ExtResource("2_jol5t")
+
+[node name="PlayButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = 150.0
+offset_right = 315.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_l6kmv")
+texture_pressed = ExtResource("4_51x2t")
+
+[node name="Label" type="Label" parent="PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Play"
+
+[node name="CreditsButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 893.0
+offset_top = 149.0
+offset_right = 1083.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_l6kmv")
+texture_pressed = ExtResource("4_51x2t")
+
+[node name="Label" type="Label" parent="CreditsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Credits"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
