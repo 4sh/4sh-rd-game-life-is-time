@@ -1,4 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgnb6sujiox20"]
+[gd_scene load_steps=15 format=3 uid="uid://dgnb6sujiox20"]
+
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 1/Level1.gd" id="1_iheia"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="3_j7slt"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="4_1tptq"]
 [ext_resource type="Texture2D" uid="uid://d2i73r1ld5w3r" path="res://Assets/Tilesets/Sample.png" id="5_dm1vh"]
+[ext_resource type="AudioStream" uid="uid://uk1sdag66lxe" path="res://Assets/Sounds/8-bit-halloween-story-166454.mp3" id="8_4g7md"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjrg2"]
 atlas = ExtResource("5_dm1vh")
@@ -141,6 +143,10 @@ heal_max = 2
 [node name="Player" parent="." instance=ExtResource("2_15667")]
 position = Vector2(574, 286)
 speed = 3500.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4g7md")
+autoplay = true
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
