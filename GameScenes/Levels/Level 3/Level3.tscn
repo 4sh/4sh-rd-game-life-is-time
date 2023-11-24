@@ -1,20 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=9 format=3 uid="uid://b3wayvwq0uf0h"]
 
+[ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
-[ext_resource type="Script" path="res://Scenes/Worlds.gd" id="2_gxuur"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="2_l3mve"]
 [ext_resource type="Script" path="res://Scenes/Light.gd" id="3_5ytt1"]
+[ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Worlds.gd" id="3_h8ihk"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="3_qglt0"]
 [ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_pcqlr"]
 [ext_resource type="Script" path="res://Scenes/Dark.gd" id="5_enyfa"]
 
 [node name="Level3" type="Node2D"]
+script = ExtResource("1_fi7ur")
 
 [node name="Hud" parent="." instance=ExtResource("1_x071v")]
 
-[node name="Worlds" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("2_gxuur")
-player = NodePath("../Player")
+[node name="Worlds" type="Node2D" parent="."]
+script = ExtResource("3_h8ihk")
 
 [node name="DiseaseTimer" parent="Worlds" instance=ExtResource("3_qglt0")]
 
@@ -57,6 +58,10 @@ layer_1/tile_data = PackedInt32Array(262145, 917504, 7, 262146, 917504, 7, 32768
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
 position = Vector2(324, 155)
 
+[connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
 [connection signal="can_toggle_world" from="Worlds" to="Hud" method="_on_worlds_can_toggle_world"]
+[connection signal="toggled_world" from="Worlds" to="Player" method="_on_worlds_toggled_world"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
 [connection signal="mental_health_changed" from="Player" to="Hud" method="_on_player_mental_health_changed"]

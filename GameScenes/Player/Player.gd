@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed = 5000.0
 @export var life = 100.0
 @export var mental_health = 100.0
+@export var mental_damage_on_move_to_dark = 10.0
 
 signal life_changed(life)
 signal mental_health_changed(mental_health)
@@ -72,3 +73,8 @@ func mental_heal(heal):
 	mental_health = mental_health + heal
 	clamp(mental_health, 0, 100)
 	mental_health_changed.emit(mental_health)
+
+
+func _on_worlds_toggled_world(moved_to_dark):
+	if (moved_to_dark):
+		mental_hit(mental_damage_on_move_to_dark)
