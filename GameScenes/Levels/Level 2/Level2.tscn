@@ -11,6 +11,7 @@
 script = ExtResource("1_qycc7")
 
 [node name="Hud" parent="." instance=ExtResource("2_ufvox")]
+show_mental_health = false
 
 [node name="World" type="Node2D" parent="."]
 
