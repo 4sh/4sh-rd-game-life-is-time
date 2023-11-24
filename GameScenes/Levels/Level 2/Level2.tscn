@@ -1,11 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://w1cu7cvm1n1t"]
+[gd_scene load_steps=17 format=3 uid="uid://w1cu7cvm1n1t"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 2/Level2.gd" id="1_qycc7"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="2_ufvox"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="3_uv37e"]
 [ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_025k7"]
 [ext_resource type="PackedScene" uid="uid://b1spqr4ffudte" path="res://GameScenes/DarkStone/darkstone.tscn" id="5_7xce4"]
+[ext_resource type="Texture2D" uid="uid://b3tu20ebirkww" path="res://Assets/Tilesets/Purple Portal Sprite Sheet.png" id="5_utiff"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="7_svgfn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0ahb"]
+atlas = ExtResource("5_utiff")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tm7t"]
+atlas = ExtResource("5_utiff")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uewe"]
+atlas = ExtResource("5_utiff")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ua7d"]
+atlas = ExtResource("5_utiff")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bh8w"]
+atlas = ExtResource("5_utiff")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvjau"]
+atlas = ExtResource("5_utiff")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csv8c"]
+atlas = ExtResource("5_utiff")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o8cg"]
+atlas = ExtResource("5_utiff")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ydmm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0ahb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tm7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uewe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ua7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bh8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvjau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csv8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o8cg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_qycc7")
@@ -52,6 +117,12 @@ layer_3/tile_data = PackedInt32Array(-458742, 458752, 0, -589816, 458752, 0, -65
 
 [node name="Equipments" type="Node2D" parent="World/WorldMap"]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/WorldMap/Equipments"]
+texture_filter = 1
+position = Vector2(939, -421)
+scale = Vector2(1.25, 0.640625)
+sprite_frames = SubResource("SpriteFrames_7ydmm")
+
 [node name="Items" type="Node2D" parent="World"]
 
 [node name="darkstone2" parent="World/Items" instance=ExtResource("5_7xce4")]
@@ -87,7 +158,7 @@ position = Vector2(196, -437)
 frequency = 1.0
 
 [node name="Player" parent="." instance=ExtResource("7_svgfn")]
-position = Vector2(938, -415)
+position = Vector2(938, -416)
 speed = 3500.0
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
