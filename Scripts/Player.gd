@@ -21,3 +21,7 @@ func _physics_process(delta):
 		sprite.stop()
 		
 	move_and_slide()
+
+
+func _on_worlds_can_toggle_world():
+	pass # Replace with function body.
