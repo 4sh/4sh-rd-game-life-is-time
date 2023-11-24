@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgnb6sujiox20"]
+[gd_scene load_steps=11 format=3 uid="uid://dgnb6sujiox20"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 1/Level1.gd" id="1_iheia"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
@@ -12,22 +12,13 @@
 atlas = ExtResource("5_dm1vh")
 region = Rect2(245, 320, 635, 750)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_imy37"]
-size = Vector2(35.75, 33.5)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3q2j"]
 atlas = ExtResource("5_dm1vh")
 region = Rect2(360, 1120, 435, 730)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7f40"]
-size = Vector2(31, 29)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_drwfd"]
 atlas = ExtResource("5_dm1vh")
 region = Rect2(1160, 1120, 560, 700)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kekd3"]
-size = Vector2(48, 27)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_iheia")
@@ -80,32 +71,32 @@ position = Vector2(476, 293)
 scale = Vector2(0.0762305, 0.0762305)
 texture = SubResource("AtlasTexture_jjrg2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WorldMap/Equipments/Home1"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="World/WorldMap/Equipments/Home1"]
 position = Vector2(475.125, 301.75)
-shape = SubResource("RectangleShape2D_imy37")
+polygon = PackedVector2Array(-17.125, 17.25, 0.875, 17.25, 1.875, 18.25, 5.875, 18.25, 5.875, 17.25, 7.875, 17.25, 8.875, 19.25, 16.875, 19.25, 18.875, 17.25, 18.875, 5.25, 23.875, 5.25, 24.875, -0.75, 18.875, -0.75, 18.875, -2.75, 23.875, -7.75, 24.875, -19.75, 19.875, -21.75, 18.875, -24.75, 17.875, -28.75, 8.875, -28.75, 9.875, -33.75, 8.875, -36.75, -19.125, -37.75, -20.125, -19.75, -17.125, -17.75, -17.125, -15.75, -24.125, -12.75, -24.125, 4.25, -17.125, 10.25)
 
 [node name="Home2" type="StaticBody2D" parent="World/WorldMap/Equipments"]
 
 [node name="Sprite" type="Sprite2D" parent="World/WorldMap/Equipments/Home2"]
-position = Vector2(572, 336)
+position = Vector2(574, 336)
 scale = Vector2(0.0971264, 0.0971264)
 texture = SubResource("AtlasTexture_d3q2j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WorldMap/Equipments/Home2"]
-position = Vector2(569.5, 355.5)
-shape = SubResource("RectangleShape2D_e7f40")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="World/WorldMap/Equipments/Home2"]
+position = Vector2(572, 355)
+polygon = PackedVector2Array(-15, 15, 15, 15, 16, 5, 23, -1, 23, -16, 20, -17, 20, -36, 0, -55, -19, -36, -19, -14, -16, -16, -16, -1)
 
 [node name="Home3" type="StaticBody2D" parent="World/WorldMap/Equipments"]
-position = Vector2(530, 310)
+position = Vector2(531, 310)
 
 [node name="Sprite" type="Sprite2D" parent="World/WorldMap/Equipments/Home3"]
 position = Vector2(96, -79)
 scale = Vector2(0.1, 0.1)
 texture = SubResource("AtlasTexture_drwfd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WorldMap/Equipments/Home3"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="World/WorldMap/Equipments/Home3"]
 position = Vector2(95, -58.5)
-shape = SubResource("RectangleShape2D_kekd3")
+polygon = PackedVector2Array(-27, -28.5, 1, -56.5, 29, -28.5, 29, -4.5, 25, -6.5, 25, 7.5, 12, 8.5, 12, 14.5, 6, 14.5, 6, 8.5, 0, 8.5, 0, 15.5, -22, 15.5, -22, 7.5, -23, 7.5, -23, -7.5, -26, -5.5)
 
 [node name="Items" type="Node2D" parent="World"]
 
@@ -114,7 +105,7 @@ position = Vector2(873, 10)
 heal = 17
 
 [node name="RegenStone2" parent="World/Items" instance=ExtResource("3_j7slt")]
-position = Vector2(127, 151)
+position = Vector2(128, 150)
 heal = 15
 heal_max = 5
 
@@ -145,7 +136,7 @@ heal = 25
 [node name="RegenStone8" parent="World/Items" instance=ExtResource("3_j7slt")]
 position = Vector2(812, -389)
 heal = 20
-heal_max = 1
+heal_max = 2
 
 [node name="Player" parent="." instance=ExtResource("2_15667")]
 position = Vector2(574, 286)
