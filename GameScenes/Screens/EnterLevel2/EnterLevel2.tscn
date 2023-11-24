@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cocluhwomoitj"]
+
+[ext_resource type="Texture2D" uid="uid://1ewg3ilaodj6" path="res://Assets/Screens/EnterLevel2.png" id="1_4gnnw"]
+
+[node name="EnterLevel2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(579, 327)
+texture = ExtResource("1_4gnnw")
