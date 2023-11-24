@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://nb5u27rx0mgr"]
 
 [ext_resource type="Script" path="res://GameScenes/RegenStone/RegenStone.gd" id="1_35he1"]
-[ext_resource type="Texture2D" uid="uid://brwb10h7vqlq7" path="res://Assets/RegenStone.tres" id="2_gybgy"]
+[ext_resource type="Texture2D" uid="uid://brwb10h7vqlq7" path="res://Assets/Ressources/RegenStone.tres" id="2_mw7bx"]
 [ext_resource type="AudioStream" uid="uid://cgmlw1tlmq20f" path="res://Assets/Sounds/Magic Glitter - Fairy Dust Sound Effect.mp3" id="3_j636p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xo4vb"]
@@ -11,7 +11,7 @@ script = ExtResource("1_35he1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_gybgy")
+texture = ExtResource("2_mw7bx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xo4vb")

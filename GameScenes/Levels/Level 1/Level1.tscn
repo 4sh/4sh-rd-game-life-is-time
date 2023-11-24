@@ -1,5 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgnb6sujiox20"]
-
+[gd_scene load_steps=23 format=3 uid="uid://dgnb6sujiox20"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 1/Level1.gd" id="1_iheia"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
@@ -8,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="3_j7slt"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="4_1tptq"]
 [ext_resource type="Texture2D" uid="uid://d2i73r1ld5w3r" path="res://Assets/Tilesets/Sample.png" id="5_dm1vh"]
+[ext_resource type="Texture2D" uid="uid://b3tu20ebirkww" path="res://Assets/Tilesets/Purple Portal Sprite Sheet.png" id="7_dywqo"]
 [ext_resource type="AudioStream" uid="uid://uk1sdag66lxe" path="res://Assets/Sounds/8-bit-halloween-story-166454.mp3" id="8_4g7md"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjrg2"]
@@ -22,6 +22,70 @@ region = Rect2(360, 1120, 435, 730)
 atlas = ExtResource("5_dm1vh")
 region = Rect2(1160, 1120, 560, 700)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0ahb"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tm7t"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uewe"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ua7d"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bh8w"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvjau"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csv8c"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o8cg"]
+atlas = ExtResource("7_dywqo")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ey8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0ahb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tm7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uewe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ua7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bh8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvjau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csv8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o8cg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xesav"]
 size = Vector2(14, 10)
 
@@ -29,7 +93,6 @@ size = Vector2(14, 10)
 script = ExtResource("1_iheia")
 
 [node name="Hud" parent="." instance=ExtResource("1_kvb4w")]
-show_mental_health = false
 
 [node name="World" type="Node2D" parent="."]
 
@@ -146,9 +209,15 @@ heal_max = 2
 
 [node name="Portal" type="Node2D" parent="World/Items"]
 position = Vector2(938, -417)
-metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="World/Items/Portal"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="World/Items/Portal/Area2D"]
+texture_filter = 1
+position = Vector2(1.00001, -5)
+scale = Vector2(1.25, 0.640625)
+sprite_frames = SubResource("SpriteFrames_4ey8i")
+frame_progress = 0.775225
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Items/Portal/Area2D"]
 position = Vector2(0, 4)
