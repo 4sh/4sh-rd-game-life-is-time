@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=10 format=3 uid="uid://b3wayvwq0uf0h"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="3_qglt0"]
 [ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_pcqlr"]
 [ext_resource type="Script" path="res://Scenes/Dark.gd" id="5_enyfa"]
+[ext_resource type="PackedScene" uid="uid://50l5sehx102p" path="res://GameScenes/PickupItems/MentalHealthHealStone/MentalHealthHealStone.tscn" id="7_881sm"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_fi7ur")
@@ -39,7 +40,13 @@ layer_1/tile_data = PackedInt32Array(327682, 0, 6, 393218, 0, 7, 458754, 0, 7, 5
 [node name="DiseaseTimer" parent="Worlds/Light" instance=ExtResource("3_qglt0")]
 damage = 10
 
+[node name="Items" type="Node2D" parent="Worlds/Light"]
+
+[node name="MentalHealthHealStone" parent="Worlds/Light/Items" instance=ExtResource("7_881sm")]
+position = Vector2(288, 158)
+
 [node name="Dark" type="Node2D" parent="Worlds"]
+visible = false
 position = Vector2(0, 1)
 script = ExtResource("5_enyfa")
 
