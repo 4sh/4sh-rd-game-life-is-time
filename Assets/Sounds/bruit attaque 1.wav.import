@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c13jbx6ix6trt"
-path="res://.godot/imported/bruit attaque 1.wav-d1b5832933f192976128eae97707bde4.sample"
+path="res://.godot/imported/bruit attaque 1.wav-43ff4a9f93e8e06999cc3a6960c2757b.sample"
 
 [deps]
 
-source_file="res://Assets/bruit attaque 1.wav"
-dest_files=["res://.godot/imported/bruit attaque 1.wav-d1b5832933f192976128eae97707bde4.sample"]
+source_file="res://Assets/Sounds/bruit attaque 1.wav"
+dest_files=["res://.godot/imported/bruit attaque 1.wav-43ff4a9f93e8e06999cc3a6960c2757b.sample"]
 
 [params]
 

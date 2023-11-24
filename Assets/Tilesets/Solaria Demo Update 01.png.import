@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4pch3wnyxnsl"
-path="res://.godot/imported/player.jpeg-fd30814c37ef090de532cda9a6faf00b.ctex"
+uid="uid://cp4ik7m4srlan"
+path="res://.godot/imported/Solaria Demo Update 01.png-4ab929672b233ca3a46e9fe607ce5723.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/player.jpeg"
-dest_files=["res://.godot/imported/player.jpeg-fd30814c37ef090de532cda9a6faf00b.ctex"]
+source_file="res://Assets/Tilesets/Solaria Demo Update 01.png"
+dest_files=["res://.godot/imported/Solaria Demo Update 01.png-4ab929672b233ca3a46e9fe607ce5723.ctex"]
 
 [params]
 
