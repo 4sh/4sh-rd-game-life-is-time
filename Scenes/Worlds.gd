@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var light_world = $Light
 @onready var dark_world = $Dark
+@export var player: Node2D
+
 
 enum World { DARK, LIGHT }
 
@@ -32,21 +34,14 @@ func _process(delta):
 		else:
 			old_world = dark_world
 			new_world = light_world
-		
-		var old_player: Node2D = old_world.player
-		var new_player: Node2D = new_world.player
-		
-		var target_map_pos = new_world.map.local_to_map(old_player.position)
+				
+		var target_map_pos = new_world.map.local_to_map(player.position)
 		var tile_data: TileData = new_world.map.get_cell_tile_data(1, target_map_pos)
 
 			
-		print(target_map_pos)
-		print(tile_data)
-		
 		if (tile_data != null):
 			remove_child(old_world)
 			add_child(new_world)
-			new_player.position = old_player.position
 			world = target_world
 			
 
