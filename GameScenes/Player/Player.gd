@@ -78,3 +78,6 @@ func mental_heal(heal):
 func _on_worlds_toggled_world(moved_to_dark):
 	if (moved_to_dark):
 		mental_hit(mental_damage_on_move_to_dark)
+	life = 100 - life
+	clamp(life, 5, 100)
+	life_changed.emit(life)
