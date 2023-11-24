@@ -116,6 +116,7 @@ position = Vector2(201, 240)
 
 [node name="Player" parent="." instance=ExtResource("2_15667")]
 position = Vector2(574, 286)
+speed = 4000.0
 life = 20.0
 
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
