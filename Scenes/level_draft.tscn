@@ -1,6 +1,25 @@
-[gd_scene format=3 uid="uid://ble70i7cjaq46"]
+[gd_scene load_steps=2 format=3 uid="uid://ble70i7cjaq46"]
+
+[ext_resource type="TileSet" uid="uid://bxy6eja2irtej" path="res://Assets/Tilesets/draft.tres" id="1_fikif"]
 
 [node name="level draft" type="Node2D"]
 
-[node name="TileMap2" type="TileMap" parent="."]
+[node name="Map" type="TileMap" parent="."]
+position = Vector2(530, 310)
+tile_set = ExtResource("1_fikif")
 format = 2
+layer_0/name = "water"
+layer_1/name = "ile"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "pont arbre"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
