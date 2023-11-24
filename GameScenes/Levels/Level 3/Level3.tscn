@@ -14,8 +14,9 @@ script = ExtResource("1_fi7ur")
 
 [node name="Hud" parent="." instance=ExtResource("1_x071v")]
 
-[node name="Worlds" type="Node2D" parent="."]
+[node name="Worlds" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_h8ihk")
+player = NodePath("../Player")
 
 [node name="DiseaseTimer" parent="Worlds" instance=ExtResource("3_qglt0")]
 
