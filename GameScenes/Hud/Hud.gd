@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal restart_game
+signal write_finished
 
 @export var show_mental_health: bool = true
 
@@ -35,6 +36,7 @@ func write(narrationObject):
 		await $ingame_ui/dialogbox/AudioStreamPlayer.finished
 	$ingame_ui/dialogbox/MarginContainer/Label.text = ""
 	$ingame_ui/dialogbox.hide()
+	write_finished.emit()
 
 
 func _on_ready():

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdd1nil4mb6up"]
+
+[ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_78mfl"]
+[ext_resource type="Script" path="res://Scenes/transition.gd" id="1_bcy02"]
+
+[node name="Transition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bcy02")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hud" parent="." instance=ExtResource("1_78mfl")]
+show_mental_health = false
