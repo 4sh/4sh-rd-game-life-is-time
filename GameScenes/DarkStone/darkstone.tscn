@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1spqr4ffudte"]
 
 [ext_resource type="Script" path="res://GameScenes/DarkStone/darkstone.gd" id="1_4hm2w"]
-[ext_resource type="Texture2D" uid="uid://brwb10h7vqlq7" path="res://Assets/RegenStone.tres" id="2_kr52g"]
+[ext_resource type="Texture2D" path="res://Assets/RegenStone.tres" id="2_kr52g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el0b0"]
 radius = 175.345
 
 [node name="darkstone" type="Area2D"]
 position = Vector2(578, 469)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_4hm2w")
 metadata/_edit_group_ = true
 
