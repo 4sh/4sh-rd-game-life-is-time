@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="2_15667"]
-[ext_resource type="TileSet" uid="uid://bxy6eja2irtej" path="res://Assets/Tilesets/game-main-tileset.tres" id="2_xlock"]
+[ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="2_xlock"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="3_j7slt"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="4_1tptq"]
 [ext_resource type="Texture2D" uid="uid://d2i73r1ld5w3r" path="res://Assets/Tilesets/Sample.png" id="5_dm1vh"]
