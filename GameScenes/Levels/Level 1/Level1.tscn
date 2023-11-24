@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgnb6sujiox20"]
+[gd_scene load_steps=14 format=3 uid="uid://dgnb6sujiox20"]
 
+[ext_resource type="Script" path="res://GameScenes/Levels/Level 1/Level1.gd" id="1_iheia"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="2_15667"]
-[ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="2_xlock"]
+[ext_resource type="TileSet" uid="uid://bitaekr8oxiqe" path="res://Assets/Tilesets/game-main-tileset.tres" id="2_xlock"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="3_j7slt"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="4_1tptq"]
 [ext_resource type="Texture2D" uid="uid://d2i73r1ld5w3r" path="res://Assets/Tilesets/Sample.png" id="5_dm1vh"]
@@ -29,6 +30,7 @@ region = Rect2(1160, 1120, 560, 700)
 size = Vector2(48, 27)
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_iheia")
 
 [node name="Hud" parent="." instance=ExtResource("1_kvb4w")]
 
@@ -119,4 +121,7 @@ position = Vector2(574, 286)
 speed = 4000.0
 life = 20.0
 
+[connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]

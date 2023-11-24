@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://cs4ldvgeouxol"]
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://bitaekr8oxiqe"]
 
 [ext_resource type="Texture2D" uid="uid://cp4ik7m4srlan" path="res://Assets/Tilesets/Solaria Demo Update 01.png" id="1_2xnok"]
 [ext_resource type="Texture2D" uid="uid://c8gn020rv7aid" path="res://Assets/Tilesets/Forest Props.png" id="2_wliqg"]

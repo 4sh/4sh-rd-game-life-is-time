@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://nb5u27rx0mgr"]
+[gd_scene load_steps=6 format=3 uid="uid://nb5u27rx0mgr"]
 
 [ext_resource type="Script" path="res://GameScenes/RegenStone/RegenStone.gd" id="1_35he1"]
+[ext_resource type="Texture2D" uid="uid://06lj8iiqoa7h" path="res://Assets/Tilesets/512x512 Crystals Transparent.png" id="2_ivy07"]
+[ext_resource type="AudioStream" uid="uid://cgmlw1tlmq20f" path="res://Assets/Sounds/Magic Glitter - Fairy Dust Sound Effect.mp3" id="3_j636p"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28sej"]
-size = Vector2(16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojdml"]
+atlas = ExtResource("2_ivy07")
+region = Rect2(1054.34, -1.504, 507, 506)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xo4vb"]
 
@@ -11,14 +14,19 @@ size = Vector2(16, 16)
 script = ExtResource("1_35he1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.819608, 0.545098, 0.458824, 1)
-self_modulate = Color(0.917647, 0.862745, 0.619608, 1)
-texture = SubResource("PlaceholderTexture2D_28sej")
+scale = Vector2(0.05, 0.05)
+texture = SubResource("AtlasTexture_ojdml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xo4vb")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j636p")
+volume_db = -15.0
+autoplay = true
+max_distance = 250.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

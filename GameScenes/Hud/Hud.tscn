@@ -1,13 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=10 format=3 uid="uid://df8axxfjajflr"]
 
-[ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_njmqy"]
-[ext_resource type="Texture2D" uid="uid://cm7d38bgaujtj" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="2_p4021"]
-[ext_resource type="Texture2D" uid="uid://crxml2f10nb5d" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="3_7dhhk"]
-[ext_resource type="Texture2D" uid="uid://bip3wivpe0ioq" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barBack_horizontalMid.png" id="4_82ed6"]
-[ext_resource type="Texture2D" uid="uid://b3mph0u2m37bc" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="5_lce7o"]
+[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_itfct"]
+[ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
+[ext_resource type="Texture2D" uid="uid://bip3wivpe0ioq" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barBack_horizontalMid.png" id="2_guypf"]
+[ext_resource type="Texture2D" uid="uid://cm7d38bgaujtj" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="2_uhi5p"]
+[ext_resource type="Texture2D" uid="uid://crxml2f10nb5d" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="3_4qyqn"]
+[ext_resource type="Texture2D" uid="uid://b3mph0u2m37bc" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="4_0l00e"]
+[ext_resource type="FontFile" uid="uid://1ojtwle8iohy" path="res://VCR_OSD_MONO_1.001.ttf" id="6_4v8gh"]
 
-[node name="Hud" type="CanvasLayer"]
-script = ExtResource("1_njmqy")
+[sub_resource type="Gradient" id="Gradient_xjtbo"]
+offsets = PackedFloat32Array(0, 0.485119, 0.747024, 1)
+colors = PackedColorArray(0, 0, 0, 0.392157, 0.208843, 0.208843, 0.208843, 0.310258, 0.508929, 0.508929, 0.508929, 0.192577, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vfh4j"]
+gradient = SubResource("Gradient_xjtbo")
+fill_from = Vector2(0.484848, 0.645022)
+fill_to = Vector2(0.484848, 0.00865801)
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_itfct")
 
 [node name="game_over" type="Control" parent="."]
 process_mode = 2
@@ -29,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="game_over"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,7 +53,9 @@ offset_right = 42.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game Over"
+theme_override_fonts/font = ExtResource("2_8bptl")
+theme_override_font_sizes/font_size = 32
+text = "Tails a succombé ..."
 
 [node name="TextureButton" type="TextureButton" parent="game_over"]
 texture_filter = 1
@@ -51,15 +65,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -93.0
+offset_top = -179.0
+offset_right = 97.0
+offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("2_p4021")
-texture_pressed = ExtResource("3_7dhhk")
+texture_normal = ExtResource("2_uhi5p")
+texture_pressed = ExtResource("3_4qyqn")
 
 [node name="Label" type="Label" parent="game_over/TextureButton"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,27 +88,80 @@ offset_right = 21.0
 offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Retry"
+text = "Recommencer"
 
 [node name="ingame_ui" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="lifebar" type="TextureProgressBar" parent="ingame_ui"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+offset_left = 15.0
+offset_top = 24.0
+offset_right = 498.0
+offset_bottom = 42.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_guypf")
+texture_progress = ExtResource("4_0l00e")
+
+[node name="mentalhealthbar" type="TextureProgressBar" parent="ingame_ui"]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 53.0
+offset_right = 499.0
+offset_bottom = 71.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_guypf")
+texture_progress = ExtResource("4_0l00e")
+tint_progress = Color(1, 0.168627, 1, 1)
+
+[node name="dialogbox" type="Control" parent="ingame_ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 314.5
-offset_top = 590.0
-offset_right = 797.5
-offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ingame_ui/dialogbox"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -251.0
 grow_horizontal = 2
 grow_vertical = 0
-nine_patch_stretch = true
-texture_under = ExtResource("4_82ed6")
-texture_progress = ExtResource("5_lce7o")
+texture = SubResource("GradientTexture2D_vfh4j")
+
+[node name="MarginContainer" type="MarginContainer" parent="ingame_ui/dialogbox"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -146.0
+offset_right = -2.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_right = 250
+
+[node name="Label" type="Label" parent="ingame_ui/dialogbox/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_4v8gh")
+theme_override_font_sizes/font_size = 32
+text = "Test"
+autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ingame_ui/dialogbox"]
+
+[connection signal="pressed" from="game_over/TextureButton" to="." method="_on_game_over_retry_pressed"]

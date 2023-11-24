@@ -114,6 +114,7 @@ texture_progress = ExtResource("4_0l00e")
 tint_progress = Color(1, 0.168627, 1, 1)
 
 [node name="dialogbox" type="Control" parent="ingame_ui"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
