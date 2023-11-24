@@ -10,6 +10,8 @@ signal dead
 
 @onready var sprite = $PlayerSprite
 
+var heal_animate = false
+
 func _ready():
 	life_changed.emit(life)
 
@@ -27,14 +29,29 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
+func animate_damage():
+	$PlayerSprite.self_modulate.s = 0.01
+	$PlayerSprite.self_modulate.h = 0.01
+	await create_tween().tween_property($PlayerSprite, "self_modulate:s", 1, 0.1).finished
+	create_tween().tween_property($PlayerSprite, "self_modulate:s", 0, 0.1)
+	$PlayerSprite.self_modulate.s = 0.0
+
+func animate_heal():
+	$PlayerSprite.self_modulate.s = 0.01
+	$PlayerSprite.self_modulate.h = 0.15
+	await create_tween().tween_property($PlayerSprite, "self_modulate:s", 1, 0.2).finished
+	create_tween().tween_property($PlayerSprite, "self_modulate:s", 0, 0.1)
+	$PlayerSprite.self_modulate.s = 0.0
 
 func hit(damage):
+	animate_damage()
 	life = life - damage
 	life_changed.emit(life)
 	if (life <= 0):
 		dead.emit()
 
 func heal(heal):
+	animate_heal()
 	life = life + heal
 	clamp(life, 0, 100)
 	life_changed.emit(life)
