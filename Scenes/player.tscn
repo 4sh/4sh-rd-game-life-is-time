@@ -1,7 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2wjig7cdj3ea"]
+[gd_scene load_steps=20 format=3 uid="uid://d2wjig7cdj3ea"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_b2xv3"]
 [ext_resource type="Texture2D" uid="uid://bmxx0hs11ogc6" path="res://Assets/Sprites/Hero 01.png" id="2_30q10"]
+[ext_resource type="AudioStream" uid="uid://7710oke2a3q6" path="res://Assets/Sounds/Footsteps/Steps_dirt-013.ogg" id="3_odjht"]
+[ext_resource type="AudioStream" uid="uid://cclh2rjbjfnn7" path="res://Assets/Sounds/Footsteps/Steps_dirt-014.ogg" id="4_xenyp"]
+[ext_resource type="AudioStream" uid="uid://b4tcc8fv3y2ad" path="res://Assets/Sounds/Footsteps/Steps_dirt-015.ogg" id="5_oosbd"]
+[ext_resource type="AudioStream" uid="uid://cm681oqtrcydh" path="res://Assets/Sounds/Footsteps/Steps_dirt-016.ogg" id="6_4tl5c"]
+[ext_resource type="AudioStream" uid="uid://dpd5yx3hxlee6" path="res://Assets/Sounds/Footsteps/Steps_dirt-017.ogg" id="7_dxf36"]
+[ext_resource type="AudioStream" uid="uid://bm0jvyx51qib" path="res://Assets/Sounds/Footsteps/Steps_dirt-018.ogg" id="8_nf8mx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h5ub"]
 atlas = ExtResource("2_30q10")
@@ -76,6 +82,21 @@ animations = [{
 radius = 7.0
 height = 16.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hxi7d"]
+streams_count = 6
+stream_0/stream = ExtResource("3_odjht")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_xenyp")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_oosbd")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_4tl5c")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_dxf36")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("8_nf8mx")
+stream_5/weight = 1.0
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(89, 91)
 script = ExtResource("1_b2xv3")
@@ -92,3 +113,13 @@ zoom = Vector2(5, 5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_o8eul")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_hxi7d")
+volume_db = -10.0
+pitch_scale = 0.7
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

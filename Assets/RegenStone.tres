@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://brwb10h7vqlq7"]
+
+[ext_resource type="Texture2D" uid="uid://06lj8iiqoa7h" path="res://Assets/Tilesets/512x512 Crystals Transparent.png" id="1_k2neu"]
+
+[resource]
+atlas = ExtResource("1_k2neu")
+region = Rect2(1054.34, -1.504, 507, 506)

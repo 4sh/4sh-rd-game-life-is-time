@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1spqr4ffudte"]
+
+[ext_resource type="Script" path="res://GameScenes/DarkStone/darkstone.gd" id="1_4hm2w"]
+[ext_resource type="Texture2D" uid="uid://brwb10h7vqlq7" path="res://Assets/RegenStone.tres" id="2_kr52g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_el0b0"]
+radius = 175.345
+
+[node name="darkstone" type="Area2D"]
+position = Vector2(578, 469)
+script = ExtResource("1_4hm2w")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_el0b0")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(8.24, 2.35, 4.12, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_kr52g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
