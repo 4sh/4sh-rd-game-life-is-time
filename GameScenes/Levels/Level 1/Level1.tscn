@@ -1,5 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgnb6sujiox20"]
-
+[gd_scene load_steps=13 format=3 uid="uid://dgnb6sujiox20"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 1/Level1.gd" id="1_iheia"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_kvb4w"]
@@ -21,6 +20,9 @@ region = Rect2(360, 1120, 435, 730)
 [sub_resource type="AtlasTexture" id="AtlasTexture_drwfd"]
 atlas = ExtResource("5_dm1vh")
 region = Rect2(1160, 1120, 560, 700)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xesav"]
+size = Vector2(14, 10)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_iheia")
@@ -140,6 +142,16 @@ position = Vector2(812, -389)
 heal = 20
 heal_max = 2
 
+[node name="Portal" type="Node2D" parent="World/Items"]
+position = Vector2(938, -417)
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="World/Items/Portal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Items/Portal/Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_xesav")
+
 [node name="Player" parent="." instance=ExtResource("2_15667")]
 position = Vector2(574, 286)
 speed = 3500.0
@@ -149,6 +161,7 @@ stream = ExtResource("8_4g7md")
 autoplay = true
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
+[connection signal="body_entered" from="World/Items/Portal/Area2D" to="." method="_on_portal_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
