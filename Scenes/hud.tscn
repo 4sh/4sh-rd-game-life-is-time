@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://q4lunxfvuv3m"]
+
+[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_itfct"]
+[ext_resource type="Texture2D" uid="uid://bip3wivpe0ioq" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barBack_horizontalMid.png" id="2_guypf"]
+[ext_resource type="Texture2D" uid="uid://cm7d38bgaujtj" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="2_uhi5p"]
+[ext_resource type="Texture2D" uid="uid://crxml2f10nb5d" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="3_4qyqn"]
+[ext_resource type="Texture2D" uid="uid://b3mph0u2m37bc" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="4_0l00e"]
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_itfct")
+
+[node name="game_over" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="game_over"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="game_over"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -13.0
+offset_right = 42.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+
+[node name="TextureButton" type="TextureButton" parent="game_over"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_uhi5p")
+texture_pressed = ExtResource("3_4qyqn")
+
+[node name="Label" type="Label" parent="game_over/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -12.5
+offset_right = 21.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+
+[node name="ingame_ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lifebar" type="TextureProgressBar" parent="ingame_ui"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 314.5
+offset_top = 590.0
+offset_right = 797.5
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 0
+nine_patch_stretch = true
+texture_under = ExtResource("2_guypf")
+texture_progress = ExtResource("4_0l00e")
+
+[connection signal="pressed" from="game_over/TextureButton" to="." method="_on_game_over_retry_pressed"]

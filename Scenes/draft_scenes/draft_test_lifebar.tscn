@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt2unyejk608c"]
+
+[ext_resource type="PackedScene" uid="uid://q4lunxfvuv3m" path="res://Scenes/hud.tscn" id="1_1r6ur"]
+[ext_resource type="PackedScene" uid="uid://u5nt71m12ffc" path="res://Scenes/draft_scenes/player_khi.tscn" id="2_1mup5"]
+
+[node name="test lifebar" type="Node2D"]
+
+[node name="hud" parent="." instance=ExtResource("1_1r6ur")]
+
+[node name="Player" parent="." instance=ExtResource("2_1mup5")]
+position = Vector2(616, 334)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="life_changed" from="Player" to="hud" method="_on_player_life_changed"]
+[connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]

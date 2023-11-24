@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://q7jlh8a4hyvy"]
+
+[ext_resource type="PackedScene" uid="uid://q4lunxfvuv3m" path="res://Scenes/hud.tscn" id="1_7spg3"]
+[ext_resource type="PackedScene" uid="uid://u5nt71m12ffc" path="res://Scenes/draft_scenes/player_khi.tscn" id="2_plmi1"]
+[ext_resource type="PackedScene" uid="uid://1v1gvdo20dr4" path="res://Scenes/darkstone.tscn" id="3_kmlc2"]
+
+[node name="darkstone_draft" type="Node2D"]
+
+[node name="hud" parent="." instance=ExtResource("1_7spg3")]
+
+[node name="Player" parent="." instance=ExtResource("2_plmi1")]
+position = Vector2(471, 190)
+
+[node name="darkstone" parent="." instance=ExtResource("3_kmlc2")]
+
+[connection signal="life_changed" from="Player" to="hud" method="_on_player_life_changed"]
+[connection signal="damage_player" from="darkstone" to="Player" method="hit"]
