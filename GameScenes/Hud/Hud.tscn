@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=17 format=3 uid="uid://df8axxfjajflr"]
 
 [ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://crxml2f10nb5d" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="3_4qyqn"]
 [ext_resource type="Texture2D" uid="uid://b3mph0u2m37bc" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="4_0l00e"]
 [ext_resource type="FontFile" uid="uid://1ojtwle8iohy" path="res://VCR_OSD_MONO_1.001.ttf" id="6_4v8gh"]
+[ext_resource type="Texture2D" uid="uid://b2w7djuhw3cqg" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0078.png" id="8_c48d4"]
+[ext_resource type="Texture2D" uid="uid://gmwr7hgx03xk" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0235.png" id="9_qgjgf"]
+[ext_resource type="Texture2D" uid="uid://bcglrl10uyqk3" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0236.png" id="10_3o64f"]
+[ext_resource type="Texture2D" uid="uid://icxfxkf4mk1j" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0237.png" id="11_l8rkl"]
+[ext_resource type="Texture2D" uid="uid://clnsg7xce26fq" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0015.png" id="12_jfgqh"]
 
 [sub_resource type="Gradient" id="Gradient_xjtbo"]
 offsets = PackedFloat32Array(0, 0.485119, 0.747024, 1)
@@ -199,6 +204,50 @@ texture = SubResource("PlaceholderTexture2D_w124r")
 
 [node name="GlobalSounds" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
+
+[node name="Help" type="Control" parent="ingame_ui/controls_helper/toggle_world_control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RightMouseButton" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control/Help"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 40.0
+offset_bottom = 37.0
+texture = ExtResource("8_c48d4")
+
+[node name="SpaceBar" type="HBoxContainer" parent="ingame_ui/controls_helper/toggle_world_control/Help"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 19.0
+offset_right = 89.0
+offset_bottom = 35.0
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control/Help/SpaceBar"]
+layout_mode = 2
+texture = ExtResource("9_qgjgf")
+
+[node name="TextureRect2" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control/Help/SpaceBar"]
+layout_mode = 2
+texture = ExtResource("10_3o64f")
+
+[node name="TextureRect3" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control/Help/SpaceBar"]
+layout_mode = 2
+texture = ExtResource("11_l8rkl")
+
+[node name="X btn" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control/Help"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 35.0
+texture = ExtResource("12_jfgqh")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="game_over/TextureButton" to="." method="_on_game_over_retry_pressed"]
