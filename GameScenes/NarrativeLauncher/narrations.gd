@@ -60,7 +60,7 @@ var narration4 = {
 		]
 }
 
-var narration_enter_level3 = {
+var enter_level3 = {
 	"played": false,
 	"dialogue":
 		[
@@ -75,11 +75,70 @@ var narration_enter_level3 = {
 		]
 }
 
+var welcome_level3 = {
+	"played": false,
+	"dialogue":
+		[
+			{
+				"text": "Sois prudent, Teils, mais ne perds pas trop de temps",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			},
+			{
+				"text": "Apprends à utiliser le temps comme ta vie, et n'oublie ce qui se passe de l'autre côté...",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			}
+		]
+}
+
+var enter_level4 = {
+	"played": false,
+	"dialogue":
+		[
+			{
+				"text": "Lorsque Teils trouva sa première pierre mentale, il pensait avoir enfin trouvé le salut.",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			}, 
+			{
+				"text": "Mais il n'est pas encore temps pour le repos Teils, un nouveau monde s'ouvre devant toi...",
+				"sound": preload("res://Assets/Narration/teils_8.wav")
+			}
+		]
+}
+
+var welcome_level4 = {
+	"played": false,
+	"dialogue":
+		[
+			{
+				"text": "... et ce monde te réserve bien des surprises",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			},
+			{
+				"text": "Sois courageux Teils, ton destin t'attends...",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			}
+		]
+}
+
+var end_level4 = {
+	"played": false,
+	"dialogue":
+		[
+			{
+				"text": "Sois fier de toi, Teils, tu as livré tes premiers combats avec bravoure...",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			},
+			{
+				"text": "Mais ce n'est que le début, de puissants ennemis te barrent encore le chemin pour assurer ta survie.",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			}
+		]
+}
 
 var narrations = [
 	narration1, # 0
 	narration2, # 1
 	narration3, # 2
 	narration4, # 3
-	narration_enter_level3 # 4
+	enter_level3 # 4
 ]
