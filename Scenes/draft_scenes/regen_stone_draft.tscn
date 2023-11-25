@@ -1,21 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmidjyr4l5sde"]
 
-[ext_resource type="PackedScene" uid="uid://u5nt71m12ffc" path="res://Scenes/draft_scenes/player_khi.tscn" id="2_r2m8n"]
+[ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="2_tntbc"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="3_4o7kt"]
-[ext_resource type="PackedScene" uid="uid://q4lunxfvuv3m" path="res://Scenes/hud.tscn" id="3_rf5eu"]
+[ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="3_jy8eo"]
 
 [node name="regen_stone_draft" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("2_r2m8n")]
-position = Vector2(450, 310)
-scale = Vector2(0.5, 0.5)
-life = 50.0
+[node name="Player" parent="." instance=ExtResource("3_jy8eo")]
+position = Vector2(67, 7)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="hud" parent="." instance=ExtResource("3_rf5eu")]
+[node name="hud" parent="." instance=ExtResource("2_tntbc")]
 
 [node name="RegenStone" parent="." instance=ExtResource("3_4o7kt")]
-position = Vector2(148, 250)
 
 [connection signal="life_changed" from="Player" to="hud" method="_on_player_life_changed"]
