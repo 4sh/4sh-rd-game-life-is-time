@@ -9,6 +9,10 @@ signal write_finished
 		has_toggle_world = value
 		$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
 
+@onready var sounds = {
+	"low_health": preload('res://Assets/Sounds/Trivia/Low_Health.wav')
+}
+
 func _on_player_life_changed(life):
 	$ingame_ui/lifebar.value = life
 
