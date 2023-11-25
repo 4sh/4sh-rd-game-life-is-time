@@ -45,7 +45,11 @@ func _on_ready():
 	$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
 
 
-func _on_worlds_can_toggle_world(can_toggle_world):
+func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 	$ingame_ui/controls_helper/toggle_world_control/CannotToggleWorldSprite.visible = !can_toggle_world
 	$ingame_ui/controls_helper/toggle_world_control/CanToggleWorldSprite.visible = can_toggle_world
 	$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.visible = can_toggle_world
+	if to_dark:
+		$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.text = "sleep"
+	else:
+		$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.text = "awake"

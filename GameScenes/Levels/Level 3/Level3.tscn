@@ -93,8 +93,6 @@ damage = 10
 position = Vector2(37, -4)
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
-[connection signal="can_toggle_world" from="Worlds" to="Hud" method="_on_worlds_can_toggle_world"]
-[connection signal="toggled_world" from="Worlds" to="Player" method="_on_worlds_toggled_world"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
