@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2iaya1u2r4yg"]
+
+[ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_i0bgt"]
+[ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="1_r72ci"]
+[ext_resource type="Texture2D" uid="uid://c2maru1ckqg84" path="res://icon.svg" id="3_qb2eg"]
+[ext_resource type="PackedScene" uid="uid://cnytlogxj76hq" path="res://GameScenes/Blob/blob.tscn" id="4_uo4c0"]
+
+[node name="blob_draft" type="Node2D"]
+
+[node name="hud" parent="." instance=ExtResource("1_i0bgt")]
+
+[node name="Player" parent="." instance=ExtResource("1_r72ci")]
+position = Vector2(-53, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-22, 35)
+scale = Vector2(0.242188, 0.242188)
+texture = ExtResource("3_qb2eg")
+
+[node name="Blob" parent="." instance=ExtResource("4_uo4c0")]
+max_distance = 50
+
+[connection signal="life_changed" from="Player" to="hud" method="_on_player_life_changed"]

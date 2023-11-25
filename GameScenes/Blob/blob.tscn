@@ -1,38 +1,38 @@
-[gd_scene load_steps=13 format=3 uid="uid://4sdypwuoss76"]
+[gd_scene load_steps=13 format=3 uid="uid://cnytlogxj76hq"]
 
-[ext_resource type="Script" path="res://Scenes/draft_scenes/blob.gd" id="1_0jn2u"]
-[ext_resource type="Texture2D" uid="uid://43c5nvx2yy84" path="res://Assets/Sprites/Slime 01.png" id="1_cafr7"]
+[ext_resource type="Script" path="res://GameScenes/Blob/blob.gd" id="1_s544n"]
+[ext_resource type="Texture2D" uid="uid://43c5nvx2yy84" path="res://Assets/Sprites/Slime 01.png" id="2_bfhyr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltuwu"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43s2h"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnk7c"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3c3hc"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hww6"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4j7k"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_njenn"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1o7v5"]
-atlas = ExtResource("1_cafr7")
+atlas = ExtResource("2_bfhyr")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gjaod"]
@@ -77,7 +77,7 @@ radius = 9.0
 height = 20.0
 
 [node name="Blob" type="Area2D"]
-script = ExtResource("1_0jn2u")
+script = ExtResource("1_s544n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
