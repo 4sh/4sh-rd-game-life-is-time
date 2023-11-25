@@ -1,12 +1,10 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -23,7 +21,8 @@ func _on_hud_restart_game():
 
 
 func _on_portal_body_entered(body):
+	create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(1, 1), 3)
 	$Player.paused = true
-	$World/DiseaseTimer.stop()
+	$World/DiseaseTimer.stop()	
 	await $Hud.write_finished
 	get_tree().change_scene_to_file("res://GameScenes/Levels/Level 2/EnterLevel2.tscn")

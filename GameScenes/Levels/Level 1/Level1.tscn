@@ -241,6 +241,7 @@ position = Vector2(572, 281)
 
 [node name="launch_narrative_portal" parent="." instance=ExtResource("10_5whmt")]
 position = Vector2(936, -420)
+scale = Vector2(2, 2)
 narrationIndex = 2
 
 [node name="launchnarrative_2" type="Node2D" parent="."]
