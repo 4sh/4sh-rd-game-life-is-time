@@ -16,9 +16,8 @@ script = ExtResource("1_fi7ur")
 [node name="Hud" parent="." instance=ExtResource("1_x071v")]
 has_toggle_world = true
 
-[node name="Worlds" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Worlds" type="Node2D" parent="."]
 script = ExtResource("3_fqgf6")
-player = NodePath("../Player")
 
 [node name="Dark" type="Node2D" parent="Worlds"]
 
