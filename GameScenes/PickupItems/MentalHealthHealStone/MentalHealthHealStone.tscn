@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://50l5sehx102p"]
+[gd_scene load_steps=5 format=3 uid="uid://50l5sehx102p"]
 
 [ext_resource type="Script" path="res://GameScenes/PickupItems/MentalHealthHealStone/MentalHealthHealStone.gd" id="1_krbbk"]
+[ext_resource type="Texture2D" uid="uid://4r011yhjj3gr" path="res://Assets/Sprites/AtelierMagicae_GemsMineralsFreebsVol1_Border.png" id="2_lnagy"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h8oqx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bld8i"]
+atlas = ExtResource("2_lnagy")
+region = Rect2(461, 134, 32, 56)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4eik"]
 radius = 4.0
 
 [node name="MentalHealthHealStone" type="Node2D"]
+position = Vector2(472, 330)
 script = ExtResource("1_krbbk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
+texture_filter = 1
 position = Vector2(1.19209e-07, 1.19209e-07)
-scale = Vector2(8.25, 8.25)
-texture = SubResource("PlaceholderTexture2D_h8oqx")
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_bld8i")
 
 [node name="Area2D" type="Area2D" parent="."]
 
