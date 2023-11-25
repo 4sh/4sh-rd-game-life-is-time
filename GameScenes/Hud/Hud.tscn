@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=18 format=3 uid="uid://df8axxfjajflr"]
 
 [ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3mph0u2m37bc" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="4_0l00e"]
 [ext_resource type="FontFile" uid="uid://1ojtwle8iohy" path="res://VCR_OSD_MONO_1.001.ttf" id="6_4v8gh"]
 [ext_resource type="Texture2D" uid="uid://b2w7djuhw3cqg" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0078.png" id="8_c48d4"]
+[ext_resource type="Texture2D" uid="uid://4r011yhjj3gr" path="res://Assets/Sprites/AtelierMagicae_GemsMineralsFreebsVol1_Border.png" id="8_epdqc"]
 [ext_resource type="Texture2D" uid="uid://gmwr7hgx03xk" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0235.png" id="9_qgjgf"]
 [ext_resource type="Texture2D" uid="uid://bcglrl10uyqk3" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0236.png" id="10_3o64f"]
 [ext_resource type="Texture2D" uid="uid://icxfxkf4mk1j" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0237.png" id="11_l8rkl"]
@@ -26,9 +27,13 @@ gradient = SubResource("Gradient_xjtbo")
 fill_from = Vector2(0.484848, 0.645022)
 fill_to = Vector2(0.484848, 0.00865801)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rdxbv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1acn1"]
+atlas = ExtResource("8_epdqc")
+region = Rect2(143, 66, 49, 59)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w124r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8kwl"]
+atlas = ExtResource("8_epdqc")
+region = Rect2(76, 67, 49, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fudw1"]
 atlas = ExtResource("13_8ovhv")
@@ -181,38 +186,60 @@ autowrap_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ingame_ui/dialogbox"]
 
-[node name="controls_helper" type="Node2D" parent="ingame_ui"]
-position = Vector2(973, 83)
+[node name="controls_helper" type="Control" parent="ingame_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="toggle_world_control" type="Node2D" parent="ingame_ui/controls_helper"]
+[node name="toggle_world_control" type="Control" parent="ingame_ui/controls_helper"]
 texture_filter = 1
-position = Vector2(45, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ToggleWorldLabel" type="Label" parent="ingame_ui/controls_helper/toggle_world_control"]
-offset_left = 20.0
-offset_top = -12.0
-offset_right = 60.0
-offset_bottom = 11.0
+texture_filter = 1
+offset_left = 1024.0
+offset_top = 23.0
+offset_right = 1137.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("6_4v8gh")
 text = "toggle world"
 
-[node name="CanToggleWorldSprite" type="Sprite2D" parent="ingame_ui/controls_helper/toggle_world_control"]
+[node name="CanToggleWorldSprite" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control"]
 visible = false
 modulate = Color(1, 0.0588235, 1, 1)
-position = Vector2(4.00003, -3.5353e-05)
-scale = Vector2(15.9999, 15.9999)
-texture = SubResource("PlaceholderTexture2D_rdxbv")
+layout_mode = 0
+offset_left = 954.0
+offset_top = 9.0
+offset_right = 1003.0
+offset_bottom = 68.0
+texture = SubResource("AtlasTexture_1acn1")
 
-[node name="CannotToggleWorldSprite" type="Sprite2D" parent="ingame_ui/controls_helper/toggle_world_control"]
+[node name="CannotToggleWorldSprite" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control"]
 modulate = Color(0, 1, 1, 1)
-position = Vector2(4, 0)
-scale = Vector2(15.875, 15.75)
-texture = SubResource("PlaceholderTexture2D_w124r")
+layout_mode = 0
+offset_left = 954.0
+offset_top = 10.0
+offset_right = 1003.0
+offset_bottom = 68.0
+texture = SubResource("AtlasTexture_t8kwl")
 
 [node name="Help" type="Control" parent="ingame_ui/controls_helper/toggle_world_control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1014.0
+offset_top = 32.0
+offset_right = 1054.0
+offset_bottom = 72.0
 
 [node name="RightMouseButton" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control/Help"]
 layout_mode = 0

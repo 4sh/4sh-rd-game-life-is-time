@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready():
-	# $Player.position = Vector2(530,545) # test level end
+	$Player.position = Vector2(530,545) # test level end
 	pass
 
 func _process(delta):

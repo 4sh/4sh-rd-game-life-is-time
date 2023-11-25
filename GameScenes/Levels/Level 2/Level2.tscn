@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://w1cu7cvm1n1t"]
+[gd_scene load_steps=23 format=3 uid="uid://w1cu7cvm1n1t"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 2/Level2.gd" id="1_qycc7"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="2_ufvox"]
@@ -6,8 +6,10 @@
 [ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_025k7"]
 [ext_resource type="PackedScene" uid="uid://b1spqr4ffudte" path="res://GameScenes/DarkStone/darkstone.tscn" id="5_7xce4"]
 [ext_resource type="Texture2D" uid="uid://b3tu20ebirkww" path="res://Assets/Tilesets/Purple Portal Sprite Sheet.png" id="5_utiff"]
+[ext_resource type="Texture2D" uid="uid://4r011yhjj3gr" path="res://Assets/Sprites/AtelierMagicae_GemsMineralsFreebsVol1_Border.png" id="7_sbdw0"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="7_svgfn"]
 [ext_resource type="PackedScene" uid="uid://rusdriudf88u" path="res://GameScenes/PickupItems/HealItem/HealItem.tscn" id="7_x42rv"]
+[ext_resource type="Script" path="res://GameScenes/Levels/Level 2/SleepTravelStoneSprite.gd" id="8_glead"]
 [ext_resource type="AudioStream" uid="uid://uk1sdag66lxe" path="res://Assets/Sounds/8-bit-halloween-story-166454.mp3" id="8_q2bat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0ahb"]
@@ -76,6 +78,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tn6uc"]
 radius = 23.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as6et"]
+atlas = ExtResource("7_sbdw0")
+region = Rect2(143, 66, 49, 59)
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_qycc7")
@@ -163,11 +169,17 @@ position = Vector2(196, -437)
 frequency = 1.0
 
 [node name="SleepTravelStone" type="Area2D" parent="World/Items"]
-position = Vector2(538, 665)
+position = Vector2(538, 637)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Items/SleepTravelStone"]
 shape = SubResource("CircleShape2D_tn6uc")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Items/SleepTravelStone"]
+texture_filter = 1
+scale = Vector2(0.214286, 0.214286)
+texture = SubResource("AtlasTexture_as6et")
+script = ExtResource("8_glead")
 
 [node name="HealItems" type="Node" parent="World/Items"]
 

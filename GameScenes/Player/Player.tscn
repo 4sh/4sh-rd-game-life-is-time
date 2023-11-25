@@ -325,12 +325,13 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_uck55")
 
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.0
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mtsyi")
+volume_db = -20.0
 
 [node name="FootstepsTimer" type="Timer" parent="."]
 wait_time = 0.35
