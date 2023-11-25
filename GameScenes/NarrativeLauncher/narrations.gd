@@ -66,11 +66,11 @@ var enter_level3 = {
 		[
 			{
 				"text": "La première fois que Teils utilisa la pierre de sommeil, il fut envahit d'une sensation de pouvoir.",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_9.wav")
 			}, 
 			{
 				"text": "Mais fais attention à son pouvoir, Teils, tu pourrais y laisser tes esprits...",
-				"sound": preload("res://Assets/Narration/teils_8.wav")
+				"sound": preload("res://Assets/Narration/teils_10.wav")
 			}
 		]
 }
@@ -81,11 +81,11 @@ var welcome_level3 = {
 		[
 			{
 				"text": "Sois prudent, Teils, mais ne perds pas trop de temps",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_11.wav")
 			},
 			{
 				"text": "Apprends à utiliser le temps comme ta vie, et n'oublie ce qui se passe de l'autre côté...",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_12.wav")
 			}
 		]
 }
@@ -96,11 +96,11 @@ var enter_level4 = {
 		[
 			{
 				"text": "Lorsque Teils trouva sa première pierre mentale, il pensait avoir enfin trouvé le salut.",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_13.wav")
 			}, 
 			{
 				"text": "Mais il n'est pas encore temps pour le repos Teils, un nouveau monde s'ouvre devant toi...",
-				"sound": preload("res://Assets/Narration/teils_8.wav")
+				"sound": preload("res://Assets/Narration/teils_14.wav")
 			}
 		]
 }
@@ -111,11 +111,11 @@ var welcome_level4 = {
 		[
 			{
 				"text": "... et ce monde te réserve bien des surprises",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_15.wav")
 			},
 			{
 				"text": "Sois courageux Teils, ton destin t'attends...",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_16.wav")
 			}
 		]
 }
@@ -126,11 +126,11 @@ var end_level4 = {
 		[
 			{
 				"text": "Sois fier de toi, Teils, tu as livré tes premiers combats avec bravoure...",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_17.wav")
 			},
 			{
 				"text": "Mais ce n'est que le début, de puissants ennemis te barrent encore le chemin pour assurer ta survie.",
-				"sound": preload("res://Assets/Narration/teils_7.wav")
+				"sound": preload("res://Assets/Narration/teils_18.wav")
 			}
 		]
 }
@@ -140,5 +140,9 @@ var narrations = [
 	narration2, # 1
 	narration3, # 2
 	narration4, # 3
-	enter_level3 # 4
+	enter_level3, # 4
+	welcome_level3, # 5
+	enter_level4, # 6
+	welcome_level4, # 7
+	end_level4 # 8
 ]

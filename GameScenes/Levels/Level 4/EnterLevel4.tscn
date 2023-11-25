@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://csqtq5j1koluv"]
+
+[ext_resource type="PackedScene" uid="uid://cw1bxourea0yk" path="res://GameScenes/Screens/LevelTransition/LevelTransition.tscn" id="1_m4wxh"]
+
+[node name="EnterLevel4" type="Node"]
+
+[node name="LevelTransition" parent="." instance=ExtResource("1_m4wxh")]
+narration = 6
+level = 4
