@@ -16,7 +16,7 @@ signal write_finished
 
 func _on_player_life_changed(life):
 	$ingame_ui/lifebar.value = life
-	if $ingame_ui/lifebar.value <= life_alert_threshold && $GlobalSounds.playing == false:
+	if $ingame_ui/lifebar.value <= life_alert_threshold && $ingame_ui/low_life_timer.paused == false:
 		animate_low_health()
 	else:
 		stop_animate_low_health()
