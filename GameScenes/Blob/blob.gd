@@ -47,11 +47,11 @@ func hit(damage):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		player.hit(10)
+		player.mental_hit(damage)
 		$DamageTimer.start()
 
 func _on_damage_timer_timeout():
-	player.hit(10)
+	player.mental_hit(damage)
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):
