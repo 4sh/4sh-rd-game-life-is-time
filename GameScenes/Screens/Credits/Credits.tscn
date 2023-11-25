@@ -111,5 +111,6 @@ text = "Team"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kla0p")
 volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
