@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=12 format=3 uid="uid://b3wayvwq0uf0h"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cmei2u1d7f4fh" path="res://GameScenes/NarrativeLauncher/narrative_launcher.tscn" id="7_igfgd"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="7_xn654"]
 [ext_resource type="PackedScene" uid="uid://50l5sehx102p" path="res://GameScenes/PickupItems/MentalHealthHealStone/MentalHealthHealStone.tscn" id="8_udawv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jxcj"]
+radius = 21.0
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_fi7ur")
@@ -80,7 +83,7 @@ position = Vector2(103, 2084)
 [node name="Light" type="Node2D" parent="Worlds"]
 
 [node name="launch_narrative" parent="Worlds/Light" instance=ExtResource("7_igfgd")]
-position = Vector2(178, 18)
+position = Vector2(213, 32)
 narrationIndex = 5
 
 [node name="Map" type="TileMap" parent="Worlds/Light"]
@@ -171,8 +174,15 @@ heal = 0
 heal_max = 0
 
 [node name="MentalHealthHealStone" parent="Worlds/Light/Items" instance=ExtResource("8_udawv")]
-position = Vector2(492, 1705)
+position = Vector2(492, 1700)
 scale = Vector2(1.70853, 1.70853)
+
+[node name="EndLevel" type="Area2D" parent="Worlds/Light/Items"]
+position = Vector2(492, 1721)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worlds/Light/Items/EndLevel"]
+shape = SubResource("CircleShape2D_0jxcj")
 
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
 position = Vector2(153, -9)
@@ -180,6 +190,7 @@ speed = 60.0
 life = 50.0
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
+[connection signal="body_entered" from="Worlds/Light/Items/EndLevel" to="." method="_on_end_level_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
