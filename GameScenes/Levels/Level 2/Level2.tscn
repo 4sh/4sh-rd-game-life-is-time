@@ -207,7 +207,7 @@ speed = 60.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_o5wyv")
-volume_db = -20.0
+volume_db = -10.0
 autoplay = true
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
