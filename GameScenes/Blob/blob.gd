@@ -3,6 +3,7 @@ extends Area2D
 @export var SPEED = 50.0
 @export var damage = 10
 @export var max_distance = 100
+@export var life = 20.0
 
 @onready var player = get_tree().get_first_node_in_group("player") 
 
@@ -28,6 +29,21 @@ func _process(delta):
 	
 	if (!is_in_range): return;
 	position += direction * SPEED * delta
+
+func animate_damage():
+	$AnimatedSprite2D.self_modulate.s = 0.01
+	$AnimatedSprite2D.self_modulate.h = 0.01
+	await create_tween().tween_property($AnimatedSprite2D, "self_modulate:s", 1, 0.1).finished
+	create_tween().tween_property($AnimatedSprite2D, "self_modulate:s", 0, 0.1)
+	$AnimatedSprite2D.self_modulate.s = 0.0
+
+func hit(damage):
+	life = life - damage
+	animate_damage()
+	$Hurt.play()
+	if life <= 0.0:
+		await $Hurt.finished
+		queue_free()
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):

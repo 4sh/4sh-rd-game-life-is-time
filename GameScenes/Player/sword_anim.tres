@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://c01rtnfoucjrn"]
+
+[ext_resource type="Texture2D" uid="uid://dj7vitptot3yo" path="res://Assets/Sprites/Sword 01.png" id="1_0um7w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nckvu"]
+atlas = ExtResource("1_0um7w")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xgtl"]
+atlas = ExtResource("1_0um7w")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xkm5"]
+atlas = ExtResource("1_0um7w")
+region = Rect2(64, 128, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nckvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xgtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xkm5")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}]

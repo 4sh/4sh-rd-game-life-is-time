@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var life = 100.0
 @export var mental_health = 100.0
 @export var mental_damage_on_move_to_dark = 10.0
+@export var attack_damage = 10.0
 
 signal life_changed(life)
 signal mental_health_changed(mental_health)
@@ -25,9 +26,45 @@ var invulnerable = false
 var paused = false
 var last_direction = Vector2(0,1)
 
+func play_sword_animation(anim: AnimatedSprite2D):
+	anim.show()
+	anim.play()
+	await anim.animation_finished
+	anim.stop()
+	anim.hide()
+
+func play_sound(sound):
+	$AudioStreamPlayer2D.stream = sounds[sound]
+	$AudioStreamPlayer2D.play()
+
 func _ready():
+	get_tree().get_nodes_in_group("sword_animations").map(func(el): el.hide())
 	life_changed.emit(life)
 	mental_health_changed.emit(mental_health)
+
+func damage_enemy(enemy):
+	if enemy.is_in_group("enemy"):
+		enemy.hit(attack_damage)
+
+func damage_enemies(area2D: Area2D):
+	var enemies = area2D.get_overlapping_bodies()
+	for enemy in enemies:
+		damage_enemy(enemy)
+
+func attack():
+	play_sound("sword_slash")
+	if (last_direction.y < 0 && abs(last_direction.y) > abs(last_direction.x)):
+		damage_enemies($sword_hitboxes/top)
+		play_sword_animation($sword_hitboxes/top/sword_top)
+	if (last_direction.x < 0 && abs(last_direction.x) >= abs(last_direction.y)):
+		damage_enemies($sword_hitboxes/left)
+		play_sword_animation($sword_hitboxes/left/sword_left)
+	if (last_direction.x > 0 && abs(last_direction.x) >= abs(last_direction.y)):
+		damage_enemies($sword_hitboxes/right)
+		play_sword_animation($sword_hitboxes/right/sword_right)
+	if (last_direction.y > 0 && abs(last_direction.y) >= abs(last_direction.x)):
+		damage_enemies($sword_hitboxes/bottom)
+		play_sword_animation($sword_hitboxes/bottom/sword_bottom)
 
 func get_direction_label_suffix(direction: Vector2):
 	var d = direction.normalized()
@@ -57,6 +94,10 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
+func _process(delta):
+	if Input.is_action_just_pressed("attack"):
+		attack()
+
 func animate_damage():
 	$PlayerSprite.self_modulate.s = 0.01
 	$PlayerSprite.self_modulate.h = 0.01
@@ -75,8 +116,7 @@ func hit(damage):
 	if (invulnerable): return
 	invulnerable = true
 	animate_damage()
-	$AudioStreamPlayer2D.stream = sounds.hurt
-	$AudioStreamPlayer2D.play()
+	play_sound("hurt")
 	life = life - damage
 	life_changed.emit(life)
 	$InvulnerabilityTimer.start()
@@ -93,8 +133,7 @@ func mental_hit(damage):
 func heal(heal):
 	invulnerable = true
 	animate_heal()
-	$AudioStreamPlayer2D.stream = sounds.heal
-	$AudioStreamPlayer2D.play()
+	play_sound("heal")
 	life = clamp(life + heal, 0, 100)
 	life_changed.emit(life)
 	$InvulnerabilityTimer.start()

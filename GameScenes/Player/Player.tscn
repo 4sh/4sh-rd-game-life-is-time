@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bcuhrumwnh8e8"]
+[gd_scene load_steps=49 format=3 uid="uid://bcuhrumwnh8e8"]
 
 [ext_resource type="Texture2D" uid="uid://bmxx0hs11ogc6" path="res://Assets/Sprites/Hero 01.png" id="1_labaw"]
 [ext_resource type="Script" path="res://GameScenes/Player/Player.gd" id="1_lvmaj"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://b4tcc8fv3y2ad" path="res://Assets/Sounds/Footsteps/Steps_dirt-015.ogg" id="5_4j1mj"]
 [ext_resource type="AudioStream" uid="uid://cm681oqtrcydh" path="res://Assets/Sounds/Footsteps/Steps_dirt-016.ogg" id="6_ibnoy"]
 [ext_resource type="AudioStream" uid="uid://dpd5yx3hxlee6" path="res://Assets/Sounds/Footsteps/Steps_dirt-017.ogg" id="7_8gt3u"]
+[ext_resource type="SpriteFrames" uid="uid://c01rtnfoucjrn" path="res://GameScenes/Player/sword_anim.tres" id="8_w4nyl"]
+[ext_resource type="Script" path="res://GameScenes/Player/sword_right.gd" id="9_2ltjm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h5ub"]
 atlas = ExtResource("1_labaw")
@@ -292,6 +294,18 @@ stream_3/weight = 1.0
 stream_4/stream = ExtResource("7_8gt3u")
 stream_4/weight = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wc5qw"]
+size = Vector2(20, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oijyl"]
+size = Vector2(42, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkoch"]
+size = Vector2(45, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aa2os"]
+size = Vector2(20, 38)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_lvmaj")
 
@@ -320,6 +334,63 @@ stream = SubResource("AudioStreamRandomizer_mtsyi")
 
 [node name="FootstepsTimer" type="Timer" parent="."]
 wait_time = 0.35
+
+[node name="sword_hitboxes" type="Node2D" parent="."]
+
+[node name="top" type="Area2D" parent="sword_hitboxes"]
+
+[node name="sword_top" type="AnimatedSprite2D" parent="sword_hitboxes/top" groups=["sword_animations"]]
+texture_filter = 1
+position = Vector2(-2.47514, -8.46665)
+rotation = 1.56908
+scale = Vector2(0.876567, 0.876567)
+sprite_frames = ExtResource("8_w4nyl")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword_hitboxes/top"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_wc5qw")
+
+[node name="left" type="Area2D" parent="sword_hitboxes"]
+
+[node name="sword_left" type="AnimatedSprite2D" parent="sword_hitboxes/left" groups=["sword_animations"]]
+texture_filter = 1
+position = Vector2(-11.125, -2.125)
+scale = Vector2(0.867188, 0.867188)
+sprite_frames = ExtResource("8_w4nyl")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword_hitboxes/left"]
+position = Vector2(-10, 0)
+shape = SubResource("RectangleShape2D_oijyl")
+
+[node name="right" type="Area2D" parent="sword_hitboxes"]
+
+[node name="sword_right" type="AnimatedSprite2D" parent="sword_hitboxes/right" groups=["sword_animations"]]
+texture_filter = 1
+position = Vector2(13.4737, -1.24811)
+scale = Vector2(0.892269, 0.937382)
+sprite_frames = ExtResource("8_w4nyl")
+animation = &"attack"
+script = ExtResource("9_2ltjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword_hitboxes/right"]
+position = Vector2(13, 0)
+shape = SubResource("RectangleShape2D_vkoch")
+
+[node name="bottom" type="Area2D" parent="sword_hitboxes"]
+
+[node name="sword_bottom" type="AnimatedSprite2D" parent="sword_hitboxes/bottom" groups=["sword_animations"]]
+texture_filter = 1
+position = Vector2(2.38419e-07, 8)
+rotation = -1.57167
+scale = Vector2(0.915782, 0.915782)
+sprite_frames = ExtResource("8_w4nyl")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword_hitboxes/bottom"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_aa2os")
 
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]
 [connection signal="timeout" from="FootstepsTimer" to="." method="_on_footsteps_timer_timeout"]

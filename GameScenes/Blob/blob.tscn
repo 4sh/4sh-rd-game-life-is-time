@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnytlogxj76hq"]
+[gd_scene load_steps=15 format=3 uid="uid://cnytlogxj76hq"]
 
 [ext_resource type="Script" path="res://GameScenes/Blob/blob.gd" id="1_s544n"]
 [ext_resource type="Texture2D" uid="uid://43c5nvx2yy84" path="res://Assets/Sprites/Slime 01.png" id="2_bfhyr"]
+[ext_resource type="Script" path="res://GameScenes/Blob/CharacterBody2D.gd" id="3_smt03"]
+[ext_resource type="AudioStream" uid="uid://bkidm254js7kt" path="res://Assets/Sounds/Trivia/Sword_Slash.wav" id="4_uhcjc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltuwu"]
 atlas = ExtResource("2_bfhyr")
@@ -76,7 +78,7 @@ animations = [{
 radius = 9.0
 height = 20.0
 
-[node name="Blob" type="Area2D"]
+[node name="Blob" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_s544n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -84,10 +86,19 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gjaod")
 animation = &"side"
 
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemy"]]
+script = ExtResource("3_smt03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_1agk7")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1agk7")
 
 [node name="DamageTimer" type="Timer" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uhcjc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
