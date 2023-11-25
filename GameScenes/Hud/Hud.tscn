@@ -195,5 +195,11 @@ position = Vector2(4, 0)
 scale = Vector2(15.875, 15.75)
 texture = SubResource("PlaceholderTexture2D_w124r")
 
+[node name="low_life_timer" type="Timer" parent="ingame_ui"]
+
+[node name="GlobalSounds" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="game_over/TextureButton" to="." method="_on_game_over_retry_pressed"]
+[connection signal="timeout" from="ingame_ui/low_life_timer" to="." method="_on_low_life_timer_timeout"]

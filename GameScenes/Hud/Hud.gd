@@ -3,6 +3,7 @@ extends CanvasLayer
 signal restart_game
 signal write_finished
 
+@export var life_alert_threshold = 30
 @export var show_mental_health: bool = true
 @export var has_toggle_world: bool = false:
 	set (value):
@@ -15,6 +16,18 @@ signal write_finished
 
 func _on_player_life_changed(life):
 	$ingame_ui/lifebar.value = life
+	if $ingame_ui/lifebar.value <= life_alert_threshold :
+		animate_low_health()
+	else:
+		stop_animate_low_health()
+
+func animate_low_health():
+	$GlobalSounds.stream = sounds.low_health
+	$GlobalSounds.play()
+	$ingame_ui/low_life_timer.start()
+
+func stop_animate_low_health():
+	$GlobalSounds.stop()
 
 func _on_player_mental_health_changed(mental):
 	$ingame_ui/mentalhealthbar.value = mental
@@ -72,3 +85,9 @@ func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 		$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.text = "sleep"
 	else:
 		$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.text = "awake"
+
+
+func _on_low_life_timer_timeout():
+	$ingame_ui/lifebar.modulate = $ingame_ui/lifebar.modulate.blend(Color.RED)
+	await get_tree().create_timer(0.5).timeout
+	$ingame_ui/lifebar.modulate = Color.WHITE
