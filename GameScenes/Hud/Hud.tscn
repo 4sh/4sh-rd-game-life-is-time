@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=23 format=3 uid="uid://df8axxfjajflr"]
 
 [ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
@@ -200,13 +200,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
+offset_left = -7.0
+offset_top = 57.0
+offset_right = -7.0
+offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ToggleWorldLabel" type="Label" parent="ingame_ui/controls_helper/toggle_world_control"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 1024.0
 offset_top = 23.0
 offset_right = 1137.0
@@ -218,19 +221,21 @@ text = "toggle world"
 visible = false
 modulate = Color(1, 0.0588235, 1, 1)
 layout_mode = 0
-offset_left = 954.0
-offset_top = 9.0
-offset_right = 1003.0
-offset_bottom = 68.0
+offset_left = 990.0
+offset_top = 19.0
+offset_right = 1039.0
+offset_bottom = 78.0
+scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_1acn1")
 
 [node name="CannotToggleWorldSprite" type="TextureRect" parent="ingame_ui/controls_helper/toggle_world_control"]
 modulate = Color(0, 1, 1, 1)
 layout_mode = 0
-offset_left = 954.0
-offset_top = 10.0
-offset_right = 1003.0
-offset_bottom = 68.0
+offset_left = 990.0
+offset_top = 19.0
+offset_right = 1039.0
+offset_bottom = 77.0
+scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_t8kwl")
 
 [node name="Help" type="Control" parent="ingame_ui/controls_helper/toggle_world_control"]
@@ -279,9 +284,13 @@ offset_right = 100.0
 offset_bottom = 35.0
 texture = ExtResource("12_d1f6y")
 
-[node name="attack_control" type="Node2D" parent="ingame_ui/controls_helper"]
+[node name="attack_control" type="Control" parent="ingame_ui/controls_helper"]
 texture_filter = 1
-position = Vector2(11, -44)
+anchors_preset = 0
+offset_left = 849.0
+offset_top = 35.0
+offset_right = 849.0
+offset_bottom = 35.0
 
 [node name="AttackLabel" type="Label" parent="ingame_ui/controls_helper/attack_control"]
 offset_left = 20.0
@@ -290,8 +299,12 @@ offset_right = 60.0
 offset_bottom = 11.0
 text = "attack"
 
-[node name="CanAttackSprite" type="Sprite2D" parent="ingame_ui/controls_helper/attack_control"]
-position = Vector2(-1.52588e-05, 0.999999)
+[node name="CanAttackSprite" type="TextureRect" parent="ingame_ui/controls_helper/attack_control"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 14.0
+offset_bottom = 9.0
 scale = Vector2(1.27498, 1.27498)
 texture = SubResource("AtlasTexture_fudw1")
 
