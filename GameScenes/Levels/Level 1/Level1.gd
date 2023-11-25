@@ -1,7 +1,7 @@
 extends Node2D
 
-
 func _ready():
+	$World/DiseaseTimer.stop()
 	$Player/Camera2D.zoom = Vector2(0.8,0.8)
 	$Player/Camera2D.offset = Vector2(0,-350)
 	get_tree().create_timer(3.0).connect("timeout", Callable(self, "play_cursed"))
@@ -18,6 +18,7 @@ func play_cursed():
 		await create_tween().tween_property($Cursed, 'color:a', 0.0, 0.25).finished
 		await get_tree().create_timer(0.2).timeout
 	$Cursed.visible = false
+	$World/DiseaseTimer.start()
 	
 
 func _process(delta):
