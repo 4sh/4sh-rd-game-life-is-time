@@ -47,7 +47,7 @@ func _on_ready():
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
-			get_tree().quit()
+			get_tree().change_scene_to_file("res://GameScenes/Screens/Menu/GameMenu.tscn")
 
 func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 	$ingame_ui/controls_helper/toggle_world_control/CannotToggleWorldSprite.visible = !can_toggle_world
