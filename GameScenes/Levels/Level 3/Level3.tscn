@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=7 format=3 uid="uid://b3wayvwq0uf0h"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="2_l3mve"]
-[ext_resource type="Script" path="res://Scenes/Light.gd" id="3_5ytt1"]
-[ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Worlds.gd" id="3_h8ihk"]
+[ext_resource type="Script" path="res://GameScenes/Worlds/Worlds.gd" id="3_fqgf6"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="3_qglt0"]
 [ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_pcqlr"]
-[ext_resource type="Script" path="res://Scenes/Dark.gd" id="5_enyfa"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_fi7ur")
@@ -16,11 +14,10 @@ script = ExtResource("1_fi7ur")
 has_toggle_world = true
 
 [node name="Worlds" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("3_h8ihk")
+script = ExtResource("3_fqgf6")
 player = NodePath("../Player")
 
 [node name="Dark" type="Node2D" parent="Worlds"]
-script = ExtResource("5_enyfa")
 
 [node name="Map" type="TileMap" parent="Worlds/Dark"]
 tile_set = ExtResource("4_pcqlr")
@@ -54,7 +51,6 @@ damage = 2
 [node name="Items" type="Node2D" parent="Worlds/Dark"]
 
 [node name="Light" type="Node2D" parent="Worlds"]
-script = ExtResource("3_5ytt1")
 
 [node name="Map" type="TileMap" parent="Worlds/Light"]
 texture_filter = 1
