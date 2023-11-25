@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b4tcc8fv3y2ad" path="res://Assets/Sounds/Footsteps/Steps_dirt-015.ogg" id="5_4j1mj"]
 [ext_resource type="AudioStream" uid="uid://cm681oqtrcydh" path="res://Assets/Sounds/Footsteps/Steps_dirt-016.ogg" id="6_ibnoy"]
 [ext_resource type="AudioStream" uid="uid://dpd5yx3hxlee6" path="res://Assets/Sounds/Footsteps/Steps_dirt-017.ogg" id="7_8gt3u"]
-[ext_resource type="SpriteFrames" uid="uid://bxxpdh1e3s66b" path="res://GameScenes/Player/sword_anim.tres" id="8_w4nyl"]
+[ext_resource type="SpriteFrames" uid="uid://c01rtnfoucjrn" path="res://GameScenes/Player/sword_anim.tres" id="8_w4nyl"]
 [ext_resource type="Script" path="res://GameScenes/Player/sword_right.gd" id="9_2ltjm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h5ub"]
@@ -327,9 +327,11 @@ shape = SubResource("CapsuleShape2D_uck55")
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.0
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mtsyi")
+volume_db = -20.0
 
 [node name="FootstepsTimer" type="Timer" parent="."]
 wait_time = 0.35
@@ -337,6 +339,8 @@ wait_time = 0.35
 [node name="sword_hitboxes" type="Node2D" parent="."]
 
 [node name="top" type="Area2D" parent="sword_hitboxes"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="sword_top" type="AnimatedSprite2D" parent="sword_hitboxes/top" groups=["sword_animations"]]
 texture_filter = 1
@@ -351,6 +355,8 @@ position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_wc5qw")
 
 [node name="left" type="Area2D" parent="sword_hitboxes"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="sword_left" type="AnimatedSprite2D" parent="sword_hitboxes/left" groups=["sword_animations"]]
 texture_filter = 1
@@ -364,6 +370,8 @@ position = Vector2(-10, 0)
 shape = SubResource("RectangleShape2D_oijyl")
 
 [node name="right" type="Area2D" parent="sword_hitboxes"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="sword_right" type="AnimatedSprite2D" parent="sword_hitboxes/right" groups=["sword_animations"]]
 texture_filter = 1
@@ -378,6 +386,8 @@ position = Vector2(13, 0)
 shape = SubResource("RectangleShape2D_vkoch")
 
 [node name="bottom" type="Area2D" parent="sword_hitboxes"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="sword_bottom" type="AnimatedSprite2D" parent="sword_hitboxes/bottom" groups=["sword_animations"]]
 texture_filter = 1
