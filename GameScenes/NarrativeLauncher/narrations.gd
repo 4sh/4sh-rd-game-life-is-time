@@ -60,9 +60,26 @@ var narration4 = {
 		]
 }
 
+var narration_enter_level3 = {
+	"played": false,
+	"dialogue":
+		[
+			{
+				"text": "La première fois que Teils utilisa la pierre de sommeil, il fut envahit d'une sensation de pouvoir.",
+				"sound": preload("res://Assets/Narration/teils_7.wav")
+			}, 
+			{
+				"text": "Mais fais attention à son pouvoir, Teils, tu pourrais y laisser tes esprits...",
+				"sound": preload("res://Assets/Narration/teils_8.wav")
+			}
+		]
+}
+
+
 var narrations = [
-	narration1,
-	narration2,
-	narration3,
-	narration4
+	narration1, # 0
+	narration2, # 1
+	narration3, # 2
+	narration4, # 3
+	narration_enter_level3 # 4
 ]

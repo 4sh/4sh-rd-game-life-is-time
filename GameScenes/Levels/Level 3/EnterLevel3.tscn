@@ -5,4 +5,5 @@
 [node name="EnterLevel3" type="Node"]
 
 [node name="LevelTransition" parent="." instance=ExtResource("1_gwbfb")]
+narration = 4
 level = 3
