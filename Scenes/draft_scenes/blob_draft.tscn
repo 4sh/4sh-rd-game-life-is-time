@@ -23,3 +23,4 @@ texture = ExtResource("3_qb2eg")
 max_distance = 50
 
 [connection signal="life_changed" from="Player" to="hud" method="_on_player_life_changed"]
+[connection signal="mental_health_changed" from="Player" to="hud" method="_on_player_mental_health_changed"]

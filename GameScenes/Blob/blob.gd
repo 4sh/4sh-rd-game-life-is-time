@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var SPEED = 50.0
 @export var damage = 10
@@ -27,8 +27,9 @@ func _process(delta):
 		$AnimatedSprite2D.animation = 'side'
 		$AnimatedSprite2D.flip_h = direction.x >= 0
 	
+	velocity = direction * SPEED
 	if (!is_in_range): return;
-	position += direction * SPEED * delta
+	move_and_slide()
 
 func animate_damage():
 	$AnimatedSprite2D.self_modulate.s = 0.01
@@ -45,14 +46,14 @@ func hit(damage):
 		await $Hurt.finished
 		queue_free()
 
-func _on_body_entered(body):
+func _on_damage_timer_timeout():
+	player.mental_hit(damage)
+
+func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		player.mental_hit(damage)
 		$DamageTimer.start()
 
-func _on_damage_timer_timeout():
-	player.mental_hit(damage)
-
-func _on_body_exited(body):
+func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
 		$DamageTimer.stop()
