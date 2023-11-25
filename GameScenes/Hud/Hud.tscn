@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=22 format=3 uid="uid://df8axxfjajflr"]
 
 [ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bcglrl10uyqk3" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0236.png" id="10_3o64f"]
 [ext_resource type="Texture2D" uid="uid://icxfxkf4mk1j" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0237.png" id="11_l8rkl"]
 [ext_resource type="Texture2D" uid="uid://bdwewsro7aqx0" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0342.png" id="12_d1f6y"]
+[ext_resource type="Texture2D" uid="uid://dj7vitptot3yo" path="res://Assets/Sprites/Sword 01.png" id="13_8ovhv"]
 [ext_resource type="Texture2D" uid="uid://cwbkcse55hpbm" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0077.png" id="13_fdmv6"]
 [ext_resource type="Texture2D" uid="uid://dnl0ts0ufnb3i" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0128.png" id="14_nb3r1"]
 [ext_resource type="Texture2D" uid="uid://fjstkv8rdyjf" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0343.png" id="15_t303e"]
@@ -28,6 +29,10 @@ fill_to = Vector2(0.484848, 0.00865801)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rdxbv"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w124r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fudw1"]
+atlas = ExtResource("13_8ovhv")
+region = Rect2(75.1164, 201.108, 21.2017, 20.5432)
 
 [node name="hud" type="CanvasLayer" groups=["hud"]]
 script = ExtResource("1_5xg12")
@@ -259,10 +264,9 @@ offset_bottom = 11.0
 text = "attack"
 
 [node name="CanAttackSprite" type="Sprite2D" parent="ingame_ui/controls_helper/attack_control"]
-modulate = Color(1, 0.0588235, 1, 1)
-position = Vector2(4.00003, -3.5353e-05)
-scale = Vector2(15.9999, 15.9999)
-texture = SubResource("PlaceholderTexture2D_rdxbv")
+position = Vector2(-1.52588e-05, 0.999999)
+scale = Vector2(1.27498, 1.27498)
+texture = SubResource("AtlasTexture_fudw1")
 
 [node name="Help" type="Control" parent="ingame_ui/controls_helper/attack_control"]
 layout_mode = 3

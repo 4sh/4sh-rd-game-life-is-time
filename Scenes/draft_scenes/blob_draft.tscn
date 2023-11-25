@@ -8,6 +8,7 @@
 [node name="blob_draft" type="Node2D"]
 
 [node name="hud" parent="." instance=ExtResource("1_i0bgt")]
+has_attack = true
 
 [node name="Player" parent="." instance=ExtResource("1_r72ci")]
 position = Vector2(-53, -8)
