@@ -21,6 +21,7 @@ func _on_hud_restart_game():
 
 func _on_sleep_travel_stone_body_entered(body):
 	if body.is_in_group("player"):
+		$World/Items/SleepTravelStone/Sprite2D.queue_free()
 		$Hud.has_toggle_world = true
 		$World/Items/SleepTravelStone.queue_free()
 		$Hud.help_text("Appuyer sur espace pour utiliser la pierre de sommeil")
