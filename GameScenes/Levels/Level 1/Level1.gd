@@ -23,4 +23,4 @@ func _on_hud_restart_game():
 
 
 func _on_portal_body_entered(body):
-	get_tree().change_scene_to_file("res://GameScenes/Screens/TransitionLevel2/transition.tscn")
+	get_tree().change_scene_to_file("res://GameScenes/Levels/Level 2/EnterLevel2.tscn")

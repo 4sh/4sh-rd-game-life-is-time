@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceet5x27juv1l"]
+
+[ext_resource type="PackedScene" uid="uid://cw1bxourea0yk" path="res://GameScenes/Screens/LevelTransition/LevelTransition.tscn" id="1_5886v"]
+
+[node name="EnterLevel2" type="Node"]
+
+[node name="LevelTransition" parent="." instance=ExtResource("1_5886v")]
