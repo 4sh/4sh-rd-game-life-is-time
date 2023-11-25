@@ -228,6 +228,7 @@ shape = SubResource("RectangleShape2D_xesav")
 
 [node name="Player" parent="." instance=ExtResource("2_15667")]
 position = Vector2(572, 284)
+speed = 60.0
 
 [node name="PlayerSlower" type="Node2D" parent="Player"]
 script = ExtResource("9_ca6xc")
@@ -242,6 +243,7 @@ color = Color(1, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_4g7md")
+volume_db = -15.0
 
 [node name="launch_narrative" parent="." instance=ExtResource("10_5whmt")]
 position = Vector2(572, 281)
