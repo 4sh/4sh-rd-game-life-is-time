@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var SPEED = 30.0
 @export var damage = 10
-@export var max_distance = 100
+@export var max_distance = 50
 @export var life = 20.0
 
 @onready var player = get_tree().get_first_node_in_group("player") 
