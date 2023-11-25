@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1uuwsc1a1l07"]
+[gd_scene load_steps=9 format=3 uid="uid://b1uuwsc1a1l07"]
 
 [ext_resource type="Texture2D" uid="uid://cdnqyq2onb7us" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_blue.png" id="1_tarsq"]
 [ext_resource type="Script" path="res://GameScenes/Screens/Credits/Credits.gd" id="1_v5rtf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dw01lid11tvcq" path="res://Assets/Sprites/Team/valdasseir.png" id="5_oqi0r"]
 [ext_resource type="Texture2D" uid="uid://tcgi0v5werad" path="res://Assets/Sprites/Team/kisis.png" id="6_nry66"]
 [ext_resource type="Texture2D" uid="uid://da2blv6hkyufn" path="res://Assets/Sprites/Team/xav.jpeg" id="7_gpxta"]
+[ext_resource type="AudioStream" uid="uid://cjfyccu4ww02d" path="res://Assets/Music/cruising-down-8bit-lane-159615  credit.mp3" id="8_kla0p"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_v5rtf")
@@ -48,6 +49,7 @@ offset_right = 51.0
 offset_bottom = 414.0
 
 [node name="Valdasseir" type="TextureRect" parent="Team"]
+layout_mode = 0
 offset_left = 18.0
 offset_top = 1.0
 offset_right = 93.0
@@ -56,6 +58,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_oqi0r")
 
 [node name="Kisis" type="TextureRect" parent="Team"]
+layout_mode = 0
 offset_left = 18.0
 offset_top = 63.0
 offset_right = 598.0
@@ -64,6 +67,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_nry66")
 
 [node name="Xav" type="TextureRect" parent="Team"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 129.0
 offset_right = 561.0
@@ -103,5 +107,9 @@ offset_right = 109.0
 offset_bottom = -17.0
 theme_override_font_sizes/font_size = 33
 text = "Team"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kla0p")
+volume_db = -5.0
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

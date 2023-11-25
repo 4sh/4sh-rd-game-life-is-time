@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwipvn7dxhhmw"]
+[gd_scene load_steps=8 format=3 uid="uid://bwipvn7dxhhmw"]
 
 [ext_resource type="Script" path="res://GameScenes/Screens/Menu/GameMenu.gd" id="1_ptkvc"]
 [ext_resource type="Texture2D" uid="uid://buykor0gabmqt" path="res://Assets/Screens/Splash.png" id="2_jol5t"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crxml2f10nb5d" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="4_51x2t"]
 [ext_resource type="Texture2D" uid="uid://blhepq3fkn1ds" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_grey.png" id="5_mrvjp"]
 [ext_resource type="Texture2D" uid="uid://813dyb1sljc6" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_grey_pressed.png" id="6_qtr08"]
+[ext_resource type="AudioStream" uid="uid://ch188i5yvl21v" path="res://Assets/Music/chiptune-grooving-142242 menu.mp3" id="7_ucpa6"]
 
 [node name="GameMenu" type="Node2D"]
 script = ExtResource("1_ptkvc")
@@ -110,6 +111,9 @@ theme_override_font_sizes/font_size = 28
 text = "Credits"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ucpa6")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

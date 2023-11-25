@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=13 format=3 uid="uid://b3wayvwq0uf0h"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cmei2u1d7f4fh" path="res://GameScenes/NarrativeLauncher/narrative_launcher.tscn" id="7_igfgd"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="7_xn654"]
 [ext_resource type="PackedScene" uid="uid://50l5sehx102p" path="res://GameScenes/PickupItems/MentalHealthHealStone/MentalHealthHealStone.tscn" id="8_udawv"]
+[ext_resource type="AudioStream" uid="uid://cettlfrpw72r3" path="res://Assets/Music/8-bit-dream-land-142093 niv 3.mp3" id="11_sbpbf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0jxcj"]
 radius = 21.0
@@ -188,6 +189,11 @@ shape = SubResource("CircleShape2D_0jxcj")
 position = Vector2(153, -9)
 speed = 60.0
 life = 50.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_sbpbf")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
 [connection signal="body_entered" from="Worlds/Light/Items/EndLevel" to="." method="_on_end_level_body_entered"]

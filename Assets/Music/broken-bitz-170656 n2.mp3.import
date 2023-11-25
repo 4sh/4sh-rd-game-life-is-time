@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjes7246pqnuq"
+path="res://.godot/imported/broken-bitz-170656 n2.mp3-082601c53b8ad43b839ca8e38ffb1fa5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/broken-bitz-170656 n2.mp3"
+dest_files=["res://.godot/imported/broken-bitz-170656 n2.mp3-082601c53b8ad43b839ca8e38ffb1fa5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

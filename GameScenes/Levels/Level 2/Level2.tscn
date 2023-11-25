@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="7_svgfn"]
 [ext_resource type="PackedScene" uid="uid://rusdriudf88u" path="res://GameScenes/PickupItems/HealItem/HealItem.tscn" id="7_x42rv"]
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 2/SleepTravelStoneSprite.gd" id="8_glead"]
-[ext_resource type="AudioStream" uid="uid://uk1sdag66lxe" path="res://Assets/Sounds/8-bit-halloween-story-166454.mp3" id="8_q2bat"]
+[ext_resource type="AudioStream" uid="uid://cjes7246pqnuq" path="res://Assets/Music/broken-bitz-170656 n2.mp3" id="11_o5wyv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0ahb"]
 atlas = ExtResource("5_utiff")
@@ -206,8 +206,8 @@ position = Vector2(939, -416)
 speed = 60.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_q2bat")
-volume_db = -15.0
+stream = ExtResource("11_o5wyv")
+volume_db = -20.0
 autoplay = true
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]

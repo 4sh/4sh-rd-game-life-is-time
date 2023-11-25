@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjfyccu4ww02d"
+path="res://.godot/imported/cruising-down-8bit-lane-159615  credit.mp3-0c7e7455d4578eca8631b926117a8170.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/cruising-down-8bit-lane-159615  credit.mp3"
+dest_files=["res://.godot/imported/cruising-down-8bit-lane-159615  credit.mp3-0c7e7455d4578eca8631b926117a8170.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
