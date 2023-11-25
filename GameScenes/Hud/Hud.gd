@@ -28,6 +28,8 @@ func animate_low_health():
 
 func stop_animate_low_health():
 	$GlobalSounds.stop()
+	$ingame_ui/low_life_timer.stop()
+	$ingame_ui/lifebar.modulate = Color.WHITE
 
 func _on_player_mental_health_changed(mental):
 	$ingame_ui/mentalhealthbar.value = mental
