@@ -16,6 +16,7 @@ signal dead
 var heal_animate = false
 var mental_heal_animate = false
 var invulnerable = false
+var paused = false
 
 func _ready():
 	life_changed.emit(life)
@@ -23,6 +24,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	if (paused): return
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed * delta
 	if direction.length() > 0:
