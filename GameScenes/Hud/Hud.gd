@@ -44,6 +44,10 @@ func _on_ready():
 	$ingame_ui/mentalhealthbar.visible = show_mental_health
 	$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
 
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			get_tree().quit()
 
 func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 	$ingame_ui/controls_helper/toggle_world_control/CannotToggleWorldSprite.visible = !can_toggle_world
