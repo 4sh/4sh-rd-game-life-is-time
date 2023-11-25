@@ -39,6 +39,8 @@ func write(narrationObject):
 	$ingame_ui/dialogbox.hide()
 	write_finished.emit()
 
+func is_narration_playing():
+	return $ingame_ui/dialogbox.visible
 
 func _on_ready():
 	$ingame_ui/mentalhealthbar.visible = show_mental_health

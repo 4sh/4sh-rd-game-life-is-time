@@ -2,7 +2,10 @@ extends Node2D
 
 
 func _ready():
-	pass
+	$Player/Camera2D.zoom = Vector2(0.2,0.2)
+	$Player/Camera2D.offset = Vector2(0,-200)
+	create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(4, 4), 4)
+	create_tween().tween_property($Player/Camera2D, 'offset', Vector2(0, 0), 3)
 
 
 func _process(delta):
