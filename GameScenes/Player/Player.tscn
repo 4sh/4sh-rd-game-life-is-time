@@ -1,7 +1,12 @@
-[gd_scene load_steps=37 format=3 uid="uid://bcuhrumwnh8e8"]
+[gd_scene load_steps=43 format=3 uid="uid://bcuhrumwnh8e8"]
 
 [ext_resource type="Texture2D" uid="uid://bmxx0hs11ogc6" path="res://Assets/Sprites/Hero 01.png" id="1_labaw"]
 [ext_resource type="Script" path="res://GameScenes/Player/Player.gd" id="1_lvmaj"]
+[ext_resource type="AudioStream" uid="uid://7710oke2a3q6" path="res://Assets/Sounds/Footsteps/Steps_dirt-013.ogg" id="3_1cohb"]
+[ext_resource type="AudioStream" uid="uid://cclh2rjbjfnn7" path="res://Assets/Sounds/Footsteps/Steps_dirt-014.ogg" id="4_vvrrs"]
+[ext_resource type="AudioStream" uid="uid://b4tcc8fv3y2ad" path="res://Assets/Sounds/Footsteps/Steps_dirt-015.ogg" id="5_4j1mj"]
+[ext_resource type="AudioStream" uid="uid://cm681oqtrcydh" path="res://Assets/Sounds/Footsteps/Steps_dirt-016.ogg" id="6_ibnoy"]
+[ext_resource type="AudioStream" uid="uid://dpd5yx3hxlee6" path="res://Assets/Sounds/Footsteps/Steps_dirt-017.ogg" id="7_8gt3u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h5ub"]
 atlas = ExtResource("1_labaw")
@@ -274,6 +279,19 @@ animations = [{
 radius = 7.0
 height = 16.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mtsyi"]
+streams_count = 5
+stream_0/stream = ExtResource("3_1cohb")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_vvrrs")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_4j1mj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_ibnoy")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_8gt3u")
+stream_4/weight = 1.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_lvmaj")
 
@@ -297,4 +315,12 @@ shape = SubResource("CapsuleShape2D_uck55")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -20.0
 
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_mtsyi")
+volume_db = -20.0
+
+[node name="FootstepsTimer" type="Timer" parent="."]
+wait_time = 0.35
+
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]
+[connection signal="timeout" from="FootstepsTimer" to="." method="_on_footsteps_timer_timeout"]

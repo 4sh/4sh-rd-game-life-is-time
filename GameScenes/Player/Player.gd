@@ -39,16 +39,19 @@ func get_direction_label_suffix(direction: Vector2):
 		return "_right"
 	return "_front"
 
-
 func _physics_process(delta):
 	if (paused): return
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
 	if direction.length() > 0:
+		if $FootstepsTimer.is_stopped() == true:
+			$Footsteps.play()
+			$FootstepsTimer.start()
 		last_direction = direction
 		sprite.animation = "walk" + get_direction_label_suffix(direction)
 		sprite.play()
 	else:
+		$FootstepsTimer.stop()
 		sprite.animation = "idle" + get_direction_label_suffix(last_direction)
 		sprite.stop()
 		
@@ -112,3 +115,7 @@ func _on_worlds_toggled_world(moved_to_dark):
 
 func _on_invulnerability_timer_timeout():
 	invulnerable = false
+
+
+func _on_footsteps_timer_timeout():
+	$Footsteps.play()
