@@ -9,6 +9,10 @@ signal write_finished
 	set (value):
 		has_toggle_world = value
 		$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
+@export var has_attack: bool = false:
+	set (value):
+		has_attack = value
+		$ingame_ui/controls_helper/attack_control.visible = has_attack
 
 @onready var sounds = {
 	"low_health": preload('res://Assets/Sounds/Trivia/Low_Health.wav')
@@ -73,6 +77,7 @@ func help_text(text):
 func _on_ready():
 	$ingame_ui/mentalhealthbar.visible = show_mental_health
 	$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
+	$ingame_ui/controls_helper/attack_control.visible = has_attack
 
 func _unhandled_input(event):
 	if event is InputEventKey:

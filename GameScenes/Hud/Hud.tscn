@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=20 format=3 uid="uid://df8axxfjajflr"]
 
 [ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
@@ -11,7 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://gmwr7hgx03xk" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0235.png" id="9_qgjgf"]
 [ext_resource type="Texture2D" uid="uid://bcglrl10uyqk3" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0236.png" id="10_3o64f"]
 [ext_resource type="Texture2D" uid="uid://icxfxkf4mk1j" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0237.png" id="11_l8rkl"]
-[ext_resource type="Texture2D" uid="uid://clnsg7xce26fq" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0015.png" id="12_jfgqh"]
+[ext_resource type="Texture2D" uid="uid://bdwewsro7aqx0" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0342.png" id="12_d1f6y"]
+[ext_resource type="Texture2D" uid="uid://cwbkcse55hpbm" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0077.png" id="13_fdmv6"]
+[ext_resource type="Texture2D" uid="uid://dnl0ts0ufnb3i" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0128.png" id="14_nb3r1"]
+[ext_resource type="Texture2D" uid="uid://fjstkv8rdyjf" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0343.png" id="15_t303e"]
 
 [sub_resource type="Gradient" id="Gradient_xjtbo"]
 offsets = PackedFloat32Array(0, 0.485119, 0.747024, 1)
@@ -242,7 +245,54 @@ offset_left = 81.0
 offset_top = 16.0
 offset_right = 100.0
 offset_bottom = 35.0
-texture = ExtResource("12_jfgqh")
+texture = ExtResource("12_d1f6y")
+
+[node name="attack_control" type="Node2D" parent="ingame_ui/controls_helper"]
+texture_filter = 1
+position = Vector2(11, -44)
+
+[node name="AttackLabel" type="Label" parent="ingame_ui/controls_helper/attack_control"]
+offset_left = 20.0
+offset_top = -12.0
+offset_right = 60.0
+offset_bottom = 11.0
+text = "attack"
+
+[node name="CanAttackSprite" type="Sprite2D" parent="ingame_ui/controls_helper/attack_control"]
+modulate = Color(1, 0.0588235, 1, 1)
+position = Vector2(4.00003, -3.5353e-05)
+scale = Vector2(15.9999, 15.9999)
+texture = SubResource("PlaceholderTexture2D_rdxbv")
+
+[node name="Help" type="Control" parent="ingame_ui/controls_helper/attack_control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeftMouseButton" type="TextureRect" parent="ingame_ui/controls_helper/attack_control/Help"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = -10.0
+offset_right = 101.0
+offset_bottom = 13.0
+texture = ExtResource("13_fdmv6")
+
+[node name="L key" type="TextureRect" parent="ingame_ui/controls_helper/attack_control/Help"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -10.0
+offset_right = 121.0
+offset_bottom = 11.0
+texture = ExtResource("14_nb3r1")
+
+[node name="Square btn" type="TextureRect" parent="ingame_ui/controls_helper/attack_control/Help"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = -9.0
+offset_right = 142.0
+offset_bottom = 10.0
+texture = ExtResource("15_t303e")
 
 [node name="low_life_timer" type="Timer" parent="ingame_ui"]
 
