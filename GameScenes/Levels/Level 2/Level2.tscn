@@ -170,7 +170,7 @@ shape = SubResource("CircleShape2D_tn6uc")
 
 [node name="Player" parent="." instance=ExtResource("7_svgfn")]
 position = Vector2(939, -416)
-speed = 3500.0
+speed = 80.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_q2bat")

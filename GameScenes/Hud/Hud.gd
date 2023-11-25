@@ -45,6 +45,12 @@ func write(narrationObject):
 func is_narration_playing():
 	return $ingame_ui/dialogbox.visible
 
+func help_text(text):
+	$ingame_ui/dialogbox.show()
+	$ingame_ui/dialogbox/MarginContainer/Label.text = text
+	await get_tree().create_timer(3).timeout
+	$ingame_ui/dialogbox.hide()
+
 func _on_ready():
 	$ingame_ui/mentalhealthbar.visible = show_mental_health
 	$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
