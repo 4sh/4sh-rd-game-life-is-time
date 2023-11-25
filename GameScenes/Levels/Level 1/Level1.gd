@@ -9,6 +9,11 @@ func _ready():
 	await create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(1.5, 1.5), 1.5).finished
 	create_tween().tween_property($Player/Camera2D, 'offset', Vector2(0, 0), 3)
 	create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(4, 4), 3)
+	var hud = $Hud
+	if hud.is_narration_playing():
+		await hud.write_finished
+	$AudioStreamPlayer.play()
+
 
 func play_cursed():
 	$Cursed.color.a = 0.0
