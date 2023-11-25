@@ -93,7 +93,7 @@ func mental_hit(damage):
 func heal(heal):
 	invulnerable = true
 	animate_heal()
-	$AudioStreamPlayer2D.stream = sounds.hurt
+	$AudioStreamPlayer2D.stream = sounds.heal
 	$AudioStreamPlayer2D.play()
 	life = life + heal
 	clamp(life, 0, 100)
