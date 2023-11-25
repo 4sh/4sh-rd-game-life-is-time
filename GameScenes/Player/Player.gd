@@ -17,22 +17,33 @@ var heal_animate = false
 var mental_heal_animate = false
 var invulnerable = false
 var paused = false
+var last_direction = Vector2(0,1)
 
 func _ready():
 	life_changed.emit(life)
 	mental_health_changed.emit(mental_health)
 
+func get_direction_label_suffix(direction: Vector2):
+	var d = direction.normalized()
+	if (d.y < 0 && abs(d.y) > abs(d.x)):
+		return "_top"
+	if (d.x < 0 && abs(d.x) >= abs(d.y)):
+		return "_left"
+	if (d.x > 0 && abs(d.x) >= abs(d.y)):
+		return "_right"
+	return "_front"
+
 
 func _physics_process(delta):
 	if (paused): return
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * speed * delta
+	velocity = direction * speed
 	if direction.length() > 0:
-		sprite.animation = "walk"
-		sprite.flip_h = velocity.x < 0
+		last_direction = direction
+		sprite.animation = "walk" + get_direction_label_suffix(direction)
 		sprite.play()
 	else:
-		sprite.animation = "idle"
+		sprite.animation = "idle" + get_direction_label_suffix(last_direction)
 		sprite.stop()
 		
 	move_and_slide()
