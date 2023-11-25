@@ -12,14 +12,16 @@ enum World { DARK, LIGHT }
 
 var world = World.LIGHT
 
-func world_map(world):
-	return world.get_node("Map")
+func world_map(w):
+	return w.get_node("Map")
 
 func _ready():
 	light_world.visible = true # during edit, often set to invisible for easy editing
 	dark_world.visible = true # during edit, often set to invisible for easy editing
 	remove_child(dark_world)
 
+func has_tile(map, layer, pos):
+	return map.get_cell_tile_data(layer, pos) != null
 
 func _process(delta):
 	var target_world
@@ -40,9 +42,8 @@ func _process(delta):
 			
 	var target_map = world_map(new_world)
 	var target_map_pos = target_map.local_to_map(target_map.to_local(player.position))
-	var tile_data: TileData = target_map.get_cell_tile_data(1, target_map_pos)
 	
-	var can_toggle = tile_data != null
+	var can_toggle = has_tile(target_map, 1, target_map_pos) and !has_tile(target_map, 2, target_map_pos) and !has_tile(target_map, 3, target_map_pos)
 
 	can_toggle_world.emit(can_toggle)
 	get_tree().get_first_node_in_group("hud").on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
