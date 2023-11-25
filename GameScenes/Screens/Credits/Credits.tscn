@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1uuwsc1a1l07"]
+[gd_scene load_steps=8 format=3 uid="uid://b1uuwsc1a1l07"]
 
 [ext_resource type="Texture2D" uid="uid://cdnqyq2onb7us" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_blue.png" id="1_tarsq"]
 [ext_resource type="Script" path="res://GameScenes/Screens/Credits/Credits.gd" id="1_v5rtf"]
 [ext_resource type="Texture2D" uid="uid://cx6gf72jv1gxv" path="res://Assets/Screens/Credits.png" id="2_8n0km"]
 [ext_resource type="Texture2D" uid="uid://cbhiiqkqbqy3p" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_blue_pressed.png" id="2_ni8wr"]
+[ext_resource type="Texture2D" uid="uid://dw01lid11tvcq" path="res://Assets/Sprites/Team/valdasseir.png" id="5_oqi0r"]
+[ext_resource type="Texture2D" uid="uid://tcgi0v5werad" path="res://Assets/Sprites/Team/kisis.png" id="6_nry66"]
+[ext_resource type="Texture2D" uid="uid://da2blv6hkyufn" path="res://Assets/Sprites/Team/xav.jpeg" id="7_gpxta"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_v5rtf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(579, 331)
+position = Vector2(575, 323)
 texture = ExtResource("2_8n0km")
 
 [node name="CloseButton" type="TextureButton" parent="."]
@@ -35,5 +38,70 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 29
 text = "Close"
+
+[node name="Team" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 51.0
+offset_top = 414.0
+offset_right = 51.0
+offset_bottom = 414.0
+
+[node name="Valdasseir" type="TextureRect" parent="Team"]
+offset_left = 18.0
+offset_top = 1.0
+offset_right = 93.0
+offset_bottom = 76.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_oqi0r")
+
+[node name="Kisis" type="TextureRect" parent="Team"]
+offset_left = 18.0
+offset_top = 63.0
+offset_right = 598.0
+offset_bottom = 643.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_nry66")
+
+[node name="Xav" type="TextureRect" parent="Team"]
+offset_left = 21.0
+offset_top = 129.0
+offset_right = 561.0
+offset_bottom = 669.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_gpxta")
+
+[node name="ValdasseirLabel" type="Label" parent="Team"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 17.0
+offset_right = 169.0
+offset_bottom = 43.0
+text = "Valdasseir"
+
+[node name="KisisLabel" type="Label" parent="Team"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 84.0
+offset_right = 169.0
+offset_bottom = 110.0
+text = "Kisis"
+
+[node name="XavLabel" type="Label" parent="Team"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 146.0
+offset_right = 167.0
+offset_bottom = 172.0
+text = "Xav"
+
+[node name="TeamLabel" type="Label" parent="Team"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -66.0
+offset_right = 109.0
+offset_bottom = -17.0
+theme_override_font_sizes/font_size = 33
+text = "Team"
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
