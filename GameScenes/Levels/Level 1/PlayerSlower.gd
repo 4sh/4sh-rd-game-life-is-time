@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	var player_speed = $'..'.speed
-	$'..'.speed = 400
+	$'..'.speed = 8
 	await get_tree().create_timer(0.5).timeout
 	var hud = $'../../Hud'
 	if hud.is_narration_playing():
