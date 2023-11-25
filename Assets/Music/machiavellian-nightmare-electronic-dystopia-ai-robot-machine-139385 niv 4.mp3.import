@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bi8rn2jcquf72"
+path="res://.godot/imported/machiavellian-nightmare-electronic-dystopia-ai-robot-machine-139385 niv 4.mp3-820b5cc5131d71016c95568b7be3380f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/machiavellian-nightmare-electronic-dystopia-ai-robot-machine-139385 niv 4.mp3"
+dest_files=["res://.godot/imported/machiavellian-nightmare-electronic-dystopia-ai-robot-machine-139385 niv 4.mp3-820b5cc5131d71016c95568b7be3380f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
