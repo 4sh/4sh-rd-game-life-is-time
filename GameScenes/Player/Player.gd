@@ -95,22 +95,19 @@ func heal(heal):
 	animate_heal()
 	$AudioStreamPlayer2D.stream = sounds.heal
 	$AudioStreamPlayer2D.play()
-	life = life + heal
-	clamp(life, 0, 100)
+	life = clamp(life + heal, 0, 100)
 	life_changed.emit(life)
 	$InvulnerabilityTimer.start()
 
 func mental_heal(heal):
 	animate_heal()
-	mental_health = mental_health + heal
-	clamp(mental_health, 0, 100)
+	mental_health = clamp(mental_health + heal, 0, 100)
 	mental_health_changed.emit(mental_health)
 
 func _on_worlds_toggled_world(moved_to_dark):
 	if (moved_to_dark):
 		mental_hit(mental_damage_on_move_to_dark)
-	life = 100 - life
-	clamp(life, 5, 100)
+	life = clamp(100 - life, 5, 100)
 	life_changed.emit(life)
 
 func _on_invulnerability_timer_timeout():
