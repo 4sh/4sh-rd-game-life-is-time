@@ -12,6 +12,7 @@ has_attack = true
 
 [node name="Player" parent="." instance=ExtResource("1_r72ci")]
 position = Vector2(-53, -8)
+can_attack = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-22, 35)

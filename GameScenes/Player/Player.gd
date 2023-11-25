@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var mental_health = 100.0
 @export var mental_damage_on_move_to_dark = 10.0
 @export var attack_damage = 10.0
+@export var can_attack:bool = false
 
 signal life_changed(life)
 signal mental_health_changed(mental_health)
@@ -52,6 +53,7 @@ func damage_enemies(area2D: Area2D):
 		damage_enemy(enemy)
 
 func attack():
+	if (!can_attack): return
 	play_sound("sword_slash")
 	if (last_direction.y < 0 && abs(last_direction.y) > abs(last_direction.x)):
 		damage_enemies($sword_hitboxes/top)
