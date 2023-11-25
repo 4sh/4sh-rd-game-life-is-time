@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://w1cu7cvm1n1t"]
+[gd_scene load_steps=19 format=3 uid="uid://w1cu7cvm1n1t"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 2/Level2.gd" id="1_qycc7"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="2_ufvox"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1spqr4ffudte" path="res://GameScenes/DarkStone/darkstone.tscn" id="5_7xce4"]
 [ext_resource type="Texture2D" uid="uid://b3tu20ebirkww" path="res://Assets/Tilesets/Purple Portal Sprite Sheet.png" id="5_utiff"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="7_svgfn"]
+[ext_resource type="AudioStream" uid="uid://uk1sdag66lxe" path="res://Assets/Sounds/8-bit-halloween-story-166454.mp3" id="8_q2bat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0ahb"]
 atlas = ExtResource("5_utiff")
@@ -72,6 +73,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tn6uc"]
+radius = 23.0
+
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_qycc7")
 
@@ -125,12 +129,12 @@ sprite_frames = SubResource("SpriteFrames_7ydmm")
 
 [node name="Items" type="Node2D" parent="World"]
 
-[node name="darkstone2" parent="World/Items" instance=ExtResource("5_7xce4")]
-position = Vector2(1151, -117)
+[node name="darkstone1" parent="World/Items" instance=ExtResource("5_7xce4")]
+position = Vector2(873, 3)
 frequency = 1.0
 
-[node name="darkstone" parent="World/Items" instance=ExtResource("5_7xce4")]
-position = Vector2(873, 3)
+[node name="darkstone2" parent="World/Items" instance=ExtResource("5_7xce4")]
+position = Vector2(1151, -117)
 frequency = 1.0
 
 [node name="darkstone3" parent="World/Items" instance=ExtResource("5_7xce4")]
@@ -157,11 +161,23 @@ frequency = 1.0
 position = Vector2(196, -437)
 frequency = 1.0
 
+[node name="SleepTravelStone" type="Area2D" parent="World/Items"]
+position = Vector2(538, 665)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Items/SleepTravelStone"]
+shape = SubResource("CircleShape2D_tn6uc")
+
 [node name="Player" parent="." instance=ExtResource("7_svgfn")]
 position = Vector2(939, -416)
 speed = 3500.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_q2bat")
+autoplay = true
+
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
+[connection signal="body_entered" from="World/Items/SleepTravelStone" to="." method="_on_sleep_travel_stone_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]

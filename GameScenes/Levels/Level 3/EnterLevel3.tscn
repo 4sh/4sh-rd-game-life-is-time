@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d18frcj8ybfkj"]
+
+[ext_resource type="PackedScene" uid="uid://cw1bxourea0yk" path="res://GameScenes/Screens/LevelTransition/LevelTransition.tscn" id="1_gwbfb"]
+
+[node name="EnterLevel3" type="Node"]
+
+[node name="LevelTransition" parent="." instance=ExtResource("1_gwbfb")]
+level = 3
