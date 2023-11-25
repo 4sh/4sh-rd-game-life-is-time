@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=11 format=3 uid="uid://b3wayvwq0uf0h"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="3_qglt0"]
 [ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_pcqlr"]
 [ext_resource type="PackedScene" uid="uid://b1spqr4ffudte" path="res://GameScenes/DarkStone/darkstone.tscn" id="6_xjwxr"]
+[ext_resource type="PackedScene" uid="uid://cmei2u1d7f4fh" path="res://GameScenes/NarrativeLauncher/narrative_launcher.tscn" id="7_igfgd"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="7_xn654"]
 [ext_resource type="PackedScene" uid="uid://50l5sehx102p" path="res://GameScenes/PickupItems/MentalHealthHealStone/MentalHealthHealStone.tscn" id="8_udawv"]
 
@@ -77,7 +78,10 @@ position = Vector2(-342, 1345)
 position = Vector2(103, 2084)
 
 [node name="Light" type="Node2D" parent="Worlds"]
-visible = false
+
+[node name="launch_narrative" parent="Worlds/Light" instance=ExtResource("7_igfgd")]
+position = Vector2(178, 18)
+narrationIndex = 5
 
 [node name="Map" type="TileMap" parent="Worlds/Light"]
 texture_filter = 1
