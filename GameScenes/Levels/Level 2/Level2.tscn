@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://w1cu7cvm1n1t"]
+[gd_scene load_steps=20 format=3 uid="uid://w1cu7cvm1n1t"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 2/Level2.gd" id="1_qycc7"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="2_ufvox"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1spqr4ffudte" path="res://GameScenes/DarkStone/darkstone.tscn" id="5_7xce4"]
 [ext_resource type="Texture2D" uid="uid://b3tu20ebirkww" path="res://Assets/Tilesets/Purple Portal Sprite Sheet.png" id="5_utiff"]
 [ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="7_svgfn"]
+[ext_resource type="PackedScene" uid="uid://rusdriudf88u" path="res://GameScenes/PickupItems/HealItem/HealItem.tscn" id="7_x42rv"]
 [ext_resource type="AudioStream" uid="uid://uk1sdag66lxe" path="res://Assets/Sounds/8-bit-halloween-story-166454.mp3" id="8_q2bat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0ahb"]
@@ -167,6 +168,26 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Items/SleepTravelStone"]
 shape = SubResource("CircleShape2D_tn6uc")
+
+[node name="HealItems" type="Node" parent="World/Items"]
+
+[node name="HealItem6" parent="World/Items/HealItems" instance=ExtResource("7_x42rv")]
+position = Vector2(887, -342)
+
+[node name="HealItem3" parent="World/Items/HealItems" instance=ExtResource("7_x42rv")]
+position = Vector2(671, -89)
+
+[node name="HealItem4" parent="World/Items/HealItems" instance=ExtResource("7_x42rv")]
+position = Vector2(705, 91)
+
+[node name="HealItem7" parent="World/Items/HealItems" instance=ExtResource("7_x42rv")]
+position = Vector2(363, 286)
+
+[node name="HealItem8" parent="World/Items/HealItems" instance=ExtResource("7_x42rv")]
+position = Vector2(533, 358)
+
+[node name="HealItem5" parent="World/Items/HealItems" instance=ExtResource("7_x42rv")]
+position = Vector2(677, -310)
 
 [node name="Player" parent="." instance=ExtResource("7_svgfn")]
 position = Vector2(939, -416)
