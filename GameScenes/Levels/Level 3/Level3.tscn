@@ -19,7 +19,6 @@ script = ExtResource("3_h8ihk")
 player = NodePath("../Player")
 
 [node name="Dark" type="Node2D" parent="Worlds"]
-position = Vector2(0, 1)
 script = ExtResource("5_enyfa")
 
 [node name="Map" type="TileMap" parent="Worlds/Dark"]
