@@ -233,6 +233,14 @@ speed = 3500.0
 [node name="PlayerSlower" type="Node2D" parent="Player"]
 script = ExtResource("9_ca6xc")
 
+[node name="Cursed" type="ColorRect" parent="."]
+visible = false
+offset_left = -37.0
+offset_top = -232.0
+offset_right = 1163.0
+offset_bottom = 968.0
+color = Color(1, 0, 0, 1)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_4g7md")
 
