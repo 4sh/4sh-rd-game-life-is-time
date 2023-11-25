@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 5000.0
+@export var speed = 80.0
 @export var life = 100.0
 @export var mental_health = 100.0
 @export var mental_damage_on_move_to_dark = 10.0
