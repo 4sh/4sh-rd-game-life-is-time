@@ -20,8 +20,13 @@ func _ready():
 	dark_world.visible = true # during edit, often set to invisible for easy editing
 	remove_child(dark_world)
 
-func has_tile(map, layer, pos):
-	return map.get_cell_tile_data(layer, pos) != null
+func has_tile(w, layer):
+	return has_map_tile(w.get_node("Map"), layer) or has_map_tile(w.get_node("Map2"), layer)
+
+func has_map_tile(map, layer):
+	if map == null: return false
+	var target_map_pos = map.local_to_map(map.to_local(player.position))
+	return map.get_cell_tile_data(layer, target_map_pos) != null
 
 func _process(delta):
 	var target_world
@@ -40,14 +45,11 @@ func _process(delta):
 		old_world = dark_world
 		new_world = light_world
 			
-	var target_map = world_map(new_world)
-	var target_map_pos = target_map.local_to_map(target_map.to_local(player.position))
-	
-	var can_toggle = has_tile(target_map, 1, target_map_pos) and !has_tile(target_map, 2, target_map_pos) and !has_tile(target_map, 3, target_map_pos)
+	var can_toggle = has_tile(new_world, 1) and !has_tile(new_world, 2) and !has_tile(new_world, 3)
 
 	can_toggle_world.emit(can_toggle)
 	get_tree().get_first_node_in_group("hud").on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
-				
+			
 	if (can_toggle && Input.is_action_just_pressed("toggle_dark_world")):
 		remove_child(old_world)
 		add_child(new_world)
