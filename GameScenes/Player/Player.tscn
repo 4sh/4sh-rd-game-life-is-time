@@ -1,8 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://bcuhrumwnh8e8"]
+[gd_scene load_steps=50 format=3 uid="uid://bcuhrumwnh8e8"]
 
 [ext_resource type="Texture2D" uid="uid://bmxx0hs11ogc6" path="res://Assets/Sprites/Hero 01.png" id="1_labaw"]
 [ext_resource type="Script" path="res://GameScenes/Player/Player.gd" id="1_lvmaj"]
 [ext_resource type="AudioStream" uid="uid://7710oke2a3q6" path="res://Assets/Sounds/Footsteps/Steps_dirt-013.ogg" id="3_1cohb"]
+[ext_resource type="Texture2D" uid="uid://4r011yhjj3gr" path="res://Assets/Sprites/AtelierMagicae_GemsMineralsFreebsVol1_Border.png" id="3_t5rhb"]
 [ext_resource type="AudioStream" uid="uid://cclh2rjbjfnn7" path="res://Assets/Sounds/Footsteps/Steps_dirt-014.ogg" id="4_vvrrs"]
 [ext_resource type="AudioStream" uid="uid://b4tcc8fv3y2ad" path="res://Assets/Sounds/Footsteps/Steps_dirt-015.ogg" id="5_4j1mj"]
 [ext_resource type="AudioStream" uid="uid://cm681oqtrcydh" path="res://Assets/Sounds/Footsteps/Steps_dirt-016.ogg" id="6_ibnoy"]
@@ -277,6 +278,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r11s7"]
+atlas = ExtResource("3_t5rhb")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_312pb"]
+atlas = ExtResource("3_t5rhb")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y334d"]
+atlas = ExtResource("3_t5rhb")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hs5hi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r11s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_312pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y334d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uck55"]
 radius = 7.0
 height = 16.0
@@ -302,6 +332,12 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_myagp")
 animation = &"walk_top"
 frame_progress = 0.292751
+
+[node name="StoneSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, 5)
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_hs5hi")
+frame_progress = 0.194291
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, 0)

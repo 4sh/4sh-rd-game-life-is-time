@@ -46,4 +46,4 @@ func _on_body_entered(body):
 func attack(direction: Vector2):
 	rotation = direction.angle() + PI/2
 	play_sound("sword_slash")
-	play_sword_animation()
+	await play_sword_animation()

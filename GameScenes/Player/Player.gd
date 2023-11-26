@@ -37,6 +37,7 @@ func _ready():
 	mental_health_changed.emit(mental_health)
 	$Sword.attack_damage = attack_damage
 	$Sword.attack_length = attack_length
+	$StoneSprite.hide()
 
 func get_direction_label_suffix(direction: Vector2):
 	var d = direction.normalized()
@@ -68,7 +69,9 @@ func _physics_process(delta):
 
 func _process(delta):
 	if can_attack and Input.is_action_just_pressed("attack"):
-		$Sword.attack(last_direction)
+		$StoneSprite.modulate.a = 0
+		await $Sword.attack(last_direction)
+		$StoneSprite.modulate.a = 1.0
 
 func animate_damage():
 	$PlayerSprite.self_modulate.s = 0.01
@@ -93,6 +96,21 @@ func injure(health, damage):
 		d = damage * (1.0 - (Globals.help_protection / 2))
 		
 	return health - clamp(int(float(d)), 1, 100)
+
+
+func set_stone_hint():
+	if ($StoneSprite.visible):
+		if (life >= 80):
+			$StoneSprite.modulate.r = 0
+		else:
+			$StoneSprite.modulate.r = 1.0
+
+func life_has_changed():	
+	life_changed.emit(life)
+	$InvulnerabilityTimer.start()
+	if (life <= 0):
+		dead.emit()
+	set_stone_hint()
 	
 
 func hit(damage):
@@ -101,10 +119,7 @@ func hit(damage):
 	animate_damage()
 	play_sound("hurt")
 	life = injure(life, damage)
-	life_changed.emit(life)
-	$InvulnerabilityTimer.start()
-	if (life <= 0):
-		dead.emit()
+	life_has_changed()
 
 func mental_hit(damage):
 	animate_damage()
@@ -118,14 +133,21 @@ func heal(heal):
 	animate_heal()
 	play_sound("heal")
 	life = clamp(life + heal, 0, 100)
-	life_changed.emit(life)
-	$InvulnerabilityTimer.start()
+	life_has_changed()
 
 func mental_heal(heal):
 	animate_heal()
 	mental_health = clamp(mental_health + heal, 0, 100)
 	mental_health_changed.emit(mental_health)
 
+func on_worlds_can_toggle_world(can_toggle_world, to_dark):
+	$StoneSprite.visible = can_toggle_world
+	if (can_toggle_world):
+		$StoneSprite.play("default")
+		set_stone_hint()
+	else:
+		$StoneSprite.stop()
+	
 func _on_worlds_toggled_world(moved_to_dark):
 	if (moved_to_dark):
 		mental_hit(mental_damage_on_move_to_dark)

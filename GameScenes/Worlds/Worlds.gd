@@ -50,6 +50,7 @@ func _process(delta):
 
 	can_toggle_world.emit(can_toggle)
 	get_tree().get_first_node_in_group("hud").on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
+	get_tree().get_first_node_in_group("player").on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
 			
 	if (Input.is_action_just_pressed("toggle_dark_world")):
 		print(can_toggle)
