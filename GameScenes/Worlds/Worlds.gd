@@ -55,10 +55,15 @@ func _process(delta):
 		print(can_toggle)
 		
 	if (can_toggle && Input.is_action_just_pressed("toggle_dark_world")):
-		remove_child(old_world)
+		var player = get_tree().get_first_node_in_group("player")
+		new_world.modulate.a = 0
 		add_child(new_world)
-		world = target_world
+		create_tween().tween_property(new_world, "modulate:a", 1.0, 1.0).finished
+		await create_tween().tween_property(player.get_node("Camera2D"), "zoom", Vector2(2,2), 0.5).finished
+		create_tween().tween_property(player.get_node("Camera2D"), "zoom", Vector2(4,4), 0.5).finished
+		remove_child(old_world)
 		get_tree().get_first_node_in_group("hud")._on_worlds_toggled_world(target_world == World.DARK)
-		get_tree().get_first_node_in_group("player")._on_worlds_toggled_world(target_world == World.DARK)
+		player._on_worlds_toggled_world(target_world == World.DARK)
+		world = target_world
 		toggled_world.emit(target_world == World.DARK)
 			
