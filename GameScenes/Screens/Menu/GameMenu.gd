@@ -11,3 +11,8 @@ func _on_credits_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			get_tree().quit()
