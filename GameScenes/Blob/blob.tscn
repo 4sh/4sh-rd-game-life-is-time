@@ -78,7 +78,7 @@ radius = 7.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krl11"]
-radius = 14.0
+radius = 15.0
 
 [node name="Blob" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
