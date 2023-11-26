@@ -18,17 +18,36 @@ signal write_finished
 	"low_health": preload('res://Assets/Sounds/Trivia/Low_Health.wav')
 }
 
+@onready var lifebar_textures = {
+	"light_progress": preload("res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png"),
+	"dark_progress": preload("res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barBlack_horizontalMid.png"),
+	"light_under": preload("res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barBlack_horizontalMid.png"),
+	"dark_under": preload("res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png")
+}
+
+var toggled_world = false
+var player_life:int = -1
+
 func _on_player_life_changed(life):
-	var life_change = life - $ingame_ui/lifebar.value
+	if (player_life == -1):
+		player_life = life 
+		$ingame_ui/lifebar.value = life
+		return
+		
+	var life_change = life - player_life
 	if (life_change == 0): return
 	
 	if (life_change < 0):		
 		$ingame_ui/lifebar/hint_label.text = str(life_change)
 	else:
 		$ingame_ui/lifebar/hint_label.text = "+" + str(life_change)
-		
-	$ingame_ui/lifebar.value = life
-	if $ingame_ui/lifebar.value <= life_alert_threshold && $ingame_ui/low_life_timer.paused == false:
+
+	player_life = life
+	if toggled_world:					
+		$ingame_ui/lifebar.value = (100 - player_life)
+	else:
+		$ingame_ui/lifebar.value = player_life
+	if player_life <= life_alert_threshold && $ingame_ui/low_life_timer.paused == false:
 		animate_low_health()
 	else:
 		stop_animate_low_health()
@@ -117,6 +136,13 @@ func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 	else:
 		$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.text = "awake"
 
+func _on_worlds_toggled_world(to_dark:bool):
+	toggled_world = to_dark
+	var prefix
+	if (to_dark): prefix = "dark"
+	else: prefix = "light"
+	$ingame_ui/lifebar.texture_progress = lifebar_textures[prefix + "_progress"]
+	$ingame_ui/lifebar.texture_under = lifebar_textures[prefix + "_under"]
 
 func _on_low_life_timer_timeout():
 	$ingame_ui/lifebar.modulate = $ingame_ui/lifebar.modulate.blend(Color.RED)

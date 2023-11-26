@@ -58,6 +58,7 @@ func _process(delta):
 		remove_child(old_world)
 		add_child(new_world)
 		world = target_world
-		toggled_world.emit(target_world == World.DARK)
+		get_tree().get_first_node_in_group("hud")._on_worlds_toggled_world(target_world == World.DARK)
 		get_tree().get_first_node_in_group("player")._on_worlds_toggled_world(target_world == World.DARK)
+		toggled_world.emit(target_world == World.DARK)
 			
