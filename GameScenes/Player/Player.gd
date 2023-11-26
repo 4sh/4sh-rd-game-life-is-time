@@ -67,7 +67,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
-	if Input.is_action_just_pressed("attack"):
+	if can_attack and Input.is_action_just_pressed("attack"):
 		$Sword.attack(last_direction)
 
 func animate_damage():
