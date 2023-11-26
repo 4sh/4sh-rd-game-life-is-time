@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Globals="*res://GameScenes/Globals.gd"
 Narrations="*res://GameScenes/NarrativeLauncher/narrations.gd"
-Test="*res://Assets/Narration/Test.gd"
 
 [display]
 

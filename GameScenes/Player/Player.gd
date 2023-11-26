@@ -84,12 +84,23 @@ func animate_heal():
 	create_tween().tween_property($PlayerSprite, "self_modulate:s", 0, 0.1)
 	$PlayerSprite.self_modulate.s = 0.0
 
+func injure(health, damage):
+	var d = damage
+	if (health < 25):
+		d = damage * (1.0 - Globals.help_protection)
+		
+	elif (health < 50):
+		d = damage * (1.0 - (Globals.help_protection / 2))
+		
+	return health - clamp(int(float(d)), 1, 100)
+	
+
 func hit(damage):
 	if (invulnerable): return
 	invulnerable = true
 	animate_damage()
 	play_sound("hurt")
-	life = life - damage
+	life = injure(life, damage)
 	life_changed.emit(life)
 	$InvulnerabilityTimer.start()
 	if (life <= 0):
@@ -97,7 +108,7 @@ func hit(damage):
 
 func mental_hit(damage):
 	animate_damage()
-	mental_health = mental_health - damage
+	mental_health = injure(mental_health, damage)
 	mental_health_changed.emit(mental_health)
 	if (mental_health <= 0):
 		dead.emit()

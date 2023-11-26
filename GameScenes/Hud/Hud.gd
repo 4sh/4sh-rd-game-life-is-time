@@ -19,11 +19,23 @@ signal write_finished
 }
 
 func _on_player_life_changed(life):
+	var life_change = life - $ingame_ui/lifebar.value
+	if (life_change == 0): return
+	
+	if (life_change < 0):		
+		$ingame_ui/lifebar/hint_label.text = str(life_change)
+	else:
+		$ingame_ui/lifebar/hint_label.text = "+" + str(life_change)
+		
 	$ingame_ui/lifebar.value = life
 	if $ingame_ui/lifebar.value <= life_alert_threshold && $ingame_ui/low_life_timer.paused == false:
 		animate_low_health()
 	else:
 		stop_animate_low_health()
+
+	await get_tree().create_timer(1.5).timeout
+	$ingame_ui/lifebar/hint_label.text = ""
+
 
 func animate_low_health():
 	$GlobalSounds.stream = sounds.low_health
@@ -36,7 +48,16 @@ func stop_animate_low_health():
 	$ingame_ui/lifebar.modulate = Color.WHITE
 
 func _on_player_mental_health_changed(mental):
+	var change = mental - $ingame_ui/mentalhealthbar.value
+	if (change == 0): return
+	
+	if (change < 0):		
+		$ingame_ui/mentalhealthbar/hint_label.text = str(change)
+	else:
+		$ingame_ui/mentalhealthbar/hint_label.text = "+" + str(change)
 	$ingame_ui/mentalhealthbar.value = mental
+	await get_tree().create_timer(1.5).timeout
+	$ingame_ui/mentalhealthbar/hint_label.text = ""
 
 func show_game_over():
 	$ingame_ui.hide()
@@ -78,6 +99,8 @@ func _on_ready():
 	$ingame_ui/mentalhealthbar.visible = show_mental_health
 	$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
 	$ingame_ui/controls_helper/attack_control.visible = has_attack
+	$ingame_ui/lifebar/hint_label.text = ""
+	$ingame_ui/mentalhealthbar/hint_label.text = ""
 
 func _unhandled_input(event):
 	if event is InputEventKey:

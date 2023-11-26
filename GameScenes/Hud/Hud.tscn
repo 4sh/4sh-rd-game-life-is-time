@@ -130,6 +130,15 @@ nine_patch_stretch = true
 texture_under = ExtResource("2_guypf")
 texture_progress = ExtResource("4_0l00e")
 
+[node name="hint_label" type="Label" parent="ingame_ui/lifebar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 497.526
+offset_top = -3.83405
+offset_right = 537.526
+offset_bottom = 22.166
+text = "-10"
+
 [node name="mentalhealthbar" type="TextureProgressBar" parent="ingame_ui"]
 layout_mode = 1
 offset_left = 16.0
@@ -140,6 +149,15 @@ nine_patch_stretch = true
 texture_under = ExtResource("2_guypf")
 texture_progress = ExtResource("4_0l00e")
 tint_progress = Color(1, 0.168627, 1, 1)
+
+[node name="hint_label" type="Label" parent="ingame_ui/mentalhealthbar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 497.367
+offset_top = -3.79044
+offset_right = 537.367
+offset_bottom = 22.2096
+text = "-10"
 
 [node name="dialogbox" type="Control" parent="ingame_ui"]
 visible = false
@@ -293,6 +311,7 @@ offset_right = 849.0
 offset_bottom = 35.0
 
 [node name="AttackLabel" type="Label" parent="ingame_ui/controls_helper/attack_control"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = -12.0
 offset_right = 60.0

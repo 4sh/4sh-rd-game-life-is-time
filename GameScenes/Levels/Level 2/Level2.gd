@@ -15,6 +15,7 @@ func stop_game():
 	get_tree().paused = true
 
 func _on_hud_restart_game():
+	Globals.register_failed_level_attempt()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
