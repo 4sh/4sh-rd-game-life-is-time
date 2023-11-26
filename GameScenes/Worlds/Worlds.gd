@@ -46,7 +46,7 @@ func _process(delta):
 		old_world = dark_world
 		new_world = light_world
 			
-	var can_toggle = has_tile(new_world, 1) and !has_tile(new_world, 2) and !has_tile(new_world, 3)
+	var can_toggle = has_tile(new_world, 1) and !has_tile(new_world, 2) and !has_tile(new_world, 3) and !has_tile(new_world, 4)
 
 	can_toggle_world.emit(can_toggle)
 	get_tree().get_first_node_in_group("hud").on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
