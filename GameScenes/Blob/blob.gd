@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED = 30.0
+@export var speed = 30.0
 @export var damage = 10
 @export var max_distance = 50
 @export var life = 20.0
@@ -27,8 +27,8 @@ func _process(delta):
 		$AnimatedSprite2D.animation = 'side'
 		$AnimatedSprite2D.flip_h = direction.x >= 0
 	
-	velocity = direction * SPEED
 	if (!is_in_range): return;
+	velocity = direction * speed
 	move_and_slide()
 
 func animate_damage():
@@ -49,11 +49,11 @@ func hit(damage):
 func _on_damage_timer_timeout():
 	player.mental_hit(damage)
 
-func _on_area_2d_body_entered(body):
+func _on_attack_body_entered(body):
 	if body.is_in_group("player"):
 		player.mental_hit(damage)
-		$DamageTimer.start()
+		$DamageTimer.start() # repeat attacks as long as the player has not exited
 
-func _on_area_2d_body_exited(body):
+func _on_attack_body_exited(body):
 	if body.is_in_group("player"):
 		$DamageTimer.stop()
