@@ -43,10 +43,13 @@ func _on_player_life_changed(life):
 		$ingame_ui/lifebar/hint_label.text = "+" + str(life_change)
 
 	player_life = life
+	var target_lifebar_value
 	if toggled_world:					
-		$ingame_ui/lifebar.value = (100 - player_life)
+		target_lifebar_value = (100 - player_life)
 	else:
-		$ingame_ui/lifebar.value = player_life
+		target_lifebar_value = player_life
+	create_tween().tween_property($ingame_ui/lifebar, "value", target_lifebar_value, 0.5)
+	
 	if player_life <= life_alert_threshold && $ingame_ui/low_life_timer.paused == false:
 		animate_low_health()
 	else:
@@ -74,7 +77,8 @@ func _on_player_mental_health_changed(mental):
 		$ingame_ui/mentalhealthbar/hint_label.text = str(change)
 	else:
 		$ingame_ui/mentalhealthbar/hint_label.text = "+" + str(change)
-	$ingame_ui/mentalhealthbar.value = mental
+	
+	create_tween().tween_property($ingame_ui/mentalhealthbar, "value", mental, 0.5)
 	await get_tree().create_timer(1.5).timeout
 	$ingame_ui/mentalhealthbar/hint_label.text = ""
 
