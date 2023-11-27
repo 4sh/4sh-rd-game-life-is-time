@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var damage = 10
-@export var frequency = 0.5
+@export var frequency = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
