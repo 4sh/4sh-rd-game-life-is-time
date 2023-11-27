@@ -81,7 +81,7 @@ radius = 23.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_as6et"]
 atlas = ExtResource("7_sbdw0")
-region = Rect2(143, 66, 49, 59)
+region = Rect2(328.396, 61.0996, 53.799, 67.6172)
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_qycc7")
@@ -170,6 +170,7 @@ frequency = 1.0
 
 [node name="SleepTravelStone" type="Area2D" parent="World/Items"]
 position = Vector2(538, 637)
+scale = Vector2(2, 2)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Items/SleepTravelStone"]

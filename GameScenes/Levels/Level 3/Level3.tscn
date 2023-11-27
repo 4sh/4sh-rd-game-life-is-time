@@ -207,7 +207,7 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_0jxcj")
 
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
-position = Vector2(153, -9)
+position = Vector2(152, -8)
 speed = 60.0
 life = 50.0
 

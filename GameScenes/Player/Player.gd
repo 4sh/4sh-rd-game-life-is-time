@@ -101,9 +101,9 @@ func injure(health, damage):
 func set_stone_hint():
 	if ($StoneSprite.visible):
 		if (life >= 80):
-			$StoneSprite.modulate.r = 0
+			$StoneSprite.modulate.b = 0.2
 		else:
-			$StoneSprite.modulate.r = 1.0
+			$StoneSprite.modulate.b = 1.0
 
 func life_has_changed():	
 	life_changed.emit(life)
