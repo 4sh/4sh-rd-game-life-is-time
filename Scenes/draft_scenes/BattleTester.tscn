@@ -6,8 +6,10 @@
 
 [node name="BattleTester" type="Node2D"]
 script = ExtResource("1_u0g2q")
-nb_blobs = 30
-blobs_max_distance = 200
+nb_blobs = 1
+blobs_speed = 5
+blobs_life = 50
+blobs_max_distance = 30
 
 [node name="hud" parent="." instance=ExtResource("2_7d4wu")]
 has_attack = true
