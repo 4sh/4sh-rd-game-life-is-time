@@ -113,16 +113,12 @@ func life_has_changed():
 
 func hit(damage):
 	if (invulnerable): return
-	invulnerable = true
-	$InvulnerabilityTimer.start()
 	animate_damage()
 	life = injure(life, damage)
 	life_has_changed()
 
 func mental_hit(damage):
 	if (invulnerable): return
-	invulnerable = true
-	$InvulnerabilityTimer.start()
 	animate_damage()
 	play_sound("hurt")
 	mental_health = injure(mental_health, damage)
@@ -131,7 +127,6 @@ func mental_hit(damage):
 		dead.emit()
 
 func heal(heal):
-	invulnerable = true
 	animate_heal()
 	play_sound("heal")
 	life = clamp(life + heal, 0, 100)
