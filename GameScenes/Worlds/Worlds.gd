@@ -12,9 +12,6 @@ enum World { DARK, LIGHT }
 
 var world = World.LIGHT
 
-func world_map(w):
-	return w.get_node("Map")
-
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	light_world.visible = true # during edit, often set to invisible for easy editing
@@ -22,7 +19,7 @@ func _ready():
 	remove_child(dark_world)
 
 func has_tile(w, layer):
-	return has_map_tile(w.get_node("Map"), layer) or has_map_tile(w.get_node("Map2"), layer)
+	return has_map_tile(w.get_node("Map"), layer) or (w.has_node("Map2") and has_map_tile(w.get_node("Map2"), layer))
 
 func has_map_tile(map, layer):
 	if map == null || player == null || player.position == null: return false
