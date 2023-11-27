@@ -107,22 +107,24 @@ func set_stone_hint():
 
 func life_has_changed():	
 	life_changed.emit(life)
-	$InvulnerabilityTimer.start()
 	if (life <= 0):
 		dead.emit()
 	set_stone_hint()
-	
 
 func hit(damage):
 	if (invulnerable): return
 	invulnerable = true
+	$InvulnerabilityTimer.start()
 	animate_damage()
-	play_sound("hurt")
 	life = injure(life, damage)
 	life_has_changed()
 
 func mental_hit(damage):
+	if (invulnerable): return
+	invulnerable = true
+	$InvulnerabilityTimer.start()
 	animate_damage()
+	play_sound("hurt")
 	mental_health = injure(mental_health, damage)
 	mental_health_changed.emit(mental_health)
 	if (mental_health <= 0):
@@ -137,6 +139,7 @@ func heal(heal):
 
 func mental_heal(heal):
 	animate_heal()
+	play_sound("heal")
 	mental_health = clamp(mental_health + heal, 0, 100)
 	mental_health_changed.emit(mental_health)
 
