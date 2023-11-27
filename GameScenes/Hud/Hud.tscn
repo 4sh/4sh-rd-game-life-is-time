@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://df8axxfjajflr"]
+[gd_scene load_steps=26 format=3 uid="uid://df8axxfjajflr"]
 
 [ext_resource type="Script" path="res://GameScenes/Hud/Hud.gd" id="1_5xg12"]
 [ext_resource type="FontFile" uid="uid://bgiwhqyxedr1e" path="res://Scenes/VCR_OSD_MONO_1.001.ttf" id="2_8bptl"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cm7d38bgaujtj" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="2_uhi5p"]
 [ext_resource type="Texture2D" uid="uid://crxml2f10nb5d" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="3_4qyqn"]
 [ext_resource type="Texture2D" uid="uid://b3mph0u2m37bc" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_horizontalMid.png" id="4_0l00e"]
+[ext_resource type="Texture2D" uid="uid://cdnqyq2onb7us" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_blue.png" id="5_ip0kr"]
 [ext_resource type="FontFile" uid="uid://1ojtwle8iohy" path="res://VCR_OSD_MONO_1.001.ttf" id="6_4v8gh"]
+[ext_resource type="Texture2D" uid="uid://cbhiiqkqbqy3p" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_blue_pressed.png" id="6_sjcfm"]
 [ext_resource type="Texture2D" uid="uid://coj1fju3rc0nq" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barBlue_horizontalBlue.png" id="7_iw2l7"]
 [ext_resource type="Texture2D" uid="uid://b2w7djuhw3cqg" path="res://Assets/ui/kenney_inputPromptsPixel16×/Tiles/tile_0078.png" id="8_c48d4"]
 [ext_resource type="Texture2D" uid="uid://4r011yhjj3gr" path="res://Assets/Sprites/AtelierMagicae_GemsMineralsFreebsVol1_Border.png" id="8_epdqc"]
@@ -80,7 +82,7 @@ theme_override_fonts/font = ExtResource("2_8bptl")
 theme_override_font_sizes/font_size = 32
 text = "Teils a succombé ..."
 
-[node name="TextureButton" type="TextureButton" parent="game_over"]
+[node name="RetryButton" type="TextureButton" parent="game_over"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
@@ -88,16 +90,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = -179.0
-offset_right = 97.0
-offset_bottom = -130.0
+offset_left = 87.0
+offset_top = -181.0
+offset_right = 277.0
+offset_bottom = -132.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("2_uhi5p")
 texture_pressed = ExtResource("3_4qyqn")
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="game_over/TextureButton"]
+[node name="Label" type="Label" parent="game_over/RetryButton"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -112,6 +115,40 @@ offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Recommencer"
+
+[node name="Quit Button" type="TextureButton" parent="game_over"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -179.0
+offset_right = -108.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_ip0kr")
+texture_pressed = ExtResource("6_sjcfm")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="game_over/Quit Button"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -12.5
+offset_right = 21.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quitter"
 
 [node name="ingame_ui" type="Control" parent="."]
 layout_mode = 3
@@ -365,5 +402,6 @@ texture = ExtResource("15_t303e")
 volume_db = -20.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="pressed" from="game_over/TextureButton" to="." method="_on_game_over_retry_pressed"]
+[connection signal="pressed" from="game_over/RetryButton" to="." method="_on_game_over_retry_pressed"]
+[connection signal="pressed" from="game_over/Quit Button" to="." method="_on_game_over_quit_button_pressed"]
 [connection signal="timeout" from="ingame_ui/low_life_timer" to="." method="_on_low_life_timer_timeout"]

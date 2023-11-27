@@ -91,6 +91,10 @@ func _on_game_over_retry_pressed():
 	$ingame_ui.show()
 	restart_game.emit()
 
+func _on_game_over_quit_button_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://GameScenes/Screens/Menu/GameMenu.tscn")
+
 func _on_player_dead():
 	show_game_over()
 
@@ -154,3 +158,5 @@ func _on_low_life_timer_timeout():
 	$ingame_ui/lifebar.modulate = $ingame_ui/lifebar.modulate.blend(Color.RED)
 	await get_tree().create_timer(0.5).timeout
 	$ingame_ui/lifebar.modulate = Color.WHITE
+
+
