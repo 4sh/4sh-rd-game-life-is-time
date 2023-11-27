@@ -114,6 +114,13 @@ func life_has_changed():
 func hit(damage):
 	if (invulnerable): return
 	animate_damage()
+	play_sound("hurt")
+	life = injure(life, damage)
+	life_has_changed()
+
+func disease(damage):
+	if (invulnerable): return
+	animate_damage()
 	life = injure(life, damage)
 	life_has_changed()
 

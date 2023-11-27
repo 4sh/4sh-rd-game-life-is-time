@@ -17,4 +17,4 @@ func _process(delta):
 func _on_timeout():
 	var p = get_tree().get_first_node_in_group("player")
 	if p:
-		p.hit(damage)
+		p.disease(damage)
