@@ -90,7 +90,27 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gjaod")
 animation = &"side"
 
+[node name="HurtLabelNode2D" type="Node2D" parent="."]
+position = Vector2(3, -4)
+scale = Vector2(0.4, 0.4)
+metadata/_edit_group_ = true
+
+[node name="HurtLabel" type="Label" parent="HurtLabelNode2D"]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -20.0
+offset_right = 38.0
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+text = "-5"
+vertical_alignment = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_1agk7")
 
 [node name="DamageTimer" type="Timer" parent="."]
@@ -99,6 +119,7 @@ shape = SubResource("CapsuleShape2D_1agk7")
 stream = ExtResource("4_uhcjc")
 
 [node name="Attack" type="Area2D" parent="."]
+visible = false
 
 [node name="AttackShape2D" type="CollisionShape2D" parent="Attack"]
 shape = SubResource("CircleShape2D_krl11")

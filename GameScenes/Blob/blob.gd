@@ -5,11 +5,17 @@ extends CharacterBody2D
 @export var max_distance = 50
 @export var life = 20.0
 
+@export var show_hurt_labels:bool = false
+
 @onready var player = get_tree().get_first_node_in_group("player") 
+
+var hurt_labels = []
 
 func _ready():
 	$AnimatedSprite2D.animation = 'front'
 	$AnimatedSprite2D.play()
+	$HurtLabelNode2D.hide()
+
 
 func get_player_pos():
 	return player.position
@@ -38,13 +44,25 @@ func animate_damage():
 	create_tween().tween_property($AnimatedSprite2D, "self_modulate:s", 0, 0.1)
 	$AnimatedSprite2D.self_modulate.s = 0.0
 
-func hit(damage):
+func hit(damage):	
 	life = life - damage
 	animate_damage()
 	$Hurt.play()
+	if show_hurt_labels:
+		hurt_labels.push_front("- " + str(damage))
+		$HurtLabelNode2D/HurtLabel.text = hurt_labels.reduce(func(accum, str): return accum + "\n" + str, "")
+		$HurtLabelNode2D.show()
 	if life <= 0.0:
 		await $Hurt.finished
 		queue_free()
+	await get_tree().create_timer(1.5).timeout
+	if show_hurt_labels:
+		hurt_labels.pop_back()
+		if (hurt_labels.size() == 0):
+			$HurtLabelNode2D.hide()
+			$HurtLabelNode2D/HurtLabel.text = ""
+		else:
+			$HurtLabelNode2D/HurtLabel.text = hurt_labels.reduce(func(accum, str): return accum + "\n" + str, "")
 
 func _on_damage_timer_timeout():
 	player.mental_hit(damage)
