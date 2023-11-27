@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://rusdriudf88u"]
+[gd_scene load_steps=5 format=3 uid="uid://rusdriudf88u"]
 
-[ext_resource type="Texture2D" uid="uid://b8mgagak1co5v" path="res://Assets/ui/kenney_ui-pack-rpg-expansion/PNG/barGreen_verticalBottom.png" id="1_ism1q"]
 [ext_resource type="Script" path="res://GameScenes/PickupItems/HealItem/HealItem.gd" id="1_s4wat"]
+[ext_resource type="Texture2D" uid="uid://4r011yhjj3gr" path="res://Assets/Sprites/AtelierMagicae_GemsMineralsFreebsVol1_Border.png" id="2_vsdw8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xa5ij"]
 radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdp62"]
+atlas = ExtResource("2_vsdw8")
+region = Rect2(645.744, 143.399, 52.8295, 44.571)
 
 [node name="HealItem" type="Node2D"]
 script = ExtResource("1_s4wat")
@@ -15,8 +19,8 @@ script = ExtResource("1_s4wat")
 shape = SubResource("CircleShape2D_xa5ij")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, 0)
-scale = Vector2(0.52, 0.722222)
-texture = ExtResource("1_ism1q")
+position = Vector2(0, -2.98023e-08)
+scale = Vector2(0.154811, 0.214684)
+texture = SubResource("AtlasTexture_qdp62")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
