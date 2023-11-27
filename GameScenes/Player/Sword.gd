@@ -12,6 +12,7 @@ extends Area2D
 }
 
 const default_length = 20.0
+var can_attack = true
 
 func put_away():
 	hide()
@@ -44,6 +45,13 @@ func _on_body_entered(body):
 	damage_enemy(body)
 
 func attack(direction: Vector2):
+	if (!can_attack): return
+	can_attack = false
 	rotation = direction.angle() + PI/2
 	play_sound("sword_slash")
 	await play_sword_animation()
+	$WaitBetweenAttacksTimer.start()
+
+
+func _on_wait_between_attacks_timer_timeout():
+	can_attack = true
