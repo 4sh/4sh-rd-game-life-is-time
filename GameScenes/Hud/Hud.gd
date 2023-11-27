@@ -4,6 +4,7 @@ signal restart_game
 signal write_finished
 
 @export var life_alert_threshold = 30
+@export var show_life_health: bool = true
 @export var show_mental_health: bool = true
 @export var has_toggle_world: bool = false:
 	set (value):
@@ -119,6 +120,7 @@ func help_text(text):
 	$ingame_ui/dialogbox.hide()
 
 func _on_ready():
+	$ingame_ui/lifebar.visible = show_life_health
 	$ingame_ui/mentalhealthbar.visible = show_mental_health
 	$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
 	$ingame_ui/controls_helper/attack_control.visible = has_attack

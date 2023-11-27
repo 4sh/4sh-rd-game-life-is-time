@@ -32,6 +32,7 @@ grow_vertical = 2
 color = Color(0.0470588, 0.0470588, 0.0470588, 1)
 
 [node name="hud" parent="Transition" instance=ExtResource("2_05ubr")]
+show_life_health = false
 show_mental_health = false
 
 [node name="Splash" type="Control" parent="."]
