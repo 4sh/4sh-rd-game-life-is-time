@@ -138,35 +138,27 @@ sprite_frames = SubResource("SpriteFrames_7ydmm")
 
 [node name="darkstone1" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(873, 3)
-frequency = 1.0
 
 [node name="darkstone2" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(1151, -117)
-frequency = 1.0
 
 [node name="darkstone3" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(491, 229)
-frequency = 1.0
 
 [node name="darkstone4" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(128, 145)
-frequency = 1.0
 
 [node name="darkstone5" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(813, -395)
-frequency = 1.0
 
 [node name="darkstone6" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(122, -112)
-frequency = 1.0
 
 [node name="darkstone7" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(569, -219)
-frequency = 1.0
 
 [node name="darkstone8" parent="World/Items" instance=ExtResource("5_7xce4")]
 position = Vector2(196, -437)
-frequency = 1.0
 
 [node name="SleepTravelStone" type="Area2D" parent="World/Items"]
 position = Vector2(538, 637)
