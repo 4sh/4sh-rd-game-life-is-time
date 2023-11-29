@@ -39,7 +39,7 @@ func play_sword_animation():
 	
 func damage_enemy(enemy):
 	if enemy.is_in_group("enemy"):
-		enemy.hit(attack_damage)
+		enemy.hit(attack_damage, (enemy.position - $'..'.position).normalized())
 
 func _on_body_entered(body):
 	damage_enemy(body)
