@@ -12,8 +12,8 @@ func _on_body_entered(body: Node2D):
 
 func gracefully_stop_sound():
 	var tween = create_tween()
-	await tween.tween_property($AudioStreamPlayer2D, "volume_db", -500, 2).finished
-	$AudioStreamPlayer2D.stop()
+	tween.tween_property($AudioStreamPlayer2D, "volume_db", -500, 2)
+	tween.tween_callback($AudioStreamPlayer2D.stop)
 
 func heal_player():
 	if (!can_heal): return
