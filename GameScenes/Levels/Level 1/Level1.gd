@@ -5,10 +5,11 @@ func _ready():
 	$Player/Camera2D.zoom = Vector2(0.8,0.8)
 	$Player/Camera2D.offset = Vector2(0,-350)
 	get_tree().create_timer(3.0).connect("timeout", Callable(self, "play_cursed"))
-	create_tween().tween_property($Player/Camera2D, 'offset', Vector2(0, -200), 1.5)
-	await create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(1.5, 1.5), 1.5).finished
-	create_tween().tween_property($Player/Camera2D, 'offset', Vector2(0, 0), 3)
-	create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(4, 4), 3)
+	var tween = create_tween()
+	tween.tween_property($Player/Camera2D, 'offset', Vector2(0, -200), 1.5)
+	tween.parallel().tween_property($Player/Camera2D, 'zoom', Vector2(1.5, 1.5), 1.5)
+	tween.tween_property($Player/Camera2D, 'offset', Vector2(0, 0), 3)
+	tween.parallel().tween_property($Player/Camera2D, 'zoom', Vector2(4, 4), 3)
 	var hud = $Hud
 	if hud.is_narration_playing():
 		await hud.write_finished
@@ -18,10 +19,12 @@ func _ready():
 func play_cursed():
 	$Cursed.color.a = 0.0
 	$Cursed.visible = true
+	var tween = create_tween()
 	for n in 3:
-		await create_tween().tween_property($Cursed, 'color:a', 1.0, 0.25).finished
-		await create_tween().tween_property($Cursed, 'color:a', 0.0, 0.25).finished
-		await get_tree().create_timer(0.2).timeout
+		tween.tween_property($Cursed, 'color:a', 1.0, 0.25)
+		tween.tween_property($Cursed, 'color:a', 0.0, 0.25)
+		tween.tween_interval(0.2)
+	await tween.finished
 	$Cursed.visible = false
 	$World/DiseaseTimer.start()
 	
