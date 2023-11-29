@@ -23,10 +23,11 @@ func _on_body_exited(body):
 
 func flicker_sprite():
 	$Sprite2D.self_modulate.a = 0.0
-	create_tween().tween_property($Sprite2D, "self_modulate:a", 1.0, 0.1)
 	$Sprite2D.self_modulate.lerp(Color.WHITE, 0.2)
-	await get_tree().create_timer(0.2).timeout
-	create_tween().tween_property($Sprite2D, "self_modulate:a", 0.0, 0.1)
+	var tween = create_tween()
+	tween.tween_property($Sprite2D, "self_modulate:a", 1.0, 0.1)
+	tween.tween_interval(0.1)
+	tween.tween_property($Sprite2D, "self_modulate:a", 0.0, 0.1)
 
 func do_damage():
 	flicker_sprite()
