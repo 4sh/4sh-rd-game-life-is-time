@@ -21,6 +21,8 @@ func _on_the_sword_area_body_entered(body):
 			$Player.heal(70 - $Player.life)
 		$Hud.has_attack = true
 		$Worlds/Light/Items/TheSword.queue_free()
+		await get_tree().create_timer(1.5).timeout
+		$Hud.show_attack_help()
 
 
 func _on_the_end_area_body_entered(body):

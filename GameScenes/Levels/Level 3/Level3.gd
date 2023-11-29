@@ -7,10 +7,6 @@ func _ready():
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _on_player_dead():
 	stop_game()
 
@@ -33,3 +29,17 @@ func _on_end_level_body_entered(body):
 		await create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(0.75, 0.75), 2).finished
 
 		get_tree().change_scene_to_file("res://GameScenes/Levels/Level 4/EnterLevel4.tscn")
+
+
+func _on_toggle_world_help_detector_body_entered(body):
+	if (body.is_in_group("player")):
+		$Hud/ToggleWorldHelpTimer.start()
+
+func _on_toggle_world_help_detector_body_exited(body):
+	if (body.is_in_group("player")):
+		$Hud/ToggleWorldHelpTimer.stop()	
+
+func _on_toggle_world_help_timer_timeout():
+	get_tree().call_group("hud", "show_toggle_world_help")
+
+

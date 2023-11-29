@@ -9,11 +9,13 @@ signal write_finished
 @export var has_toggle_world: bool = false:
 	set (value):
 		has_toggle_world = value
-		$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
+		if $ingame_ui/controls_helper/toggle_world_control:
+			$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
 @export var has_attack: bool = false:
 	set (value):
 		has_attack = value
-		$ingame_ui/controls_helper/attack_control.visible = has_attack
+		if $ingame_ui/controls_helper/attack_control:
+			$ingame_ui/controls_helper/attack_control.visible = has_attack
 
 @onready var sounds = {
 	"low_health": preload('res://Assets/Sounds/Trivia/Low_Health.wav')
@@ -28,6 +30,7 @@ signal write_finished
 
 var toggled_world = false
 var player_life:int = -1
+var keep_help_open = false
 
 func _on_player_life_changed(life):
 	if (player_life == -1):
@@ -132,9 +135,47 @@ func _on_ready():
 	$ingame_ui/mentalhealthbar/hint_label.text = ""
 
 func _unhandled_input(event):
-	if event is InputEventKey:
+	if Input.is_action_just_pressed("hud_help"):
+		show_hud_help()
+	elif event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			get_tree().change_scene_to_file("res://GameScenes/Screens/Menu/GameMenu.tscn")
+		elif event.pressed:
+			if !keep_help_open and $ingame_ui/hud_help.visible:
+				$ingame_ui/hud_help.hide()
+				$ingame_ui/hud_help/controls_helper/toggle_world_control.hide()
+				$ingame_ui/hud_help/controls_helper/attack_control.hide()
+
+func show_hud_help():	
+	if (!has_toggle_world):
+		return
+	if !$ingame_ui/hud_help.visible:
+		$ingame_ui/hud_help.show()
+		$ingame_ui/hud_help/controls_helper/toggle_world_control.show()
+	elif $ingame_ui/hud_help/controls_helper/toggle_world_control.visible:
+		$ingame_ui/hud_help/controls_helper/toggle_world_control.hide()
+		if (has_attack):
+			$ingame_ui/hud_help/controls_helper/attack_control.show()
+		else: 
+			$ingame_ui/hud_help.hide()
+	elif $ingame_ui/hud_help/controls_helper/attack_control.visible:
+		$ingame_ui/hud_help/controls_helper/attack_control.hide()
+		$ingame_ui/hud_help.hide()
+
+func show_toggle_world_help():
+	$ingame_ui/hud_help.show()
+	$ingame_ui/hud_help/controls_helper/toggle_world_control.show()
+	keep_help_open = true
+	$ingame_ui/hud_help/KeepHelpOpenTimer.start()
+	
+func show_attack_help():
+	$ingame_ui/hud_help.show()
+	$ingame_ui/hud_help/controls_helper/attack_control.show()
+	keep_help_open = true
+	$ingame_ui/hud_help/KeepHelpOpenTimer.start()
+
+func _on_keep_help_open_timer_timeout():
+	keep_help_open = false	
 
 func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 	$ingame_ui/controls_helper/toggle_world_control/CannotToggleWorldSprite.visible = !can_toggle_world
@@ -158,5 +199,4 @@ func _on_low_life_timer_timeout():
 	$ingame_ui/lifebar.modulate = $ingame_ui/lifebar.modulate.blend(Color.RED)
 	await get_tree().create_timer(0.5).timeout
 	$ingame_ui/lifebar.modulate = Color.WHITE
-
 

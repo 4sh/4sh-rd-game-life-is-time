@@ -398,6 +398,211 @@ texture = ExtResource("15_t303e")
 
 [node name="low_life_timer" type="Timer" parent="ingame_ui"]
 
+[node name="hud_help" type="Control" parent="ingame_ui"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="ingame_ui/hud_help"]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 0.776471)
+
+[node name="controls_helper" type="Control" parent="ingame_ui/hud_help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="toggle_world_control" type="Control" parent="ingame_ui/hud_help/controls_helper"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 154.0
+offset_top = 268.0
+offset_right = 154.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToggleWorldLabel" type="Label" parent="ingame_ui/hud_help/controls_helper/toggle_world_control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 289.0
+offset_top = -89.0
+offset_right = 402.0
+offset_bottom = -63.0
+theme_override_fonts/font = ExtResource("6_4v8gh")
+text = "pierre mentale"
+
+[node name="CanToggleWorldLabel" type="Label" parent="ingame_ui/hud_help/controls_helper/toggle_world_control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 238.0
+offset_top = 21.0
+offset_right = 713.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("6_4v8gh")
+text = "indique que la pierre peut être utilisée
+il suffit d'utiliser un des contrôles ci dessous pour basculer de l'autre côté
+la pierre est également visible sur Teils lorsqu'il peut l'utiliser
+elle clignote en orange si le passage est dangereux pour Teils"
+autowrap_mode = 2
+
+[node name="CanToggleWorldSprite" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/toggle_world_control"]
+modulate = Color(1, 0.0588235, 1, 1)
+layout_mode = 0
+offset_left = 187.0
+offset_top = 14.0
+offset_right = 241.0
+offset_bottom = 75.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_1acn1")
+
+[node name="CannotToggleWorldSprite" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/toggle_world_control"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -41.0
+offset_right = 239.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_t8kwl")
+
+[node name="CannotToggleWorldLabel" type="Label" parent="ingame_ui/hud_help/controls_helper/toggle_world_control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 240.0
+offset_top = -35.0
+offset_right = 615.0
+offset_bottom = -9.0
+theme_override_fonts/font = ExtResource("6_4v8gh")
+text = "indique que la pierre ne peut pas être utilisée
+un élément dans l'autre monde empêche la traversée"
+
+[node name="Help" type="Control" parent="ingame_ui/hud_help/controls_helper/toggle_world_control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 183.0
+offset_right = 368.0
+offset_bottom = 240.0
+metadata/_edit_group_ = true
+
+[node name="RightMouseButton" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/toggle_world_control/Help"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 84.0
+offset_bottom = 79.0
+texture = ExtResource("8_c48d4")
+
+[node name="SpaceBar" type="HBoxContainer" parent="ingame_ui/hud_help/controls_helper/toggle_world_control/Help"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 30.0
+offset_right = 161.0
+offset_bottom = 46.0
+scale = Vector2(2, 2)
+theme_override_constants/separation = 0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/toggle_world_control/Help/SpaceBar"]
+layout_mode = 2
+texture = ExtResource("9_qgjgf")
+
+[node name="TextureRect2" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/toggle_world_control/Help/SpaceBar"]
+layout_mode = 2
+texture = ExtResource("10_3o64f")
+
+[node name="TextureRect3" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/toggle_world_control/Help/SpaceBar"]
+layout_mode = 2
+texture = ExtResource("11_l8rkl")
+
+[node name="X btn" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/toggle_world_control/Help"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 23.0
+offset_right = 299.0
+offset_bottom = 79.0
+texture = ExtResource("12_d1f6y")
+
+[node name="attack_control" type="Control" parent="ingame_ui/hud_help/controls_helper"]
+visible = false
+texture_filter = 1
+anchors_preset = 0
+offset_left = 397.0
+offset_top = 249.0
+offset_right = 397.0
+offset_bottom = 249.0
+
+[node name="AttackLabel" type="Label" parent="ingame_ui/hud_help/controls_helper/attack_control"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = -26.0
+offset_right = 397.0
+offset_bottom = 52.0
+text = "attaque
+
+utiliser un des contrôles ci dessous pour attaquer avec l'épée mentale"
+autowrap_mode = 2
+
+[node name="CanAttackSprite" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/attack_control"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 23.0
+offset_right = 20.0
+offset_bottom = 72.0
+scale = Vector2(1.27498, 1.27498)
+texture = SubResource("AtlasTexture_fudw1")
+
+[node name="Help" type="Control" parent="ingame_ui/hud_help/controls_helper/attack_control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 107.0
+offset_top = 103.0
+offset_right = 285.0
+offset_bottom = 178.0
+metadata/_edit_group_ = true
+
+[node name="LeftMouseButton" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/attack_control/Help"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 55.0
+offset_bottom = 56.0
+texture = ExtResource("13_fdmv6")
+
+[node name="L key" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/attack_control/Help"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 4.0
+offset_right = 116.0
+offset_bottom = 52.0
+texture = ExtResource("14_nb3r1")
+
+[node name="Square btn" type="TextureRect" parent="ingame_ui/hud_help/controls_helper/attack_control/Help"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.307
+anchor_top = 0.271
+anchor_right = -1.307
+anchor_bottom = 0.271
+offset_left = 369.646
+offset_top = -7.32499
+offset_right = 409.646
+offset_bottom = 32.675
+texture = ExtResource("15_t303e")
+
+[node name="KeepHelpOpenTimer" type="Timer" parent="ingame_ui/hud_help"]
+wait_time = 3.0
+one_shot = true
+
 [node name="GlobalSounds" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
 
@@ -405,3 +610,4 @@ volume_db = -20.0
 [connection signal="pressed" from="game_over/RetryButton" to="." method="_on_game_over_retry_pressed"]
 [connection signal="pressed" from="game_over/Quit Button" to="." method="_on_game_over_quit_button_pressed"]
 [connection signal="timeout" from="ingame_ui/low_life_timer" to="." method="_on_low_life_timer_timeout"]
+[connection signal="timeout" from="ingame_ui/hud_help/KeepHelpOpenTimer" to="." method="_on_keep_help_open_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=14 format=3 uid="uid://b3wayvwq0uf0h"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://50l5sehx102p" path="res://GameScenes/PickupItems/MentalHealthHealStone/MentalHealthHealStone.tscn" id="8_udawv"]
 [ext_resource type="AudioStream" uid="uid://cettlfrpw72r3" path="res://Assets/Music/8-bit-dream-land-142093 niv 3.mp3" id="11_sbpbf"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf0a1"]
+size = Vector2(143, 48.0663)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0jxcj"]
 radius = 21.0
 
@@ -20,6 +23,10 @@ script = ExtResource("1_fi7ur")
 
 [node name="Hud" parent="." instance=ExtResource("1_x071v")]
 has_toggle_world = true
+
+[node name="ToggleWorldHelpTimer" type="Timer" parent="Hud"]
+wait_time = 3.0
+one_shot = true
 
 [node name="Worlds" type="Node2D" parent="."]
 script = ExtResource("3_fqgf6")
@@ -71,6 +78,15 @@ layer_5/tile_data = PackedInt32Array(327693, 1310720, 8, 131089, 1310720, 8, 458
 [node name="DiseaseTimer" parent="Worlds/Dark" instance=ExtResource("3_qglt0")]
 damage = 2
 
+[node name="ToggleWorldHelpDetector2" type="Area2D" parent="Worlds/Dark"]
+position = Vector2(301, 202)
+rotation = -0.644027
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worlds/Dark/ToggleWorldHelpDetector2"]
+position = Vector2(2.3732, 17.8433)
+shape = SubResource("RectangleShape2D_nf0a1")
+
 [node name="Items" type="Node2D" parent="Worlds/Dark"]
 
 [node name="darkstone" parent="Worlds/Dark/Items" instance=ExtResource("6_xjwxr")]
@@ -94,6 +110,7 @@ position = Vector2(103, 2084)
 damage = 5
 
 [node name="Light" type="Node2D" parent="Worlds"]
+visible = false
 
 [node name="launch_narrative" parent="Worlds/Light" instance=ExtResource("7_igfgd")]
 position = Vector2(213, 32)
@@ -211,10 +228,17 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Worlds/Light/Items/EndLevel"]
 shape = SubResource("CircleShape2D_0jxcj")
 
+[node name="ToggleWorldHelpDetector" type="Area2D" parent="Worlds/Light"]
+position = Vector2(208.738, 17.1235)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worlds/Light/ToggleWorldHelpDetector"]
+position = Vector2(6.76242, 9.87647)
+shape = SubResource("RectangleShape2D_nf0a1")
+
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
 position = Vector2(152, -8)
 speed = 60.0
-life = 50.0
+life = 80.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_sbpbf")
@@ -222,7 +246,12 @@ volume_db = -15.0
 autoplay = true
 
 [connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
+[connection signal="timeout" from="Hud/ToggleWorldHelpTimer" to="." method="_on_toggle_world_help_timer_timeout"]
+[connection signal="body_entered" from="Worlds/Dark/ToggleWorldHelpDetector2" to="." method="_on_toggle_world_help_detector_body_entered"]
+[connection signal="body_exited" from="Worlds/Dark/ToggleWorldHelpDetector2" to="." method="_on_toggle_world_help_detector_body_exited"]
 [connection signal="body_entered" from="Worlds/Light/Items/EndLevel" to="." method="_on_end_level_body_entered"]
+[connection signal="body_entered" from="Worlds/Light/ToggleWorldHelpDetector" to="." method="_on_toggle_world_help_detector_body_entered"]
+[connection signal="body_exited" from="Worlds/Light/ToggleWorldHelpDetector" to="." method="_on_toggle_world_help_detector_body_exited"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
