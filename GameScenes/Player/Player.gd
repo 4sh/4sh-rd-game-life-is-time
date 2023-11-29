@@ -33,8 +33,8 @@ func play_sound(sound):
 	$AudioStreamPlayer2D.play()
 
 func _ready():
-	life_changed.emit(life)
-	mental_health_changed.emit(mental_health)
+	Hud.on_player_life_changed(life)
+	Hud.on_player_mental_health_changed(mental_health)
 	$Sword.attack_damage = attack_damage
 	$Sword.attack_length = attack_length
 	$StoneSprite.hide()
@@ -106,8 +106,9 @@ func set_stone_hint():
 			$StoneSprite.modulate.b = 1.0
 
 func life_has_changed():	
-	life_changed.emit(life)
+	Hud.on_player_life_changed(life)
 	if (life <= 0):
+		Hud.on_player_dead()
 		dead.emit()
 	set_stone_hint()
 
@@ -129,8 +130,10 @@ func mental_hit(damage):
 	animate_damage()
 	play_sound("hurt")
 	mental_health = injure(mental_health, damage)
+	Hud.on_player_mental_health_changed(mental_health)
 	mental_health_changed.emit(mental_health)
 	if (mental_health <= 0):
+		Hud.on_player_dead()
 		dead.emit()
 
 func heal(heal):
@@ -143,6 +146,7 @@ func mental_heal(heal):
 	animate_heal()
 	play_sound("heal")
 	mental_health = clamp(mental_health + heal, 0, 100)
+	Hud.on_player_mental_health_changed(mental_health)
 	mental_health_changed.emit(mental_health)
 
 func on_worlds_can_toggle_world(can_toggle_world, to_dark):
@@ -153,7 +157,7 @@ func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 	else:
 		$StoneSprite.stop()
 	
-func _on_worlds_toggled_world(moved_to_dark):
+func on_worlds_toggled_world(moved_to_dark):
 	if (moved_to_dark):
 		mental_hit(mental_damage_on_move_to_dark)
 	life = clamp(100 - life, 5, 100)

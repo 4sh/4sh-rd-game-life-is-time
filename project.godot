@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*res://GameScenes/Globals.gd"
 Narrations="*res://GameScenes/NarrativeLauncher/narrations.gd"
+Hud="*res://GameScenes/Hud/Hud.tscn"
 
 [display]
 

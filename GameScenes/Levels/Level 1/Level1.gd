@@ -1,6 +1,9 @@
 extends Node2D
 
 func _ready():
+	Hud.show_mental_health = false
+	Hud.has_attack = false
+	Hud.has_toggle_world = false
 	$World/DiseaseTimer.stop()
 	$Player/Camera2D.zoom = Vector2(0.8,0.8)
 	$Player/Camera2D.offset = Vector2(0,-350)
@@ -9,9 +12,8 @@ func _ready():
 	await create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(1.5, 1.5), 1.5).finished
 	create_tween().tween_property($Player/Camera2D, 'offset', Vector2(0, 0), 3)
 	create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(4, 4), 3)
-	var hud = $Hud
-	if hud.is_narration_playing():
-		await hud.write_finished
+	if Hud.is_narration_playing():
+		await Hud.write_finished
 	$AudioStreamPlayer.play()
 
 
@@ -30,23 +32,11 @@ func _process(delta):
 	pass
 
 
-func _on_player_dead():
-	stop_game()
-
-func stop_game():
-	get_tree().paused = true
-
-func _on_hud_restart_game():
-	Globals.register_failed_level_attempt()
-	get_tree().paused = false
-	get_tree().reload_current_scene()
-
-
 func _on_portal_body_entered(body):
 	create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(1, 1), 3)
 	create_tween().tween_property($Player/Camera2D, 'offset', Vector2(0, 100), 3)
 
 	$Player.paused = true
 	$World/DiseaseTimer.stop()	
-	await $Hud.write_finished
+	await Hud.write_finished
 	get_tree().change_scene_to_file("res://GameScenes/Levels/Level 2/EnterLevel2.tscn")

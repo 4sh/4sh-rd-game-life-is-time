@@ -12,7 +12,6 @@ blobs_life = 50
 blobs_max_distance = 30
 
 [node name="hud" parent="." instance=ExtResource("2_7d4wu")]
-has_attack = true
 
 [node name="Player" parent="." instance=ExtResource("3_wxuf8")]
 position = Vector2(-53, -8)

@@ -1,7 +1,10 @@
 extends Node2D
 
+func _ready():
+	Hud.hide()
 
 func _on_play_button_pressed():
+	Hud.show()
 	get_tree().change_scene_to_file("res://GameScenes/Levels/Level 1/Level1.tscn")
 
 

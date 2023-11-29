@@ -4,13 +4,19 @@ signal restart_game
 signal write_finished
 
 @export var life_alert_threshold = 30
-@export var show_life_health: bool = true
-@export var show_mental_health: bool = true
-@export var has_toggle_world: bool = false:
+@export var show_life_health: bool = true:
+	set (value):
+		show_life_health = value
+		$ingame_ui/lifebar.visible = show_life_health
+@export var show_mental_health: bool = true:
+	set (value):
+		show_mental_health = value
+		$ingame_ui/mentalhealthbar.visible = show_mental_health
+@export var has_toggle_world: bool = true:
 	set (value):
 		has_toggle_world = value
 		$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
-@export var has_attack: bool = false:
+@export var has_attack: bool = true:
 	set (value):
 		has_attack = value
 		$ingame_ui/controls_helper/attack_control.visible = has_attack
@@ -29,7 +35,18 @@ signal write_finished
 var toggled_world = false
 var player_life:int = -1
 
-func _on_player_life_changed(life):
+func _on_ready():
+	$ingame_ui/lifebar/hint_label.text = ""
+	$ingame_ui/mentalhealthbar/hint_label.text = ""
+	
+	
+func default_setup():
+	show_life_health = true
+	show_mental_health = true
+	has_attack = true
+	has_toggle_world = true
+
+func on_player_life_changed(life):
 	if (player_life == -1):
 		player_life = life 
 		$ingame_ui/lifebar.value = life
@@ -70,7 +87,7 @@ func stop_animate_low_health():
 	$ingame_ui/low_life_timer.stop()
 	$ingame_ui/lifebar.modulate = Color.WHITE
 
-func _on_player_mental_health_changed(mental):
+func on_player_mental_health_changed(mental):
 	var change = mental - $ingame_ui/mentalhealthbar.value
 	if (change == 0): return
 	
@@ -89,14 +106,25 @@ func show_game_over():
 
 func _on_game_over_retry_pressed():
 	$ingame_ui.show()
-	restart_game.emit()
+	$game_over.hide()
+	_on_hud_restart_game()
 
 func _on_game_over_quit_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://GameScenes/Screens/Menu/GameMenu.tscn")
 
-func _on_player_dead():
+func on_player_dead():
 	show_game_over()
+	stop_game()
+
+func stop_game():
+	get_tree().paused = true
+
+func _on_hud_restart_game():
+	Globals.register_failed_level_attempt()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
 
 func on_narration_launched(narrationIndex):
 	if (Narrations.narrations[narrationIndex].played == true): return
@@ -123,13 +151,6 @@ func help_text(text):
 	await get_tree().create_timer(3).timeout
 	$ingame_ui/dialogbox.hide()
 
-func _on_ready():
-	$ingame_ui/lifebar.visible = show_life_health
-	$ingame_ui/mentalhealthbar.visible = show_mental_health
-	$ingame_ui/controls_helper/toggle_world_control.visible = has_toggle_world
-	$ingame_ui/controls_helper/attack_control.visible = has_attack
-	$ingame_ui/lifebar/hint_label.text = ""
-	$ingame_ui/mentalhealthbar/hint_label.text = ""
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -146,7 +167,7 @@ func on_worlds_can_toggle_world(can_toggle_world, to_dark):
 	else:
 		$ingame_ui/controls_helper/toggle_world_control/ToggleWorldLabel.text = "awake"
 
-func _on_worlds_toggled_world(to_dark:bool):
+func on_worlds_toggled_world(to_dark:bool):
 	toggled_world = to_dark
 	var prefix
 	if (to_dark): prefix = "dark"
@@ -160,3 +181,5 @@ func _on_low_life_timer_timeout():
 	$ingame_ui/lifebar.modulate = Color.WHITE
 
 
+func _on_player_dead():
+	show_game_over()

@@ -46,7 +46,7 @@ func _process(delta):
 	var can_toggle = has_tile(new_world, 1) and !has_tile(new_world, 2) and !has_tile(new_world, 3) and !has_tile(new_world, 4)
 
 	can_toggle_world.emit(can_toggle)
-	get_tree().get_first_node_in_group("hud").on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
+	Hud.on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
 	get_tree().get_first_node_in_group("player").on_worlds_can_toggle_world(can_toggle, target_world == World.DARK)
 			
 	if (Input.is_action_just_pressed("toggle_dark_world")):
@@ -56,12 +56,12 @@ func _process(delta):
 		var player = get_tree().get_first_node_in_group("player")
 		new_world.modulate.a = 0
 		add_child(new_world)
-		create_tween().tween_property(new_world, "modulate:a", 1.0, 1.0).finished
+		create_tween().tween_property(new_world, "modulate:a", 1.0, 1.0)
 		await create_tween().tween_property(player.get_node("Camera2D"), "zoom", Vector2(2,2), 0.5).finished
-		create_tween().tween_property(player.get_node("Camera2D"), "zoom", Vector2(4,4), 0.5).finished
+		create_tween().tween_property(player.get_node("Camera2D"), "zoom", Vector2(4,4), 0.5)
 		remove_child(old_world)
-		get_tree().get_first_node_in_group("hud")._on_worlds_toggled_world(target_world == World.DARK)
-		player._on_worlds_toggled_world(target_world == World.DARK)
+		Hud.on_worlds_toggled_world(target_world == World.DARK)
+		player.on_worlds_toggled_world(target_world == World.DARK)
 		world = target_world
 		toggled_world.emit(target_world == World.DARK)
 			

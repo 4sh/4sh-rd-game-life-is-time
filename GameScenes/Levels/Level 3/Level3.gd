@@ -1,31 +1,14 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	# $Player.position = Vector2(460,1760)
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _on_player_dead():
-	stop_game()
-
-func stop_game():
-	get_tree().paused = true
-
-func _on_hud_restart_game():
-	Globals.register_failed_level_attempt()
-	get_tree().paused = false
-	get_tree().reload_current_scene()
+	Hud.has_attack = false
 
 
 func _on_end_level_body_entered(body):
 	if body.is_in_group("player"):
-		$Hud.help_text("Vous avez trouvé une pierre mentale...")
+		Hud.help_text("Vous avez trouvé une pierre mentale...")
 		$Player.paused = true
 		$Player.mental_heal(100)
 		$Worlds/Light/DiseaseTimer.stop()	

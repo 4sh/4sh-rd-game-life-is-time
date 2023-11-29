@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://w1cu7cvm1n1t"]
+[gd_scene load_steps=22 format=3 uid="uid://w1cu7cvm1n1t"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 2/Level2.gd" id="1_qycc7"]
-[ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="2_ufvox"]
 [ext_resource type="PackedScene" uid="uid://cpbdcq3hoyoqt" path="res://GameScenes/DiseaseTimer/DiseaseTimer.tscn" id="3_uv37e"]
 [ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="4_025k7"]
 [ext_resource type="PackedScene" uid="uid://b1spqr4ffudte" path="res://GameScenes/DarkStone/darkstone.tscn" id="5_7xce4"]
@@ -85,9 +84,6 @@ region = Rect2(328.396, 61.0996, 53.799, 67.6172)
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_qycc7")
-
-[node name="Hud" parent="." instance=ExtResource("2_ufvox")]
-show_mental_health = false
 
 [node name="World" type="Node2D" parent="."]
 
@@ -203,9 +199,5 @@ stream = ExtResource("11_o5wyv")
 volume_db = -10.0
 autoplay = true
 
-[connection signal="restart_game" from="Hud" to="." method="_on_hud_restart_game"]
 [connection signal="body_entered" from="World/Items/SleepTravelStone" to="." method="_on_sleep_travel_stone_body_entered"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
-[connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
-[connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
-[connection signal="mental_health_changed" from="Player" to="Hud" method="_on_player_mental_health_changed"]
