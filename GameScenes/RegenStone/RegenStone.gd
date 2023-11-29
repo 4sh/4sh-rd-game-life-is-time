@@ -27,3 +27,8 @@ func heal_player():
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		$Timer.stop()
+
+func _on_animation_timer_timeout():
+	var tween = create_tween()
+	tween.tween_property($Sprite2D, "self_modulate:s", 0.1, 0.25)
+	tween.tween_property($Sprite2D, "self_modulate:s", 0.0, 0.25)
