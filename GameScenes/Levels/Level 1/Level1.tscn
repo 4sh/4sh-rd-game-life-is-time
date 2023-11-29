@@ -101,7 +101,6 @@ show_mental_health = false
 
 [node name="DiseaseTimer" parent="World" instance=ExtResource("4_1tptq")]
 wait_time = 1.0
-damage = 7
 
 [node name="WorldMap" type="Node2D" parent="World"]
 
@@ -181,16 +180,16 @@ polygon = PackedVector2Array(-27, -28.5, 1, -56.5, 29, -28.5, 29, -4.5, 25, -6.5
 
 [node name="RegenStone1" parent="World/Items" instance=ExtResource("3_j7slt")]
 position = Vector2(873, 10)
-heal = 17
+heal = 20
 
 [node name="RegenStone2" parent="World/Items" instance=ExtResource("3_j7slt")]
 position = Vector2(128, 150)
-heal = 15
+heal = 20
 heal_max = 5
 
 [node name="RegenStone3" parent="World/Items" instance=ExtResource("3_j7slt")]
 position = Vector2(492, 235)
-heal = 12
+heal = 15
 heal_max = 5
 
 [node name="RegenStone4" parent="World/Items" instance=ExtResource("3_j7slt")]
@@ -200,12 +199,12 @@ heal_max = 4
 
 [node name="RegenStone5" parent="World/Items" instance=ExtResource("3_j7slt")]
 position = Vector2(194, -432)
-heal = 17
+heal = 20
 heal_max = 5
 
 [node name="RegenStone6" parent="World/Items" instance=ExtResource("3_j7slt")]
 position = Vector2(1150, -109)
-heal = 17
+heal = 20
 heal_max = 5
 
 [node name="RegenStone7" parent="World/Items" instance=ExtResource("3_j7slt")]

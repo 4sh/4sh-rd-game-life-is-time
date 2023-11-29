@@ -17,7 +17,8 @@ func _on_the_sword_area_body_entered(body):
 		$Hud.help_text("Vous avez trouvé l'épée mentale...")
 		$Player.can_attack = true
 		$Player.mental_heal(100)
-		$Player.heal(10)
+		if ($Player.life < 70):
+			$Player.heal(70 - $Player.life)
 		$Hud.has_attack = true
 		$Worlds/Light/Items/TheSword.queue_free()
 
