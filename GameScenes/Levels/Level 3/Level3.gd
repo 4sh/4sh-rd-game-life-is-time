@@ -43,3 +43,5 @@ func _on_toggle_world_help_timer_timeout():
 	get_tree().call_group("hud", "show_toggle_world_help")
 
 
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

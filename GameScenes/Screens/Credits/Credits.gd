@@ -13,3 +13,7 @@ func _process(delta):
 
 func _on_close_button_pressed():
 	get_tree().change_scene_to_file("res://GameScenes/Screens/Menu/GameMenu.tscn")
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

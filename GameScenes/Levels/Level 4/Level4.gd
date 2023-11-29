@@ -36,3 +36,7 @@ func _on_the_end_area_body_entered(body):
 
 		get_tree().change_scene_to_file("res://GameScenes/Levels/Level 5/EnterLevel5.tscn")
 		
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()
