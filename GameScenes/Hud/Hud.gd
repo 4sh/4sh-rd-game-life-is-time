@@ -77,12 +77,15 @@ func _on_player_mental_health_changed(mental):
 	var change = mental - $ingame_ui/mentalhealthbar.value
 	if (change == 0): return
 	
+	var tween_duration
 	if (change < 0):		
 		$ingame_ui/mentalhealthbar/hint_label.text = str(change)
+		tween_duration = 0.5
 	else:
 		$ingame_ui/mentalhealthbar/hint_label.text = "+" + str(change)
+		tween_duration = 2
 	
-	create_tween().tween_property($ingame_ui/mentalhealthbar, "value", mental, 0.5)
+	create_tween().tween_property($ingame_ui/mentalhealthbar, "value", mental, tween_duration)
 	await get_tree().create_timer(1.5).timeout
 	$ingame_ui/mentalhealthbar/hint_label.text = ""
 
