@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cettlfrpw72r3" path="res://Assets/Music/8-bit-dream-land-142093 niv 3.mp3" id="11_sbpbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf0a1"]
-size = Vector2(143, 48.0663)
+size = Vector2(57.75, 48.0663)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0jxcj"]
 radius = 21.0
@@ -110,10 +110,9 @@ position = Vector2(103, 2084)
 damage = 5
 
 [node name="Light" type="Node2D" parent="Worlds"]
-visible = false
 
 [node name="launch_narrative" parent="Worlds/Light" instance=ExtResource("7_igfgd")]
-position = Vector2(213, 32)
+position = Vector2(153, -3)
 narrationIndex = 5
 
 [node name="Map" type="TileMap" parent="Worlds/Light"]
@@ -232,13 +231,13 @@ shape = SubResource("CircleShape2D_0jxcj")
 position = Vector2(208.738, 17.1235)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Worlds/Light/ToggleWorldHelpDetector"]
-position = Vector2(6.76242, 9.87647)
+position = Vector2(9.26199, 13.8765)
 shape = SubResource("RectangleShape2D_nf0a1")
 
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
 position = Vector2(152, -8)
 speed = 60.0
-life = 80.0
+life = 60.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_sbpbf")
@@ -254,6 +253,8 @@ autoplay = true
 [connection signal="body_exited" from="Worlds/Light/ToggleWorldHelpDetector" to="." method="_on_toggle_world_help_detector_body_exited"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="dead" from="Player" to="Hud" method="_on_player_dead"]
+[connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
 [connection signal="life_changed" from="Player" to="Hud" method="_on_player_life_changed"]
+[connection signal="mental_health_changed" from="Player" to="." method="_on_player_mental_health_changed"]
 [connection signal="mental_health_changed" from="Player" to="Hud" method="_on_player_mental_health_changed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

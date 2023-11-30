@@ -73,6 +73,13 @@ func stop_animate_low_health():
 	$ingame_ui/low_life_timer.stop()
 	$ingame_ui/lifebar.modulate = Color.WHITE
 
+func blink_mental_health():
+	var tween = create_tween()
+	for n in 4:
+		tween.tween_property($ingame_ui/mentalhealthbar, "modulate:s", 0.5, 0.4)
+		tween.tween_property($ingame_ui/mentalhealthbar, "modulate:s", 0, 0.4)
+		tween.tween_interval(0.2)
+
 func _on_player_mental_health_changed(mental):
 	var change = mental - $ingame_ui/mentalhealthbar.value
 	if (change == 0): return

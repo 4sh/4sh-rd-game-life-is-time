@@ -45,3 +45,25 @@ func _on_toggle_world_help_timer_timeout():
 
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
+
+var low_mental_health_help_shown = false
+func _on_player_mental_health_changed(mental_health):
+	if (!low_mental_health_help_shown and mental_health <= 60):
+		$Hud.help_text("Surveille bien ta santé mentale, Teils.\nElle diminue à chaque passage du côté sombre, et pourrait bien entraîner ta mort...")
+		# wait a few seconds before blinking, so that player has time to read the help text
+		await get_tree().create_timer(2).timeout
+		$Hud.blink_mental_health()
+		low_mental_health_help_shown = true
+	if (mental_health <= $Player.mental_damage_on_move_to_dark):
+		$Hud.help_text("Ta santé mentale s'épuise Teils. Un autre passage vers le côté sombre et ce sera ta mort...")
+		# wait a few seconds before blinking, so that player has time to read the help text
+		await get_tree().create_timer(2).timeout
+		$Hud.blink_mental_health()
+		
+var low_life_help_shown = false
+func _on_player_life_changed(life):
+	if (!low_life_help_shown and life <= 30):
+		$Hud.help_text("Surveille bien ta vie, Teils.\nEt observe comment elle bascule à chaque passage de l'autre côté...")
+		low_life_help_shown = true
+		
+		
