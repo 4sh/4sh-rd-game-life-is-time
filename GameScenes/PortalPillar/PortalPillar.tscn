@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://drd3api0pbv83"]
+
+[ext_resource type="Script" path="res://GameScenes/PortalPillar/PortalPillar.gd" id="1_seau6"]
+[ext_resource type="Texture2D" uid="uid://cp4ik7m4srlan" path="res://Assets/Tilesets/Solaria Demo Update 01.png" id="2_s3wfa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kahc"]
+atlas = ExtResource("2_s3wfa")
+region = Rect2(367.763, 175.381, 16.7524, 34.005)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oauop"]
+radius = 20.0
+
+[node name="PortalPillar" type="Node2D"]
+position = Vector2(566, 312)
+script = ExtResource("1_seau6")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_3kahc")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_oauop")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Hide" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1200.0
+offset_bottom = 800.0
+color = Color(0, 0, 0, 1)
+
+[node name="SpotPortal" type="Polygon2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.0588235)
+position = Vector2(568.525, 314.055)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0, 0, 1)
+invert_enabled = true
+invert_border = 600.0
+polygon = PackedVector2Array(-63, -97, -126, -19, -83, 73, 71, 86, 133, 18, 104, -79)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
