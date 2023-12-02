@@ -1,7 +1,8 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
+@onready var end_portal = $Worlds/Light/Items/PortalPillar
+
 func _ready():
 	# $Player.position = Vector2(460,1760)
 	pass
@@ -17,19 +18,6 @@ func _on_hud_restart_game():
 	Globals.register_failed_level_attempt()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-
-
-func _on_end_level_body_entered(body):
-	if body.is_in_group("player"):
-		$Hud.help_text("Vous avez trouvé une pierre mentale...")
-		$Player.paused = true
-		$Player.mental_heal(100)
-		$Worlds/Light/DiseaseTimer.stop()	
-		create_tween().tween_property($Player/Camera2D, 'offset', Vector2(-200, -200), 1.5)
-		await create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(0.75, 0.75), 2).finished
-
-		get_tree().change_scene_to_file("res://GameScenes/Levels/Level 4/EnterLevel4.tscn")
-
 
 func _on_toggle_world_help_detector_body_entered(body):
 	if (body.is_in_group("player")):
@@ -67,3 +55,17 @@ func _on_player_life_changed(life):
 		low_life_help_shown = true
 		
 		
+func _on_portal_pillar_player_entered_active_portal():
+	$Hud.help_text("Vous avez trouvé une pierre mentale...")
+	$Player.paused = true
+	$Player.mental_heal(100)
+	$Worlds/Light/DiseaseTimer.stop()	
+	create_tween().tween_property($Player/Camera2D, 'offset', Vector2(-200, -200), 1.5)
+	await create_tween().tween_property($Player/Camera2D, 'zoom', Vector2(0.75, 0.75), 2).finished
+
+	get_tree().change_scene_to_file("res://GameScenes/Levels/Level 4/EnterLevel4.tscn")
+
+
+func _on_activate_portal_body_entered(body):
+	if body.is_in_group("player"):
+		end_portal.activate()

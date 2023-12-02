@@ -130,6 +130,9 @@ func write(narrationObject):
 func is_narration_playing():
 	return $ingame_ui/dialogbox.visible
 
+func clear_dialog():
+	$ingame_ui/dialogbox.hide()
+
 func help_text(text):
 	$ingame_ui/dialogbox.show()
 	$ingame_ui/dialogbox/MarginContainer/Label.text = text

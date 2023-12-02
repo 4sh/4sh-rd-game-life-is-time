@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3wayvwq0uf0h"]
+[gd_scene load_steps=15 format=3 uid="uid://b3wayvwq0uf0h"]
 
 [ext_resource type="Script" path="res://GameScenes/Levels/Level 3/Level3.gd" id="1_fi7ur"]
 [ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_x071v"]
@@ -10,13 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://cmei2u1d7f4fh" path="res://GameScenes/NarrativeLauncher/narrative_launcher.tscn" id="7_igfgd"]
 [ext_resource type="PackedScene" uid="uid://nb5u27rx0mgr" path="res://GameScenes/RegenStone/RegenStone.tscn" id="7_xn654"]
 [ext_resource type="PackedScene" uid="uid://50l5sehx102p" path="res://GameScenes/PickupItems/MentalHealthHealStone/MentalHealthHealStone.tscn" id="8_udawv"]
+[ext_resource type="PackedScene" uid="uid://drd3api0pbv83" path="res://GameScenes/PortalPillar/PortalPillar.tscn" id="9_n26kt"]
 [ext_resource type="AudioStream" uid="uid://cettlfrpw72r3" path="res://Assets/Music/8-bit-dream-land-142093 niv 3.mp3" id="11_sbpbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf0a1"]
 size = Vector2(57.75, 48.0663)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0jxcj"]
-radius = 21.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_vu41a"]
+radius = 18.9151
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_fi7ur")
@@ -199,7 +200,7 @@ layer_5/modulate = Color(1, 1, 1, 1)
 layer_5/y_sort_enabled = false
 layer_5/y_sort_origin = 0
 layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array(4325369, 589824, 5, 4456450, 589824, 5, 3604472, 458752, 5, 3866626, 589824, 5, 4915209, 589824, 5, 5439498, 589824, 5, 5177342, 589824, 5, 5505024, 589824, 5, 5111793, 589824, 5, 5177321, 589824, 5, 5505001, 589824, 5, 5439470, 393216, 5, 5439476, 393216, 5, 6356982, 393216, 5, 6356986, 393216, 5, 7143411, 393216, 9, 7077878, 393216, 5, 6946812, 589824, 7, 6684665, 589824, 7, 6488055, 589824, 7, 6160369, 589824, 7, 5898226, 589824, 7, 5570541, 589824, 7, 5439474, 589824, 7, 5701621, 589824, 7, 7208952, 589824, 7, 7077876, 524288, 9, 7077875, 524288, 8, 7208947, 458752, 8, 7208948, 458752, 9, 7405557, 589824, 13, 7405562, 589824, 13, 7471093, 589824, 14, 7471098, 589824, 14, 6422531, 589824, 5, 6094855, 589824, 5, 6750214, 589824, 5, 6094828, 589824, 5, 6094839, 589824, 5, 6160408, 589824, 6, 6488092, 589824, 6, 6619158, 589824, 6, 6422553, 1507328, 12, 6357017, 1507328, 11, 7143434, 589824, 6, 7274497, 589824, 6, 5570543, 393216, 3, 5570548, 393216, 3, 3801085, 589824, 4, 4456435, 589824, 4, 6160412, 589824, 4, 6750234, 589824, 4, 6881254, 589824, 4, 6553563, 589824, 4, 7208939, 589824, 4, 7667689, 589824, 4, 7929846, 589824, 4, 7733244, 524288, 3, 7929865, 524288, 3, 7471114, 524288, 3, 7667714, 524288, 4, 7733261, 524288, 4, 6684674, 524288, 4, 6225923, 524288, 4, 5767164, 524288, 4, 5570566, 589824, 3, 5177335, 589824, 3, 5111813, 589824, 3, 4456442, 589824, 3, 3997696, 589824, 3, 3932150, 524288, 3, 4587520, 524288, 3, 6422555, 524288, 3, 6291479, 589824, 3, 7405574, 589824, 3, 7405584, 589824, 3, 6094862, 589824, 3, 5767184, 524288, 4, 5439509, 524288, 4, 6225900, 524288, 4, 6029294, 524288, 3, 5963795, 131073, 27, 6815761, 1, 23, 7798784, 393217, 2, 6946828, 262145, 2, 6291457, 262145, 2, 5636092, 262145, 6, 5046283, 131073, 6, 4063226, 131073, 6)
+layer_5/tile_data = PackedInt32Array(4325369, 589824, 5, 4456450, 589824, 5, 3604472, 458752, 5, 3866626, 589824, 5, 4915209, 589824, 5, 5439498, 589824, 5, 5177342, 589824, 5, 5505024, 589824, 5, 5111793, 589824, 5, 5177321, 589824, 5, 5505001, 589824, 5, 5439470, 393216, 5, 5439476, 393216, 5, 6356982, 393216, 5, 6356986, 393216, 5, 7143411, 393216, 9, 7077878, 393216, 5, 6946812, 589824, 7, 6684665, 589824, 7, 6488055, 589824, 7, 6160369, 589824, 7, 5898226, 589824, 7, 5570541, 589824, 7, 5439474, 589824, 7, 5701621, 589824, 7, 7208952, 589824, 7, 7077876, 524288, 9, 7077875, 524288, 8, 7208947, 458752, 8, 7208948, 458752, 9, 7405557, 589824, 13, 7405562, 589824, 13, 7471093, 589824, 14, 7471098, 589824, 14, 6422531, 589824, 5, 6094855, 589824, 5, 6750214, 589824, 5, 6094828, 589824, 5, 6094839, 589824, 5, 6160408, 589824, 6, 6488092, 589824, 6, 6619158, 589824, 6, 7143434, 589824, 6, 7274497, 589824, 6, 5570543, 393216, 3, 5570548, 393216, 3, 3801085, 589824, 4, 4456435, 589824, 4, 6160412, 589824, 4, 6750234, 589824, 4, 6881254, 589824, 4, 6553563, 589824, 4, 7208939, 589824, 4, 7667689, 589824, 4, 7929846, 589824, 4, 7733244, 524288, 3, 7929865, 524288, 3, 7471114, 524288, 3, 7667714, 524288, 4, 7733261, 524288, 4, 6684674, 524288, 4, 6225923, 524288, 4, 5767164, 524288, 4, 5570566, 589824, 3, 5177335, 589824, 3, 5111813, 589824, 3, 4456442, 589824, 3, 3997696, 589824, 3, 3932150, 524288, 3, 4587520, 524288, 3, 6422555, 524288, 3, 6291479, 589824, 3, 7405574, 589824, 3, 7405584, 589824, 3, 6094862, 589824, 3, 5767184, 524288, 4, 5439509, 524288, 4, 6225900, 524288, 4, 6029294, 524288, 3, 5963795, 131073, 27, 6815761, 1, 23, 7798784, 393217, 2, 6946828, 262145, 2, 6291457, 262145, 2, 5636092, 262145, 6, 5046283, 131073, 6, 4063226, 131073, 6)
 
 [node name="DiseaseTimer" parent="Worlds/Light" instance=ExtResource("3_qglt0")]
 wait_time = 2.0
@@ -216,16 +217,20 @@ position = Vector2(103, 2085)
 heal = 0
 heal_max = 0
 
-[node name="MentalHealthHealStone" parent="Worlds/Light/Items" instance=ExtResource("8_udawv")]
-position = Vector2(492, 1700)
-scale = Vector2(1.70853, 1.70853)
+[node name="PortalPillar" parent="Worlds/Light/Items" instance=ExtResource("9_n26kt")]
+position = Vector2(490, 1709)
+spot_portal_zoom = 1.5
 
-[node name="EndLevel" type="Area2D" parent="Worlds/Light/Items"]
-position = Vector2(492, 1721)
+[node name="MentalHealthHealStone" parent="Worlds/Light/Items" instance=ExtResource("8_udawv")]
+position = Vector2(475, 1723)
+heal = 100
+
+[node name="ActivatePortal" type="Area2D" parent="Worlds/Light/Items"]
+position = Vector2(-231, 1900)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Worlds/Light/Items/EndLevel"]
-shape = SubResource("CircleShape2D_0jxcj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worlds/Light/Items/ActivatePortal"]
+shape = SubResource("CircleShape2D_vu41a")
 
 [node name="ToggleWorldHelpDetector" type="Area2D" parent="Worlds/Light"]
 position = Vector2(208.738, 17.1235)
@@ -235,7 +240,7 @@ position = Vector2(9.26199, 13.8765)
 shape = SubResource("RectangleShape2D_nf0a1")
 
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
-position = Vector2(152, -8)
+position = Vector2(150.97, -5.09929)
 speed = 60.0
 life = 60.0
 
@@ -248,7 +253,8 @@ autoplay = true
 [connection signal="timeout" from="Hud/ToggleWorldHelpTimer" to="." method="_on_toggle_world_help_timer_timeout"]
 [connection signal="body_entered" from="Worlds/Dark/ToggleWorldHelpDetector2" to="." method="_on_toggle_world_help_detector_body_entered"]
 [connection signal="body_exited" from="Worlds/Dark/ToggleWorldHelpDetector2" to="." method="_on_toggle_world_help_detector_body_exited"]
-[connection signal="body_entered" from="Worlds/Light/Items/EndLevel" to="." method="_on_end_level_body_entered"]
+[connection signal="player_entered_active_portal" from="Worlds/Light/Items/PortalPillar" to="." method="_on_portal_pillar_player_entered_active_portal"]
+[connection signal="body_entered" from="Worlds/Light/Items/ActivatePortal" to="." method="_on_activate_portal_body_entered"]
 [connection signal="body_entered" from="Worlds/Light/ToggleWorldHelpDetector" to="." method="_on_toggle_world_help_detector_body_entered"]
 [connection signal="body_exited" from="Worlds/Light/ToggleWorldHelpDetector" to="." method="_on_toggle_world_help_detector_body_exited"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
