@@ -219,7 +219,7 @@ heal_max = 0
 
 [node name="PortalPillar" parent="Worlds/Light/Items" instance=ExtResource("9_n26kt")]
 position = Vector2(490, 1709)
-spot_portal_zoom = 1.5
+spot_portal_zoom = 1.0
 
 [node name="MentalHealthHealStone" parent="Worlds/Light/Items" instance=ExtResource("8_udawv")]
 position = Vector2(475, 1723)
@@ -240,7 +240,7 @@ position = Vector2(9.26199, 13.8765)
 shape = SubResource("RectangleShape2D_nf0a1")
 
 [node name="Player" parent="." instance=ExtResource("2_l3mve")]
-position = Vector2(150.97, -5.09929)
+position = Vector2(152.683, -4.62278)
 speed = 60.0
 life = 60.0
 

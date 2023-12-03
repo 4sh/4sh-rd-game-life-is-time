@@ -32,7 +32,7 @@ texture = ExtResource("5_kvgmq")
 
 [node name="PortalPillar" parent="TileMap" instance=ExtResource("3_em7xa")]
 position = Vector2(573, 295)
-spot_portal_zoom = 2.5
+spot_portal_zoom = 1.0
 
 [node name="Player" parent="." instance=ExtResource("4_g702h")]
 position = Vector2(186, 192)
