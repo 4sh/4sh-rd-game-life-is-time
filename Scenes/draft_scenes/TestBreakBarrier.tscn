@@ -1,0 +1,140 @@
+[gd_scene load_steps=17 format=3 uid="uid://buujolytvqics"]
+
+[ext_resource type="PackedScene" uid="uid://df8axxfjajflr" path="res://GameScenes/Hud/Hud.tscn" id="1_fcol8"]
+[ext_resource type="PackedScene" uid="uid://bcuhrumwnh8e8" path="res://GameScenes/Player/Player.tscn" id="2_enj37"]
+[ext_resource type="TileSet" uid="uid://cs4ldvgeouxol" path="res://Assets/Tilesets/game-main-tileset.tres" id="3_y5kuc"]
+[ext_resource type="Script" path="res://Scenes/draft_scenes/Barrier.gd" id="4_kv26y"]
+[ext_resource type="Texture2D" uid="uid://cmbrrtcua225k" path="res://Assets/Sprites/Destructible Objects Sprite Sheet.png" id="4_nxolm"]
+[ext_resource type="PackedScene" uid="uid://cnytlogxj76hq" path="res://GameScenes/Blob/blob.tscn" id="6_wx7xx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjsgl"]
+size = Vector2(15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08jpr"]
+atlas = ExtResource("4_nxolm")
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4bm0"]
+atlas = ExtResource("4_nxolm")
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdidk"]
+atlas = ExtResource("4_nxolm")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yibga"]
+atlas = ExtResource("4_nxolm")
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w75ip"]
+atlas = ExtResource("4_nxolm")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l87vx"]
+atlas = ExtResource("4_nxolm")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yo0o5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08jpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4bm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdidk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yibga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w75ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l87vx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nakqm"]
+size = Vector2(15, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gel6"]
+size = Vector2(50, 16)
+
+[node name="TestBreakBarrier" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("3_y5kuc")
+format = 2
+layer_0/tile_data = PackedInt32Array(524291, 131072, 8, 458755, 131072, 7, 393219, 131072, 7, 327683, 131072, 7, 262147, 131072, 7, 196611, 131072, 7, 131075, 131072, 7, 65539, 131072, 7, 3, 131072, 7, -65533, 131072, 7, -131069, 131072, 7, -196605, 131072, 7, -262141, 131072, 7, -327677, 131072, 7, -393213, 131072, 7, -458749, 131072, 7, -524285, 131072, 7, -589821, 131072, 6, 524290, 65536, 8, 458754, 65536, 7, 393218, 65536, 7, 327682, 65536, 7, 262146, 327680, 1, 196610, 65536, 7, 131074, 65536, 7, 65538, 65536, 7, 2, 65536, 7, -65534, 65536, 7, -131070, 1179648, 5, -196606, 65536, 7, -262142, 65536, 7, -327678, 65536, 7, -393214, 65536, 7, -458750, 65536, 7, -524286, 65536, 7, -589822, 65536, 6, 524289, 65536, 8, 458753, 65536, 7, 393217, 65536, 7, 327681, 65536, 7, 262145, 393216, 1, 196609, 65536, 7, 131073, 65536, 7, 65537, 65536, 7, 1, 65536, 7, -65535, 65536, 7, -131071, 1179648, 5, -196607, 65536, 7, -262143, 393216, 1, -327679, 327680, 1, -393215, 65536, 7, -458751, 327680, 1, -524287, 65536, 7, -589823, 65536, 6, 524288, 65536, 8, 458752, 65536, 7, 393216, 327680, 1, 327680, 65536, 7, 262144, 65536, 7, 196608, 65536, 7, 131072, 327680, 1, 65536, 65536, 7, 0, 65536, 7, -65536, 65536, 7, -131072, 65536, 7, -196608, 327680, 1, -262144, 393216, 0, -327680, 65536, 7, -393216, 65536, 7, -458752, 65536, 7, -524288, 327680, 1, -589824, 65536, 6, 589823, 65536, 8, 524287, 65536, 7, 458751, 327680, 1, 393215, 65536, 7, 327679, 65536, 7, 262143, 65536, 7, 196607, 327680, 1, 131071, 393216, 1, 65535, 65536, 7, -1, 65536, 7, -65537, 1179648, 5, -131073, 65536, 7, -196609, 65536, 7, -262145, 393216, 1, -327681, 65536, 7, -393217, 65536, 7, -458753, 65536, 7, -524289, 65536, 6, 589822, 65536, 8, 524286, 65536, 7, 458750, 327680, 1, 393214, 327680, 1, 327678, 327680, 1, 262142, 327680, 1, 196606, 65536, 7, 131070, 65536, 7, 65534, 65536, 7, -2, 65536, 7, -65538, 1179648, 5, -131074, 393216, 0, -196610, 327680, 1, -262146, 65536, 7, -327682, 65536, 7, -393218, 65536, 7, -458754, 65536, 7, -524290, 65536, 6, 589821, 65536, 8, 524285, 65536, 7, 458749, 65536, 7, 393213, 65536, 7, 327677, 327680, 1, 262141, 65536, 7, 196605, 65536, 7, 131069, 65536, 7, 65533, 65536, 7, -3, 65536, 7, -65539, 1179648, 5, -131075, 65536, 7, -196611, 327680, 1, -262147, 65536, 7, -327683, 327680, 1, -393219, 65536, 7, -458755, 327680, 1, -524291, 65536, 6, 589820, 0, 8, 524284, 0, 7, 458748, 0, 7, 393212, 0, 7, 327676, 0, 7, 262140, 0, 7, 196604, 0, 7, 131068, 0, 7, 65532, 0, 7, -4, 0, 7, -65540, 0, 7, -131076, 0, 7, -196612, 0, 7, -262148, 0, 7, -327684, 0, 7, -393220, 0, 7, -458756, 0, 7, -524292, 0, 6)
+
+[node name="hud" parent="." instance=ExtResource("1_fcol8")]
+
+[node name="Player" parent="." instance=ExtResource("2_enj37")]
+can_attack = true
+
+[node name="Barrier" type="CharacterBody2D" parent="." groups=["attackable_object"]]
+position = Vector2(7, -25)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_kv26y")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_bjsgl")
+debug_color = Color(0.92549, 0.27451, 0, 0.419608)
+
+[node name="BarrierSprite" type="AnimatedSprite2D" parent="Barrier"]
+texture_filter = 1
+position = Vector2(-1.19209e-07, -3.8147e-06)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_yo0o5")
+
+[node name="ApproachBarrierDetector" type="Area2D" parent="Barrier"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier/ApproachBarrierDetector"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_nakqm")
+
+[node name="Blob" parent="." instance=ExtResource("6_wx7xx")]
+position = Vector2(-20, -71)
+scale = Vector2(1.5, 1.5)
+damage = 20
+life = 50.0
+moved_by_hit_speed = 20.0
+
+[node name="Blob2" parent="." instance=ExtResource("6_wx7xx")]
+position = Vector2(26.2553, -73.8365)
+scale = Vector2(1.5, 1.5)
+damage = 20
+life = 50.0
+moved_by_hit_speed = 20.0
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(-21, -25)
+collision_layer = 3
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-3.5, 1)
+shape = SubResource("RectangleShape2D_8gel6")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(46, -24)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(-6, 0)
+shape = SubResource("RectangleShape2D_8gel6")
+
+[connection signal="animation_finished" from="Barrier/BarrierSprite" to="Barrier" method="_on_barrier_sprite_animation_finished"]
+[connection signal="body_entered" from="Barrier/ApproachBarrierDetector" to="Barrier" method="_on_approach_barrier_detector_body_entered"]

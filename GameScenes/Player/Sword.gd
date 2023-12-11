@@ -37,13 +37,11 @@ func play_sword_animation():
 	$Sprite.stop()
 	put_away()
 	
-func damage_enemy(enemy):
-	if enemy.is_in_group("enemy"):
-		enemy.hit(attack_damage, (enemy.position - $'..'.position).normalized())
 
 func _on_body_entered(body):
-	damage_enemy(body)
-
+	if body.is_in_group("enemy") or body.is_in_group("attackable_object"):
+		body.hit(attack_damage, (body.position - $'..'.position).normalized())
+		
 func attack(direction: Vector2):
 	if (!can_attack): return
 	can_attack = false
