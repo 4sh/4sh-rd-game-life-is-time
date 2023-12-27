@@ -165,3 +165,4 @@ func _on_invulnerability_timer_timeout():
 
 func _on_footsteps_timer_timeout():
 	$Footsteps.play()
+
