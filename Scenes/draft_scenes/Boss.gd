@@ -16,8 +16,10 @@ const dark_visibility_layer = 32
 @onready var worlds = get_node("../%Worlds")
 @onready var boss_view = get_node("../BossView")
 @onready var boss_viewport = get_node("../%BossViewport")
+@onready var nav_agent = $NavigationAgent2D
 
 var switching_in_progress = false
+var wait_before_next_switch = false
 
 func get_player_pos():
 	return player.position
@@ -45,7 +47,7 @@ func _ready():
 	$PortalSprite.hide()
 	go_to_light()
 
-func _process(delta):	
+func _physics_process(delta):
 	if switching_in_progress:
 		return	
 	
@@ -54,24 +56,22 @@ func _process(delta):
 	else:
 		boss_view.hide()
 
-	#if !is_player_in_same_world() && can_switch_world():
-		#switch_world()
-		#return
-			
-	var direction = Vector2.ZERO
-	var player_pos: Vector2 = get_player_pos()
-	direction = (player_pos - position)
-	var is_in_range = direction.length() < max_distance
-	direction = direction.normalized()
-		
-	if (!is_in_range): return;
+	if !is_player_in_same_world() && !wait_before_next_switch && can_switch_world():
+		switch_world()
+		return
+	
+	var direction = to_local(nav_agent.get_next_path_position()).normalized()		
 	velocity = direction * speed
-	move_and_slide()
+	var collided = move_and_slide()
+	var distance_to_player = (global_position - player.global_position).length()
+	if collided && distance_to_player > 10 && !wait_before_next_switch && can_switch_world():
+		switch_world()
 	
 	boss_viewport.get_node("Camera2D").position = position
 
 func switch_world():
 	switching_in_progress = true
+	wait_before_next_switch = true
 
 	if (is_player_in_light()):
 		change_parent(portal, light)
@@ -93,7 +93,11 @@ func switch_world():
 	else:
 		go_to_light()
 	switching_in_progress = false
-	
+	await get_tree().create_timer(2).timeout
+	wait_before_next_switch = false
+
+func make_path():
+	nav_agent.target_position = player.global_position
 
 func go_to_dark():
 	change_parent(self, dark)
@@ -113,3 +117,5 @@ func change_parent(node, next_parent):
 	node.get_parent().call_deferred("remove_child", node)
 	next_parent.call_deferred("add_child", node)
 	
+func _on_timer_timeout():
+	make_path()

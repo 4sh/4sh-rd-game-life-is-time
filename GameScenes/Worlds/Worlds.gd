@@ -35,8 +35,9 @@ func can_go_to(new_world, position):
 
 func has_tile(w, position):
 	var has_tile = false
-	for layer in range(1,4):
-		has_tile = has_tile || has_map_tile(w.get_node("Map"), layer, position) or (w.has_node("Map2") and has_map_tile(w.get_node("Map2"), layer, position))
+	var map = w.get_node("Map")
+	for layer in range(0,4):
+		has_tile = has_tile || has_map_tile(map, layer, position)
 	return has_tile
 
 func has_map_tile(map, layer, position):
