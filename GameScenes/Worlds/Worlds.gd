@@ -12,13 +12,22 @@ enum World { DARK, LIGHT }
 
 var world = World.LIGHT
 @onready var viewport = get_viewport()
+@onready var dark_view:SubViewportContainer = get_node("../%DarkWorldView")
+@onready var light_view:SubViewportContainer = get_node("../%LightWorldView")
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	light_world.visible = true # during edit, often set to invisible for easy editing
 	dark_world.visible = true # during edit, often set to invisible for easy editing
 	viewport.canvas_cull_mask &= ~dark_world.visibility_layer
-	viewport.canvas_cull_mask |= light_world.visibility_layer
+	viewport.canvas_cull_mask &= ~light_world.visibility_layer
+	dark_view.visible = false
+	var winsize = get_viewport_rect().size
+	dark_view.get_node("SubViewport").size = winsize
+	light_view.get_node("SubViewport").size = winsize
+	player.visibility_layer = light_world.visibility_layer
+
 
 
 func can_go_to(new_world, position):
@@ -52,12 +61,18 @@ func _process(delta):
 	
 	var new_world: Node2D;
 	var old_world: Node2D;
+	var new_world_view;
+	var old_world_view;
 	if (target_world == World.DARK):
 		old_world = light_world
 		new_world = dark_world
+		old_world_view = light_view
+		new_world_view = dark_view
 	else:
 		old_world = dark_world
 		new_world = light_world
+		old_world_view = dark_view
+		new_world_view = light_view
 			
 	var can_toggle = can_go_to(new_world, player.position)
 
@@ -67,16 +82,22 @@ func _process(delta):
 			
 	if (can_toggle && Input.is_action_just_pressed("toggle_dark_world")):
 		var player = get_tree().get_first_node_in_group("player")
-		new_world.modulate.a = 0
-		viewport.canvas_cull_mask |= new_world.visibility_layer
+		new_world_view.modulate.a = 0
+		new_world_view.show()
 		player.collision_mask |= target_collision_layer
-		create_tween().tween_property(new_world, "modulate:a", 1.0, 1.0)
-		create_tween().tween_property(old_world, "modulate:a", 0.0, 1.0)
-		await create_tween().tween_property(player.get_node("Camera2D"), "zoom", Vector2(2,2), 0.5).finished
+		
+		create_tween().tween_property(new_world_view, "modulate:a", 1.0, 1.0)
+		create_tween().tween_property(old_world_view, "modulate:a", 0.0, 1.0)
+		
+		create_tween().tween_property(old_world_view.get_node("SubViewport/Camera2D"), "zoom", Vector2(2,2), 0.5)
+		await create_tween().tween_property(new_world_view.get_node("SubViewport/Camera2D"), "zoom", Vector2(2,2), 0.5).finished
 		player.collision_mask &= ~origin_collision_layer
-		await create_tween().tween_property(player.get_node("Camera2D"), "zoom", Vector2(4,4), 0.5).finished
-		old_world.modulate.a = 1
-		viewport.canvas_cull_mask &= ~old_world.visibility_layer
+		player.visibility_layer = new_world.visibility_layer
+		create_tween().tween_property(old_world_view.get_node("SubViewport/Camera2D"), "zoom", Vector2(4,4), 0.5)
+		await create_tween().tween_property(new_world_view.get_node("SubViewport/Camera2D"), "zoom", Vector2(4,4), 0.5).finished
+		
+		old_world_view.hide()
+		old_world_view.modulate.a = 1
 		get_tree().get_first_node_in_group("hud")._on_worlds_toggled_world(target_world == World.DARK)
 		player._on_worlds_toggled_world(target_world == World.DARK)
 		world = target_world
