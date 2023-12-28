@@ -13,7 +13,9 @@ const dark_visibility_layer = 32
 @onready var dark = %Dark
 @onready var light = %Light
 @onready var portal = $PortalSprite
-@onready var worlds = get_parent().get_node("%Worlds")
+@onready var worlds = get_node("../%Worlds")
+@onready var boss_view = get_node("../BossView")
+@onready var boss_viewport = get_node("../%BossViewport")
 
 var switching_in_progress = false
 
@@ -39,16 +41,22 @@ func can_switch_world():
 	return worlds.can_go_to(target_world, position)
 
 func _ready():
+	boss_viewport.world_2d = get_viewport().world_2d
 	$PortalSprite.hide()
 	go_to_light()
 
-func _process(delta):
+func _process(delta):	
 	if switching_in_progress:
 		return	
+	
+	if !is_player_in_same_world():
+		boss_view.show()
+	else:
+		boss_view.hide()
 
-	if !is_player_in_same_world() && can_switch_world():
-		switch_world()
-		return
+	#if !is_player_in_same_world() && can_switch_world():
+		#switch_world()
+		#return
 			
 	var direction = Vector2.ZERO
 	var player_pos: Vector2 = get_player_pos()
@@ -59,6 +67,8 @@ func _process(delta):
 	if (!is_in_range): return;
 	velocity = direction * speed
 	move_and_slide()
+	
+	boss_viewport.get_node("Camera2D").position = position
 
 func switch_world():
 	switching_in_progress = true
